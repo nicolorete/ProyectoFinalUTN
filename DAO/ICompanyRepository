@@ -1,0 +1,12 @@
+<?php
+    namespace DAO;
+
+    use Models\Company as Company;
+
+    interface ICompanyRepository
+    {
+        function addCompany(Company $company);
+        function getAll();
+    }
+
+?>
