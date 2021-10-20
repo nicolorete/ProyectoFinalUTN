@@ -16,6 +16,7 @@
 
         public function addCompany(Company $company)
         {
+            
             $this->retrieveData();
 
             array_push($this->companyList, $company);
@@ -23,34 +24,75 @@
             $this->saveData();
         }
 
-        public function getAll()
+        public function Modify (Company $company){
+            $this->RetrieveData();
+            $companyToModify = null;
+            
+            $companyToModify = $this->GetCompanyByName($company->getNombre());
+            if ($companyToModify != null) {
+                $this->Delete($company->getCompanyId());
+            }
+            array_push($this->companyList, $companyToModify);
+            $this->SaveData();
+        }
+
+        public function GetAll()
         {
             $this->retrieveData();
 
             return $this->companyList;
         }
 
-        public function removeCompany($companyId)
-		{
-			$flag = false;
-			$companyList = $this->retrieveData();
-			$i=0;
-			foreach ($this->companyList as $company) 
-			{
-				if($company->getCompanyId() == $companyId)
-				{
-					unset($companyList[$i]);
-					//die(var_dump($id));
-					$flag = true;
-				}else
-				{
-					$company->setCompanyId($i+1);
-					$i++;
-				}
-			}
-			$this->saveData($companyList);
-			return $flag;
-		}
+        public function GetCompanyByName($nombre){
+            $companyFound = null;
+            $this->RetrieveData();
+            foreach ($this->companyList as $company) {
+                if ($company->getName() == $nombre) {
+                    $companyFound = $company;
+                }
+            }
+            return $companyFound;
+        }
+
+
+        
+        public function Delete($idCompany){
+            $this->RetrieveData();
+            $nuevaLista = array();
+            
+            foreach ($this->companyList as $company) {
+                if ($company->getCompanyId() != $idCompany) {
+                    array_push($nuevaLista, $company);
+                }
+            }
+
+            $this->cinemaList = $nuevaLista;
+            $this->SaveData();
+        }
+
+
+
+        // public function removeCompany($companyId)
+		// {
+		// 	$flag = false;
+		// 	$companyList = $this->retrieveData();
+		// 	$i=0;
+		// 	foreach ($this->companyList as $company) 
+		// 	{
+		// 		if($company->getCompanyId() == $companyId)
+		// 		{
+		// 			unset($companyList[$i]);
+		// 			//die(var_dump($id));
+		// 			$flag = true;
+		// 		}else
+		// 		{
+		// 			$company->setCompanyId($i+1);
+		// 			$i++;
+		// 		}
+		// 	}
+		// 	$this->saveData($companyList);
+		// 	return $flag;
+		// }
 
         public function saveData()
         {
@@ -61,9 +103,9 @@
                 $valuesArray["companyId"] = $company->getCompanyId();
                 $valuesArray["cuit"] = $company->getCuit();
                 $valuesArray["nombre"] = $company->getNombre();
-                $valuesArray["descripcion"] = $company->getDescripcion();
+                $valuesArray["address"] = $company->getAddress();
                 $valuesArray["link"] = $company->getLink();
-                $valuesArray["active"] = $company->getActive();
+                $valuesArray["active"] = $company->getIsActive();
             
                 array_push($arrayToEncode, $valuesArray);
             }
@@ -89,14 +131,29 @@
                     $company->setCompanyId($valuesArray["companyId"]);
                     $company->setCuit($valuesArray["cuit"]);
                     $company->setNombre($valuesArray["nombre"]);
-                    $company->setDescripcion($valuesArray["descripcion"]);
+                    $company->setAddress($valuesArray["address"]);
                     $company->setLink($valuesArray["link"]);
-                    $company->setActive($valuesArray["active"]);
+                    $company->setIsActive($valuesArray["active"]);
 
                     array_push($this->companyList, $company);
                 }
             }
 
+        }
+
+        public function Modify2(Company $company){
+            $this->RetrieveData();
+    
+            foreach ($this->companyList as $companyValue) {
+                if ($company->getCompanyId() == $companyValue->getCompanyId()) {
+                    $companyValue->setCuit($company->getCuit());
+                    $companyValue->setNombre($company->getNombre());                   
+                    $companyValue->setAddress($company->getAddress());
+                    $companyValue->setLink($company->getLink());
+                    $companyValue->setIsActive($company->getIsActive());
+                }
+            }
+            $this->SaveData();
         }
     }
 
