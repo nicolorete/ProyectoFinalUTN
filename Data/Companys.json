@@ -1,0 +1,10 @@
+[
+    {
+        "companyId": "123",
+        "cuit": "20401384309",
+        "nombre": "Arcor",
+        "address": "Garay 1800",
+        "link": "google.com",
+        "active": "1"
+    }
+]

@@ -1,46 +1,240 @@
 <?php
-    
-    use DAO\CompanyRepository as CompanyRepository;
-    use Models\Company as Company;
 
-    $companyRepository = new CompanyRepository();
+namespace Views;
 
-    $companyList = $companyRepository-> getAll();
+include('top-nav.php');
 
+use models\Company as Company;
+use DAO\CompanyRepository as CompanyDAO;
 ?>
 
+<div class="columns" id="app-content">
+    <?php include('admin-aside-nav.php'); ?>
 
-<html>
-    <head>
-        <title>Listar Empresas</title>
-    </head>
-    <body>
-        <table>
-            <tr>
-                <th>CompanyID</th>
-                <th>Cuit</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Link</th>
-                <th>Active</th>
-            </tr>
-            <?php
-                foreach($companyList as $company)
-                {
-                    ?>
-                        <tr>
-                            <td><?php echo $company->getCompanyId() ?></td>
-                            <td><?php echo $company->getCuit() ?></td>
-                            <td><?php echo $company->getNombre() ?></td>
-                            <td><?php echo $company->getDescripcion() ?></td>
-                            <td><?php echo $company->getLink() ?></td>
-                            <td><?php echo $company->getActive() ?></td>
-                        </tr>
-                    <?php
-                }
-            ?>            
-        </table>        
-        <br>
-        <a href="index.php">Volver</a>
-    </body>
-</html>
+
+    <div class="column is-10" id="page-content">
+        <div class="content-header">
+            <h4 class="title is-4">Listados</h4>
+            <span class="separator"></span>
+            <nav class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="#">Administrar Empresas</a></li>
+                    <li class="is-active"><a href="#" aria-current="page">Listado de Empresas</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content-body">
+            <div class="card">
+
+                <div class="card-content">
+                    <table class="table is-hoverable is-bordered is-fullwidth" id="datatable">
+                        <thead>
+                            <tr>
+                                <th>Id Empresa</th>
+                                <th>Cuit</th>
+                                <th>Nombre</th>
+                                <!--<th>Capacidad</th>
+                                        <th>Precio de la entrada</th>-->
+                                <th>Direccion</th>
+                                <th>Activo </th>
+                                <th class="has-text-centered">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php foreach ($companyList as $company) {
+
+                                ?>
+                                <tr>
+                                    <td><?= $company->getCompanyId(); ?></td>
+                                    <td><?= $company->getCuit(); ?></td>
+                                    <td><?= $company->getNombre(); ?></td>
+                                    <td><?= $company->getAddress(); ?></td>
+                                    <td><?= $company->getIsActive(); ?></td>
+                                    <td class="has-text-centered">
+
+                                        <div class="field is-grouped action">
+                                            <p class="control">
+
+                                                <a class="button is-rounded is-text btnEdit" id="modifyButton2<?= $company->getCompanyId(); ?>" onclick="">
+                                                    <span class="icon">
+                                                        <i class="fa fa-edit"></i>
+                                                    </span>
+                                                </a>
+                                            </p>
+
+                                            <form action="<?= FRONT_ROOT ?>Company/Delete" method="post">
+                                                <p class="control">
+                                                    <button class="button is-rounded is-text action-delete" name="BtnDel" data-id="1" value="<?= $company->getCompanyId(); ?>">
+                                                        <span class="icon">
+                                                            <?php if ($company->getIsActive() == 0) {
+                                                                    echo "<i class='fa fa-toggle-off'></i>";
+                                                                } else {
+                                                                    echo "<i class='fa fa-toggle-on'></i>";
+                                                                }
+                                                                ?>
+
+                                                        </span>
+                                                    </button>
+                                                </p>
+                                            </form>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            <?php } ?>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!------------------ VENTANA MODAL --------------------------------->
+<div class="modal" id="exampleModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Modificar Empresa</p>
+            <button class="delete" aria-label="close" onclick="document.getElementById('exampleModal').style.display='none'"></button>
+        </header>
+
+        <section class="modal-card-body">
+            <form action="<?= FRONT_ROOT ?>Company/Modify" method="POST">
+                <div class="field">
+                    <!-- Id Cine (hidden) -->
+                    <div class="control">
+                        <input class="input" name="idCompany" type="number" placeholder="Nombre del Cine" id="id" hidden="true">
+                    </div>
+                </div>
+
+          
+
+                <div class="field">
+                    <label class="label">Cuit </label>
+                    <div class="control">
+                        <input class="input" name="cuit" type="text" placeholder="Cuit" id="name">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label class="label">Nombre </label>
+                    <div class="control">
+                        <input class="input" name="nombre" type="text" placeholder="Nombre de la Empresa" id="name">
+                    </div>
+                </div>
+
+               
+                <div class="field">
+                    <label class="label">Direccion</label>
+                    <div class="control">
+                        <input class="input" name="address" type="text" placeholder="Direccion" id="address">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Link</label>
+                    <div class="control">
+                        <input class="input" name="link" type="text" placeholder="Direccion" id="address">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Empresa activa?: </label>
+                    <div class="control">
+                        <select class="select" id="active" name="active">
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
+
+                    </div>
+                </div>
+
+
+        </section>
+
+        <footer class="modal-card-foot">
+            <button class="button is-success" type="submit">Modificar</button>
+            </form>
+            <button class="button" onclick="document.getElementById('exampleModal').style.display='none'">Cancel</button>
+        </footer>
+
+
+    </div>
+</div>
+<!------------------ FIN VENTANA MODAL -------------------------->
+
+<!---------------- < SCRIPTS > -------------------------->
+
+<script>
+    $(document).ready(function() {
+        var table = $('#datatable').DataTable({
+            dom: "<'columns table-wrapper'<'column is-12'tr>><'columns table-footer-wrapper'<'column is-5'i><'column is-7'p>>"
+        });
+
+        $('#table-search').on('keyup', function() {
+            let value = $(this).val();
+            table.search(value).draw();
+        });
+
+        $('#table-length').on('change', function() {
+            let value = $(this).val();
+            table.page.len(value).draw();
+        });
+
+        $('#table-reload').on('click', function() {
+            table.draw();
+        });
+    });
+</script>
+
+<!-- SCRIPT PARA CREAR MODALES DINAMICOS -->
+<script type="text/javascript">
+    <?php
+    foreach ($companyList as $value) {
+        echo "var boton" . $value->getCompanyId() . "= document.getElementById('modifyButton2" . $value->getCompanyId() . "');";
+        echo "boton" . $value->getCompanyId() . ".onclick = function(){
+                    modal.style.display = 'block';
+                    };";
+    }
+    ?>
+</script>
+
+
+<script type="text/javascript">
+    var button = document.getElementById('modifyButton');
+    // var botoncito =  document.getElementById('modifyButton2');
+    var modal = document.getElementById('exampleModal');
+    var close = document.getElementById('modal-close');
+</script>
+
+<script type="text/javascript">
+    var fila;
+    // Codigo para boton editar
+    $(document).on("click", ".btnEdit", function() {
+        fila = $(this).closest("tr");
+        id = parseInt(fila.find('td:eq(0)').text());
+        name = fila.find('td:eq(1)').text();
+        //capacity = parseInt(fila.find('td:eq(2)').text());
+        //ticketPrice = parseInt(fila.find('td:eq(3)').text());
+        address = fila.find('td:eq(2)').text();
+        active = fila.find('td:eq(3)').text();
+
+
+        $("#id").val(id);
+        $("#cuit").val(cuit);
+        $("#nombre").val(nombre);
+       
+        $("#address").val(address);
+        $("#active").val(active);
+
+
+    });
+</script>
+<!-- --------------- < SCRIPTS > ------------------------->

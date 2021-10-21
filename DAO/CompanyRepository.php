@@ -11,7 +11,7 @@
 
         public function __construct()
         {
-            $this->fileName = dirname(__DIR__)."/Data/company.json";
+            $this->fileName = dirname(__DIR__)."/Data/Companys.json";
         }
 
         public function addCompany(Company $company)
@@ -47,7 +47,7 @@
             $companyFound = null;
             $this->RetrieveData();
             foreach ($this->companyList as $company) {
-                if ($company->getName() == $nombre) {
+                if ($company->getNombre() == $nombre) {
                     $companyFound = $company;
                 }
             }

@@ -1,14 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-     <!-- Required meta tags -->
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProyectoFinal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+	<!-- MODAL -->
 
-     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH ?>bootstrap.min.css">
-     <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH ?>estilos.css">
 
-     <title>Framework Example</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+	<link href="https://fonts.googleapis.com/icon?family=Poppins" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+    <link href="<?php echo CSS_PATH;?>style.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?= CSS_PATH ?>app.css">
+	
+
+	<script src="<?php echo JS_PATH ?>jquery.min.js"></script>
+
+	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
 </head>
-<body>
+<body id="top">
