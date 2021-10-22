@@ -12,7 +12,7 @@
         <p class="menu-label is-hidden-touch">Empresas </p>
         <ul class="menu-list">
             <li>
-                <a class="" href="">
+                <a class="" href="<?= FRONT_ROOT ?>Company/ShowAddView">
                     <span class="icon">
                         <i class="fa fa-edit"></i>
                     </span> Agregar Empresa

@@ -19,12 +19,13 @@
             
             $this->retrieveData();
 
+            $company->setCompanyId($this->GetNextId());
             array_push($this->companyList, $company);
 
             $this->saveData();
         }
 
-        public function Modify (Company $company){
+        public function Modify2 (Company $company){
             $this->RetrieveData();
             $companyToModify = null;
             
@@ -56,17 +57,13 @@
 
 
         
-        public function Delete($idCompany){
+        public function Delete($companyId){
             $this->RetrieveData();
-            $nuevaLista = array();
             
-            foreach ($this->companyList as $company) {
-                if ($company->getCompanyId() != $idCompany) {
-                    array_push($nuevaLista, $company);
-                }
-            }
-
-            $this->cinemaList = $nuevaLista;
+            $this->companyList = array_filter($this->companyList, function($company) use($companyId){                
+                return $company->getCompanyId() != $companyId;
+            });
+            
             $this->SaveData();
         }
 
@@ -141,7 +138,7 @@
 
         }
 
-        public function Modify2(Company $company){
+        public function Modify(Company $company){
             $this->RetrieveData();
     
             foreach ($this->companyList as $companyValue) {
@@ -154,6 +151,19 @@
                 }
             }
             $this->SaveData();
+        }
+
+
+        private function GetNextId()
+        {
+            $id = 0;
+
+            foreach($this->companyList as $company)
+            {
+                $id = ($company->getCompanyId() > $id) ? $company->getCompanyId() : $id;
+            }
+
+            return $id + 1;
         }
     }
 

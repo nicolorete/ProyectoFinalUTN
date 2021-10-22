@@ -32,7 +32,7 @@
                                     <div class="media-content">
                                         <div class="content">
                                             <div class="field">
-                                                <li> <a class="button is-dark is-4" href="">Agregar Empresa</a><br><br></li>
+                                                <li> <a class="button is-dark is-4" href="<?= FRONT_ROOT ?>Company/ShowAddView">Agregar Empresa</a><br><br></li>
 
                                                 <li> <a class="button is-dark is-4" href="<?= FRONT_ROOT ?>Company/ShowListView">Listar Empresa</a> </li>
                                             </div>
