@@ -28,6 +28,7 @@ class UserDAO implements IUserDAO
             echo "<script> alert('YA EXISTE UN USUARIO CON ESE EMAIL');</script>";
         } else {
             $this->RetrieveData();
+            $newUser->setId($this->GetNextId());
             array_push($this->userList, $newUser);
             $this->SaveData();
         }
@@ -95,6 +96,11 @@ class UserDAO implements IUserDAO
         $arrayToEncode = array();
 
         foreach ($this->userList as $user) {
+            
+            $valuesArray["id"] = $user->getId();
+            $valuesArray["lastName"] = $user->getLastName();
+            $valuesArray["firstName"] = $user->getFirstName();
+            $valuesArray["dni"] = $user->getDni();
             $valuesArray["email"] = $user->getEmail();
             $valuesArray["password"] = $user->getPassword();
             $valuesArray["role"]["description"] = $user->getRole()->getDescription();
@@ -121,64 +127,65 @@ class UserDAO implements IUserDAO
     }
 
 
-    /*private function RetrieveData()
-        {
-            $this->userList = array();
-
-            if(file_exists('Data/users.json'))
-            {
-                $jsonContent = file_get_contents('Data/users.json');
-
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-
-                foreach($arrayToDecode as $valuesArray) // Array a objetos
-                {
-                    $user = new User();
-                    $user->setEmail($valuesArray["email"]);
-                    $user->setPassword($valuesArray["password"]);
-
-                    //foreach ($valuesArray["role"][] as $roleValue) {
-                        $role = new Role();    
-                        $role->setDescription($valuesArray["role"]);
-
-                        $user->setRole($role);
-                    //}
-
-                    array_push($this->userList, $user);
-                }
-            }
-            else{
-                echo'no se encontro';
-            }
-        }*/
-
     private function RetrieveData()
     {
         $this->userList = array();                  // Crea una Lista
 
-      if(file_exists($this->fileName)){
-        $jsonToDecode = file_get_contents($this->fileName);
-        $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
-      }
-        
+      if(file_exists($this->fileName)){$jsonContent = file_get_contents($this->fileName);
 
-        foreach ($contentArray as $valuesArray) // Convierto el arreglo a Objetos 
+        $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+
+        foreach($arrayToDecode as $valuesArray)
         {
             $user = new User();
+            $user->setId($valuesArray["id"]);
+            $user->setLastName($valuesArray["lastName"]);
+            $user->setFirstName($valuesArray["firstName"]);
+            $user->setDni($valuesArray["dni"]);
             $user->setEmail($valuesArray["email"]);
             $user->setPassword($valuesArray["password"]);
-            // ROL
+            // $user->setRole($valuesArray["role"]["description"]);
             {
                 $role = new Role();
                 //$role->setDescription($roleValue['description']);    
                 $role->setDescription($valuesArray["role"]["description"]);
                 $user->setRole($role);  // le seteo el rol al user correspondiente
             }
-
-            array_push($this->userList, $user);  // inserto la factura a la Lista
+            array_push($this->userList, $user);
         }
+      }
+        
+
+           
+
     }
 
+    public function Modify(User $user){
+        $this->RetrieveData();
+
+        foreach ($this->userList as $userValue) {
+            if ($user->getId() == $userValue->getId()) {
+                $userValue->setEmail($user->getEmail());
+                $userValue->setFirstName($user->getFirstName());                   
+                $userValue->setLastName($user->getLastName());
+                $userValue->setDni($user->getDni());
+                $userValue->setRole($user->getRole());
+            }
+        }
+        $this->SaveData();
+    }
+
+    private function GetNextId()
+    {
+        $id = 0;
+
+        foreach($this->userList as $user)
+        {
+            $id = ($user->getId() > $id) ? $user->getId() : $id;
+        }
+
+        return $id + 1;
+    }
 
    
 }

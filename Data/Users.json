@@ -1,5 +1,9 @@
 [
     {
+        "id": null,
+        "lastName": null,
+        "firstName": null,
+        "dni": null,
         "email": "admin@admin.com",
         "password": "admin",
         "role": {
@@ -7,6 +11,10 @@
         }
     },
     {
+        "id": null,
+        "lastName": null,
+        "firstName": null,
+        "dni": null,
         "email": "user@user.com",
         "password": "user",
         "role": {
@@ -14,6 +22,10 @@
         }
     },
     {
+        "id": null,
+        "lastName": null,
+        "firstName": null,
+        "dni": null,
         "email": "tres@user.com",
         "password": "12346",
         "role": {
@@ -21,6 +33,10 @@
         }
     },
     {
+        "id": null,
+        "lastName": null,
+        "firstName": null,
+        "dni": null,
         "email": "cuatro@user.com",
         "password": "12345",
         "role": {
@@ -28,6 +44,10 @@
         }
     },
     {
+        "id": null,
+        "lastName": null,
+        "firstName": null,
+        "dni": null,
         "email": "cinco@user.com",
         "password": "12405",
         "role": {
@@ -35,6 +55,10 @@
         }
     },
     {
+        "id": null,
+        "lastName": null,
+        "firstName": null,
+        "dni": null,
         "email": "seis@asd.com",
         "password": "9183",
         "role": {
@@ -42,8 +66,34 @@
         }
     },
     {
+        "id": null,
+        "lastName": null,
+        "firstName": null,
+        "dni": null,
         "email": "siete@asd.com",
         "password": "1234",
+        "role": {
+            "description": "0"
+        }
+    },
+    {
+        "id": null,
+        "lastName": null,
+        "firstName": null,
+        "dni": null,
+        "email": "admin1@admin.com",
+        "password": "123",
+        "role": {
+            "description": "0"
+        }
+    },
+    {
+        "id": 1,
+        "lastName": "coronel",
+        "firstName": "Carlos Alvear 2914",
+        "dni": "40138430",
+        "email": "coronelnico5@gmail.com",
+        "password": "123",
         "role": {
             "description": "0"
         }

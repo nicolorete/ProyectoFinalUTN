@@ -2,7 +2,7 @@
     <aside class="menu">
         <ul class="menu-list"><br>
             <li>
-                <a class="is-active" href="<?= FRONT_ROOT ?>User/ShowAdminView">
+                <a class="is-active" href="<?= FRONT_ROOT ?>Home/ShowAdminView">
                     <span class="icon">
                         <i class="fa fa-home"></i>
                     </span> Dashboard
@@ -29,7 +29,8 @@
                 <a class="" href="">
                     <span class="icon">
                         <i class="fa fa-desktop"></i>
-                    </span> Actualizar Base de datos
+                    </span> 
+                    <!-- Actualizar Base de datos -->
                 </a>
             </li>
         </ul>
@@ -37,14 +38,14 @@
         <p class="menu-label is-hidden-touch">Usuarios</p>
         <ul class="menu-list">
             <li>
-                <a class="" href="">
+                <a class="" href="<?= FRONT_ROOT ?>User/ShowAddView">
                     <span class="icon">
                         <i class="fa fa-edit"></i>
                     </span> Agregar Usuario
                 </a>
             </li>
             <li>
-                <a class="" href="">
+                <a class="" href="<?= FRONT_ROOT ?>User/ShowListView">
                     <span class="icon">
                         <i class="fa fa-lock"></i>
                     </span> Ver Alumnos

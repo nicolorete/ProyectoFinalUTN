@@ -12,12 +12,12 @@ class User extends UserProfile
 	private $password;
 	private $role; 					// 1 = 'admin' / 0 = 'usuario' 
 
-	public function getID()
+	public function getId()
 	{
 		return $this->id;
 	}
 
-	public function setID($id)
+	public function setId($id)
 	{
 		$this->id = $id;
 	}

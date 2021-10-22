@@ -15,8 +15,8 @@ include('top-nav.php'); ?>
             <span class="separator"></span>
             <nav class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
                 <ul>
-                    <li><a href="#">Administrar Empresas</a></li>
-                    <li class="is-active"><a href="#" aria-current="page">Agregar Empresa</a></li>
+                    <li><a href="#">Administrar Usuarios</a></li>
+                    <li class="is-active"><a href="#" aria-current="page">Agregar Usuario</a></li>
                 </ul>
             </nav>
         </div>
@@ -28,35 +28,51 @@ include('top-nav.php'); ?>
                         <div class="card-content">
                             <p class="title is-4">Formulario</p>
                             <p style="color: red;font-size:18px"> </p>
-                            <form action="<?= FRONT_ROOT ?>Company/Add" method="POST">
+                            <form action="<?= FRONT_ROOT ?>User/Add" method="POST">
 
                                 <div class="field">
-                                    <label class="label">Cuit </label>
+                                    <label class="label">Email: </label>
                                     <div class="control">
-                                        <input class="input" name="cuit" type="text" placeholder="Cuit del Cine" required="">
+                                        <input class="input" name="email" type="text" placeholder="Email" required="">
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label">Contraseña: </label>
+                                    <div class="control">
+                                        <input class="input" name="password" type="text" placeholder="Nombre de la Empresa" required="">
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <label class="label">Nombre</label>
                                     <div class="control">
-                                        <input class="input" name="nombre" type="text" placeholder="Nombre de la Empresa" required="">
+                                        <input class="input" name="firstName" type="text" placeholder="Direccion" required="">
                                     </div>
                                 </div>
 
                                 <div class="field">
-                                    <label class="label">Direccion</label>
+                                    <label class="label">Apellido: </label>
                                     <div class="control">
-                                        <input class="input" name="address" type="address" placeholder="Direccion" required="">
+                                        <input class="input" name="lastName" type="text" placeholder="" required="">
                                     </div>
                                 </div>
 
                                 <div class="field">
-                                    <label class="label">Link</label>
+                                    <label class="label">Dni: </label>
                                     <div class="control">
-                                        <input class="input" name="link" type="text" placeholder="" required="">
+                                        <input class="input" name="dni" type="text" placeholder="" required="">
                                     </div>
                                 </div>
+
+
+                                <!-- AGREGAMOS UN INPUT FIJO PARA QUE SI O SI AGREGUE AL MENOS UNA SALA CON CAMPOS REQUERIDOS PARA VALIDAR EL INGRESO DE DATOS  -->
+
+                               
+
+                                <!-- campo = '<u><li id="labelName'+nextinput+'" style="font-size:20px">sala '+nextinput+':</u>	<input class="input"  type="text" size="20" id="nameSala' + nextinput + '"&nbsp; name="nameSala[]" value="SALA '+nextinput+'"  /></li><br><li id="labelCapacidad'+nextinput+'">Capacidad sala '+nextinput+':<input class="input" type="text" size="20" id="capacidadSala' + nextinput + '"&nbsp; name="capacidad[]"/></li><br><li id="labelPrecio'+nextinput+'">Precio ticket sala '+nextinput+':<input class="input" type="text" size="20" id="precioSala' + nextinput + '"&nbsp; name="precio[]" /></li><br>'; -->
+
+
 
 
                                
@@ -64,9 +80,6 @@ include('top-nav.php'); ?>
 
 
 
-
-
-                                
 
 
                                 <div class="field is-grouped centered" style="padding-left: 30%">

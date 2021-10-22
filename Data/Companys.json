@@ -14,5 +14,21 @@
         "address": "Alvear 2914",
         "link": "www.arcor.com",
         "active": 1
+    },
+    {
+        "companyId": 125,
+        "cuit": "20121384309",
+        "nombre": "Claro",
+        "address": "Guemes 123",
+        "link": "claro.com",
+        "active": 1
+    },
+    {
+        "companyId": 126,
+        "cuit": "20401384309",
+        "nombre": "Pepsi",
+        "address": "malvinas 123",
+        "link": "pepsi.com",
+        "active": "0"
     }
 ]
