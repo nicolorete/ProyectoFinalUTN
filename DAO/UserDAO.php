@@ -50,7 +50,6 @@ class UserDAO implements IUserDAO
             }
         }
     }
-
     
     public function Delete($value)
     {

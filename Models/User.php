@@ -51,4 +51,6 @@ class User extends UserProfile
 	{
 		$this->role = $role;
 	}
+
+	
 }

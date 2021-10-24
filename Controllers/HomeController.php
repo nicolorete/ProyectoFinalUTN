@@ -78,9 +78,8 @@ class HomeController
 	{
 		$userFound = null;
 		$userFound = $this->userDAO->GetByEmail($email);
-
 		if (($userFound != null) && ($userFound->getPassword() === $password)) {
-			if ($userFound->getRole() == '0') {
+			if ($userFound->getRole()->getDescription() == '0') {
 				$_SESSION['loggedUser'] = $userFound;
 				$message = 'Bienvenido Usuario';
 				$this->ShowUserView($message);

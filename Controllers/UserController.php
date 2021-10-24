@@ -55,6 +55,39 @@ class userController
 		
 	}
 
+    public function searchapi($email){
+        //CURL
+        $url = curl_init();
+        //Sets URL
+        curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/Student');
+        //Sets Header key
+        curl_setopt($url, CURLOPT_HTTPHEADER, array('x-api-key:4f3bceed-50ba-4461-a910-518598664c08'));
+        curl_setopt($url, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($url, CURLOPT_SSL_VERIFYPEER, false); 
+
+        $response = curl_exec($url);
+        $toJson = json_decode($response);
+
+        var_dump($toJson);
+
+
+        // $newUser = new User();
+        // $newRole = new Role();
+        // $newRole->setDescription('0');
+
+        // $newUser->setEmail($email);
+        // $newUser->setPassword($password);
+        // $newUser->setRole($newRole);
+
+        // # Crear el User Profile
+
+        // $newUser->setFirstName($firstName);
+        // $newUser->setLastName($lastName);
+        // $newUser->setDni($dni);
+
+
+    }
+
     public function Delete($id)
     {
         require_once(VIEWS_PATH."validate-session.php");
