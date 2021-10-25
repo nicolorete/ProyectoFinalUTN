@@ -73,16 +73,38 @@ class HomeController
 		}
 	}
 
+	public function searchapi($email){
+        //CURL
+        $url = curl_init();
+        //Sets URL
+        curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/Student');
+        //Sets Header key
+        curl_setopt($url, CURLOPT_HTTPHEADER, array('x-api-key:4f3bceed-50ba-4461-a910-518598664c08'));
+        curl_setopt($url, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($url, CURLOPT_SSL_VERIFYPEER, false); 
+
+        $response = curl_exec($url);
+        $toJson = json_decode($response);
+
+        var_dump($toJson);
+
+        $user = new User();
+
+		// $user->GetByEmailApi($email, $toJson);
+
+        return $user;
+    }
+
 	# Funcion para ingresar al sistema.
 	public function Login($email, $password)
 	{
 		$userFound = null;
-		$userFound = $this->userDAO->GetByEmail($email);
+		// $userFound = searchapi($email);
 		if (($userFound != null) && ($userFound->getPassword() === $password)) {
 			if ($userFound->getRole()->getDescription() == '0') {
 				$_SESSION['loggedUser'] = $userFound;
 				$message = 'Bienvenido Usuario';
-				$this->ShowUserView($message);
+				$this->ShowUserView($userFound);
                 
 			} else {
 				$message = 'Bienvenido Admin';
@@ -106,11 +128,11 @@ class HomeController
 		//require_once(VIEWS_PATH . 'signup-user.php');
 	}
 
-	public function ShowUserView($message = '')
+	public function ShowUserView($user)
 	{
 		if (isset($_SESSION['loggedUser'])) {
 			$userFound = $_SESSION['loggedUser'];
-		
+			$_SESSION['usuario'] = $user;
 			require_once(VIEWS_PATH . 'user-dashboard.php');
 		} else {
 			$message = "Debe iniciar sesión primero!";

@@ -50,6 +50,15 @@ class UserDAO implements IUserDAO
             }
         }
     }
+
+    // public function GetByEmailApi($email, $api)
+    // {
+    //     foreach ($api as $key => $user) {
+    //         if ($user->$email == $email) {
+    //             return $user;
+    //         }
+    //     }
+    // }
     
     public function Delete($value)
     {

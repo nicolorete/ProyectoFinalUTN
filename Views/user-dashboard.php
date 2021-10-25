@@ -1,5 +1,10 @@
-<?php include('top-nav.php'); ?>
+<?php
 
+    // $user = $_SESSION['usuario'];
+    // var_dump($user);
+
+?>
+<?php include('top-nav.php'); ?>
 
 <div class="columns" id="app-content">
     <?php include('user-aside-nav.php'); ?>
