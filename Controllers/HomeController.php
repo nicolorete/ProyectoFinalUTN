@@ -99,7 +99,7 @@ class HomeController
 	public function Login($email, $password)
 	{
 		$userFound = null;
-		// $userFound = searchapi($email);
+		$userFound = $this->userDAO->GetByEmail($email);
 		if (($userFound != null) && ($userFound->getPassword() === $password)) {
 			if ($userFound->getRole()->getDescription() == '0') {
 				$_SESSION['loggedUser'] = $userFound;
@@ -132,7 +132,7 @@ class HomeController
 	{
 		if (isset($_SESSION['loggedUser'])) {
 			$userFound = $_SESSION['loggedUser'];
-			$_SESSION['usuario'] = $user;
+			// $_SESSION['usuario'] = $user;
 			require_once(VIEWS_PATH . 'user-dashboard.php');
 		} else {
 			$message = "Debe iniciar sesión primero!";
