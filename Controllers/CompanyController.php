@@ -28,6 +28,14 @@ class CompanyController
         require_once(VIEWS_PATH . "company-list.php");
     }
 
+    public function ShowListViewUser()
+    {
+        require_once(VIEWS_PATH . "validate-session.php");
+        $companyList = $this->companyDAO->getAll();
+
+        require_once(VIEWS_PATH . "user-company-list.php");
+    }
+
     public function Add($cuit, $nombre, $address, $link)
     {
         require_once(VIEWS_PATH . "validate-session.php");

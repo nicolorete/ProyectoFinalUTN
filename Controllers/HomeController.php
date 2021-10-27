@@ -128,7 +128,7 @@ class HomeController
 		//require_once(VIEWS_PATH . 'signup-user.php');
 	}
 
-	public function ShowUserView($user)
+	public function ShowUserView()
 	{
 		if (isset($_SESSION['loggedUser'])) {
 			$userFound = $_SESSION['loggedUser'];

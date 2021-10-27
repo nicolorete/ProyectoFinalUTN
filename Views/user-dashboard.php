@@ -17,7 +17,7 @@
             <nav class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
                 <ul>
                     <li><a href="#">Buscador</a></li>
-                    <li class="is-active"><a href="#" aria-current="page">Proyecciones</a></li>
+                    <li class="is-active"><a href="#" aria-current="page">Propuestas</a></li>
                     <li style="color:red"><b>    </b></li>
                 </ul>
             </nav>
@@ -30,7 +30,7 @@
                     <div class="card-filter">
                         <div class="field">
                             <div class="control has-icons-left">
-                                <input class="input" id="table-search" type="text" placeholder="Ingrese Pelicula">
+                                <input class="input" id="table-search" type="text" placeholder="Ingrese Empresa">
                                 <span class="icon is-left">
                                     <i class="fa fa-search"></i>
                                 </span>
@@ -39,16 +39,8 @@
                         </div>
 
 
-                        <div class="select">
-                            <select name="genre">
-                                <option value="0">Genero</option>
-                                
-                            </select>
-                        </div>
-
-                        <div class="field">
-                            <input class="input" name="date" type="date" min="<?php echo date('Y-m-d'); ?>" value="<?php echo date('Y-m-d'); ?>" max="<?php echo (date('Y') + 1) . date('-Y-m-d'); ?>">
-                        </div>
+                       
+                       
                         <div class="field">
                             <button class="button is-link has-icons-right" type="submit">Buscar</button>
                         </div>
@@ -58,11 +50,10 @@
                     <table class="table is-hoverable is-bordered is-fullwidth" id="datatable">
                         <thead>
                             <tr>
-                                <th class="has-text-centered"> Cine</th>
-                                <th class="has-text-centered"> Pelicula</th>
-                                <th class="has-text-centered"> Dia</th>
-                                <th class="has-text-centered"> Horario</th>
-                                <th class="has-text-centered"> Finalizacion</th>
+                                <th class="has-text-centered"> Empresa</th>
+                                <th class="has-text-centered"> Carrera</th>
+                                <th class="has-text-centered"> Puesto</th>
+                                
 
                                 <th class="has-text-centered">Action</th>
                             </tr>
@@ -76,8 +67,8 @@
                                                 <p class="control">
                                                     <form action="" method="post">
                                                         <button class="button is-warning btnEdit" value=""
-                                                                name=" filmID" type="submit">
-                                                            Ver ficha
+                                                                name=" " type="submit">
+                                                            Ver Empresa
 
                                                     </form>
                                                 </p>
@@ -85,7 +76,7 @@
                                                 <form action="" method="post">
                                                     <p class="control">
                                                         <button class="button is-danger" name="BtnDel" data-id="1" value="">
-                                                            Comprar
+                                                            Aplicar
                                                         </button>
                                                     </p>
                                                 </form>

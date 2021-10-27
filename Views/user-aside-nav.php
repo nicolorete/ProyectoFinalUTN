@@ -3,19 +3,20 @@
         <p class="menu-label is-hidden-touch"> General</p>
         <ul class="menu-list">
             <li>
-                <a class="" href="">
+                <a class="" href="<?= FRONT_ROOT ?>Home/ShowUserView">
                     <span class="icon">
                         <i class="fa fa-home"></i>
-                    </span> En cartelera
+                    </span> Propuestas Laborales
                 </a>
             </li>
             <li>
-                <a class="" href="">
+                <a class="" href="<?= FRONT_ROOT ?>Company/ShowListViewUser">
                     <span class="icon">
                         <i class="fa fa-search"></i>
-                    </span> Buscador
+                    </span> Empresas Registradas
                 </a>
             </li>
+            
 
         </ul>
 
@@ -33,7 +34,7 @@
                 <a class="" href="">
                     <span class="icon">
                         <i class="fa fa-shopping-cart"></i>
-                    </span> Carrito
+                    </span> Mis Postulaciones 
                 </a>
             </li>
             <li>

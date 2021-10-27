@@ -107,7 +107,7 @@ use DAO\CompanyRepository as CompanyDAO;
         <section class="modal-card-body">
             <form action="<?= FRONT_ROOT ?>Company/Modify" method="POST">
                 <div class="field">
-                    <!-- Id Cine (hidden) -->
+                    
                     <div class="control">
                         <input class="input" name="idCompany" type="number" placeholder="" id="id" hidden="true">
                     </div>
