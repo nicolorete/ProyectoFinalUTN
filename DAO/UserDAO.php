@@ -51,14 +51,41 @@ class UserDAO implements IUserDAO
         }
     }
 
-    // public function GetByEmailApi($email, $api)
-    // {
-    //     foreach ($api as $key => $user) {
-    //         if ($user->$email == $email) {
-    //             return $user;
-    //         }
-    //     }
-    // }
+    public function GetByEmailApi($mail)
+    {
+        $url = curl_init();
+        //Sets URL
+        curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/Student');
+        //Sets Header key
+        curl_setopt($url, CURLOPT_HTTPHEADER, array('x-api-key:4f3bceed-50ba-4461-a910-518598664c08'));
+        curl_setopt($url, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($url, CURLOPT_SSL_VERIFYPEER, false); 
+
+        $response = curl_exec($url);
+        $toJson = json_decode($response);
+
+        // var_dump($mail);
+
+        // var_dump($toJson);
+
+        foreach ($toJson as $key => $user) {
+            if ($user->email == $mail){
+                // var_dump($user);
+                $usuario = new User();
+                $usuario->setEmail($user->email);
+                $usuario->setId($user->studentId);
+                $usuario->setPassword($user->dni);
+                $usuario->setRole('0');
+                $usuario->setLastName($user->lastName);  
+                $usuario->setFirstName($user->firstName);  
+                $usuario->setDni($user->dni);          
+
+
+                return $usuario;
+            }
+        }
+
+    }
     
     public function Delete($value)
     {

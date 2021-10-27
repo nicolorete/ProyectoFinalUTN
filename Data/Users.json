@@ -97,5 +97,27 @@
         "role": {
             "description": "0"
         }
+    },
+    {
+        "id": 2,
+        "lastName": "Capo",
+        "firstName": "Juan",
+        "dni": "5465412",
+        "email": "juan@capo.com",
+        "password": "22222",
+        "role": {
+            "description": "0"
+        }
+    },
+    {
+        "id": 3,
+        "lastName": "Capo2",
+        "firstName": "Juan2",
+        "dni": "54654122",
+        "email": "jua2n@capo.com",
+        "password": "222223",
+        "role": {
+            "description": "0"
+        }
     }
 ]
