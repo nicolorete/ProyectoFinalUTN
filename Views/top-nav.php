@@ -2,15 +2,7 @@
     padding-left: 0px; padding-bottom: 0px; padding-right: 0px; padding-top: 0px;">
 
     <div class="navbar-brand column is-2 is-paddingless">
-        <!-- <?php if (isset($_SESSION['loggedUser'])) {
-            $loggedUser = $_SESSION['loggedUser'];
-            if ($loggedUser->getRole() == '1') {
-                echo "<a class='navbar-item'> ADMINISTRADOR </a>";
-            } else {
-                echo "<a class='navbar-item'> CLIENTE </a>";
-            }
-        }
-        ?> -->
+        
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="touchMenu">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
