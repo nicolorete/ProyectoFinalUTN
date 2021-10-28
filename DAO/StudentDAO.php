@@ -131,41 +131,42 @@ class StudentDAO implements IStudentDAO
 
 
 
-    // public function GetByEmailApi($mail)
-    // {
-    //     $url = curl_init();
-    //     //Sets URL
-    //     curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/Student');
-    //     //Sets Header key
-    //     curl_setopt($url, CURLOPT_HTTPHEADER, array('x-api-key:4f3bceed-50ba-4461-a910-518598664c08'));
-    //     curl_setopt($url, CURLOPT_RETURNTRANSFER, 1);
-    //     curl_setopt($url, CURLOPT_SSL_VERIFYPEER, false); 
+    public function GetByEmailApi($mail)
+    {
+        $url = curl_init();
+        //Sets URL
+        curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/Student');
+        //Sets Header key
+        curl_setopt($url, CURLOPT_HTTPHEADER, array('x-api-key:4f3bceed-50ba-4461-a910-518598664c08'));
+        curl_setopt($url, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($url, CURLOPT_SSL_VERIFYPEER, false); 
 
-    //     $response = curl_exec($url);
-    //     $toJson = json_decode($response);
+        $response = curl_exec($url);
+        $toJson = json_decode($response);
 
-    //     // var_dump($mail);
+        // var_dump($mail);
 
-    //     // var_dump($toJson);
+        // var_dump($toJson);
 
-    //     foreach ($toJson as $key => $student) {
-    //         if ($student->email == $mail){
-    //             // var_dump($student);
-    //             $usuario = new Student();
-    //             $usuario->setEmail($student->email);
-    //             $usuario->setStudentId($student->studentId);
+        foreach ($toJson as $key => $student) {
+            if ($student->email == $mail){
+                // var_dump($student);
+                $usuario = new Student();
+                $usuario->setEmail($student->email);
+                $usuario->setStudentId($student->studentId);
                 
+                $usuario->setGender($student->gender);  
                 
-    //             $usuario->setLastName($student->lastName);  
-    //             $usuario->setFirstName($student->firstName);  
-    //             $usuario->setDni($student->dni);          
+                $usuario->setLastName($student->lastName);  
+                $usuario->setFirstName($student->firstName);  
+                $usuario->setDni($student->dni);          
 
 
-    //             return $usuario;
-    //         }
-    //     }
+                return $usuario;
+            }
+        }
 
-    // }
+    }
    
     public function deleteByEmail($value)
     {

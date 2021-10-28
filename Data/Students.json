@@ -1,0 +1,10 @@
+[
+    {
+        "id": null,
+        "lastName": null,
+        "firstName": null,
+        "dni": null,
+        "email": "user@user.com",
+        "password": "user"
+    }
+]

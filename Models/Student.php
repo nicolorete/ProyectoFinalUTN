@@ -14,18 +14,19 @@
         private $active;
         
         
-        
+        public function __construct(){
+        }
         
 
-        public function __construct($firstName, $lastName, $email, $phoneNumber, $gender, $dni, $birthDate){
-            $this->firstName = $firstName;
-            $this->lastName = $lastName;
-            $this->email = $email;
-            $this->phoneNumber = $phoneNumber;
-            $this->gender = $gender;
-            $this->dni = $dni;
-            $this->birthDate = $birthDate;
-        }
+        // public function __construct($firstName, $lastName, $email, $phoneNumber, $gender, $dni, $birthDate){
+        //     $this->firstName = $firstName;
+        //     $this->lastName = $lastName;
+        //     $this->email = $email;
+        //     $this->phoneNumber = $phoneNumber;
+        //     $this->gender = $gender;
+        //     $this->dni = $dni;
+        //     $this->birthDate = $birthDate;
+        // }
 
         
         public function getStudentId(){

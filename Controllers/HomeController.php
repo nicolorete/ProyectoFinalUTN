@@ -16,14 +16,14 @@ use PDOException;
  */
 class HomeController
 {
-	private $userDAO;
+	private $studentDAO;
 	private $adminDAO;
 	
 
 	function __construct()
 	{
-		$this->StudentDAO = new StudentDAO();
-		$this->AdminDAO = new AdminDAO();
+		$this->studentDAO = new StudentDAO();
+		$this->adminDAO = new AdminDAO();
 	}
 
 	public function Index()
@@ -101,31 +101,37 @@ class HomeController
 	public function Login($email, $password)
 	{
 		$userFound = null;
-		$userFound = $this->userDAO->GetByEmailApi($email);
-		// var_dump($userFound);
-		// && ($userFound->getPassword() === $password)
+		var_dump($userFound);
+		$userFound = $this->studentDAO->GetByEmailApi($email);
+
 		if ($userFound != null) {
 			$_SESSION['loggedUser'] = $userFound;
 			$message = 'Bienvenido Usuario';
 			$this->ShowUserView($userFound);
-		} else {
-			$userFound = $this->userDAO->GetByEmail($email);
-			// var
-			if($userFound != null){
-				if ($userFound->getRole()->getDescription() == '0') {
-					$_SESSION['loggedUser'] = $userFound;
-					$message = 'Bienvenido Usuario';
-					$this->ShowUserView($userFound);					
-				} else {
-					$message = 'Bienvenido Admin';
-					$_SESSION['loggedUser'] = $userFound;
-					$this->ShowAdminView($message);
-					
-				}
-			}else{
-				$this->ShowLoginView();
-			}
+		}else{
+			$userFound = $this->studentDAO->GetByEmail($email);
+			$_SESSION['loggedUser'] = $userFound;
+			$message = 'Bienvenido Usuario';
+			$this->ShowUserView($userFound);
 		}
+		// } else {
+		// 	$userFound = $this->userDAO->GetByEmail($email);
+		// 	// var
+		// 	if($userFound != null){
+		// 		if ($userFound->getRole()->getDescription() == '0') {
+		// 			$_SESSION['loggedUser'] = $userFound;
+		// 			$message = 'Bienvenido Usuario';
+		// 			$this->ShowUserView($userFound);					
+		// 		} else {
+		// 			$message = 'Bienvenido Admin';
+		// 			$_SESSION['loggedUser'] = $userFound;
+		// 			$this->ShowAdminView($message);
+					
+		// 		}
+		// 	}else{
+		// 		$this->ShowLoginView();
+		// 	}
+		// }
 	}
 
 	public function ShowLoginView($message = "")
