@@ -14,7 +14,7 @@ class StudentDAO implements IStudentDAO
 
     public function __construct()
     {
-        $this->fileName = ROOT."\Data\Students.json";
+        $this->fileName = ROOT."Data/Students.json";
     }
 
     public function add(Student $newStudent){
@@ -37,28 +37,29 @@ class StudentDAO implements IStudentDAO
     private function retrieveData()
     {
         $this->studentList = array();
-
+        // var_dump($this->fileName);
         if(file_exists($this->fileName)){
             $jsonContent = file_get_contents($this->fileName);
             $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
            
            foreach($arrayToDecode as $valuesArray){
-                $studentId = $valuesArray["studentId"];
-                $firstName = $valuesArray["firstName"];
-                $lastName = $valuesArray["lastName"];
-                $dni = $valuesArray["dni"];
-                $fileNumber = $valuesArray["fileNumber"];
-                $gender = $valuesArray["gender"];
-                $birthDate = $valuesArray["birthDate"];
-                $email = $valuesArray["email"];
-                $phoneNumber = $valuesArray["phoneNumber"];
-                $active = $valuesArray["active"];
                 
-                $Student = new Student($studentId, $firstName, $lastName, $dni, $fileNumber, $gender, $birthDate, $email, $phoneNumber, $active );
-                $Career = new Career($valuesArray["careerId"], "N/A", "N/A");
-                $Student->setCareer($Career);
+                $usuario = new Student();
+                $usuario->setEmail($valuesArray["email"]);
+                $usuario->setStudentId($valuesArray["studentId"]);
+                $usuario->setBirthDate($valuesArray["birthDate"]);
                 
-                array_push($this->studentList, $Student);
+                $usuario->setGender($valuesArray["gender"]);  
+                $usuario->setPhoneNumber($valuesArray["phoneNumber"]);
+                $usuario->setLastName($valuesArray["lastName"]);  
+                $usuario->setFirstName($valuesArray["firstName"]);  
+                $usuario->setDni($valuesArray["dni"]);          
+                $usuario->setActive($valuesArray["active"]);   
+                $usuario->setFileNumber($valuesArray["fileNumber"]);   
+                
+                $usuario->setCareer($valuesArray["careerId"]);  
+                 
+                array_push($this->studentList, $usuario);
             }
         }
     }
@@ -121,10 +122,27 @@ class StudentDAO implements IStudentDAO
     public function getByEmail($email)
     {
         $this->retrieveData();
-
+        
         foreach ($this->studentList as $key => $student) {
             if ($student->getEmail() == $email) {
-                return $student;
+
+                $usuario = new Student();
+                $usuario->setEmail($student->getEmail());
+                $usuario->setStudentId($student->getStudentId());
+                $usuario->setBirthDate($student->getBirthDate());
+                
+                $usuario->setGender($student->getGender());  
+                $usuario->setPhoneNumber($student->getPhoneNumber());
+                $usuario->setLastName($student->getLastName());  
+                $usuario->setFirstName($student->getFirstName());  
+                $usuario->setDni($student->getDni());          
+                $usuario->setActive($student->getActive());   
+                $usuario->setFileNumber($student->getFileNumber());   
+                
+                $usuario->setCareer($student->getCareer());   
+                // var_dump($usuario);
+
+                return $usuario;
             }
         }
     }
@@ -150,17 +168,20 @@ class StudentDAO implements IStudentDAO
 
         foreach ($toJson as $key => $student) {
             if ($student->email == $mail){
-                // var_dump($student);
                 $usuario = new Student();
                 $usuario->setEmail($student->email);
                 $usuario->setStudentId($student->studentId);
+                $usuario->setBirthDate($student->birthDate);
                 
                 $usuario->setGender($student->gender);  
-                
+                $usuario->setPhoneNumber($student->phoneNumber);
                 $usuario->setLastName($student->lastName);  
                 $usuario->setFirstName($student->firstName);  
                 $usuario->setDni($student->dni);          
-
+                $usuario->setActive($student->active);   
+                $usuario->setFileNumber($student->fileNumber);   
+                
+                $usuario->setCareer($student->careerId);   
 
                 return $usuario;
             }

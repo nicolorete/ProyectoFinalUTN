@@ -28,15 +28,8 @@ class HomeController
 
 	public function Index()
 	{
-		if (isset($_SESSION['loggedUser'])) {
-			$loggedUser = $_SESSION['loggedUser'];
-			if ($loggedUser->getRole() == 1) {
-				$this->ShowAdminView();
-			} else
-				$this->ShowUserView();
-		} else {
-			$this->ShowLoginView();
-		}
+		$this->ShowLoginView();
+
 	}
 
 	# Funcion para agregar un usuario
@@ -101,9 +94,8 @@ class HomeController
 	public function Login($email, $password)
 	{
 		$userFound = null;
-		var_dump($userFound);
 		$userFound = $this->studentDAO->GetByEmailApi($email);
-
+		
 		if ($userFound != null) {
 			$_SESSION['loggedUser'] = $userFound;
 			$message = 'Bienvenido Usuario';

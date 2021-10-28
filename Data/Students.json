@@ -1,10 +1,28 @@
 [
     {
-        "id": null,
-        "lastName": null,
-        "firstName": null,
-        "dni": null,
+        "studentId": 2,
+        "lastName": "Perez",
+        "firstName": "Juancito ",
+        "dni": "34687654",
         "email": "user@user.com",
-        "password": "user"
+        "fileNumber": "5",
+        "gender": "male",
+        "birthDate": "22/5/90",
+        "phoneNumber": "256512",
+        "active": 1,
+        "careerId": 5
+    },
+    {
+        "studentId": 3,
+        "lastName": "asdasf",
+        "firstName": "marcos ",
+        "dni": "546546",
+        "email": "asd@user.com",
+        "fileNumber": "1",
+        "gender": "girl",
+        "birthDate": "26/5/90",
+        "phoneNumber": "254666512",
+        "active": 1,
+        "careerId": 5
     }
 ]

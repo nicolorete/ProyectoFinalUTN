@@ -18,7 +18,7 @@
         }
         
 
-        // public function __construct($firstName, $lastName, $email, $phoneNumber, $gender, $dni, $birthDate){
+        // public function __construct($studentId, $firstName, $lastName, $dni, $fileNumber, $gender, $birthDate, $email, $phoneNumber, $active){
         //     $this->firstName = $firstName;
         //     $this->lastName = $lastName;
         //     $this->email = $email;
@@ -35,6 +35,14 @@
 
         public function setStudentId($studentId){
             $this->studentId = $studentId;
+        }
+
+        public function getFileNumber(){
+            return $this->fileNumber;
+        }
+
+        public function setFileNumber($fileNumber){
+            $this->fileNumber = $fileNumber;
         }
         
         public function getFirstName(){
