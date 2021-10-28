@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 namespace DAO;
 
@@ -135,4 +135,4 @@ class UserDAOPDO
             throw $ex;
         }
     }
-}
+} -->

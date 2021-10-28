@@ -13,15 +13,15 @@ class AdminDAO implements IAdminDAO{
             $this->dataFile = dirname(__DIR__)."\Data\admin.json";
         }
 
-        public function add(Admin $addingAdmin){
+        public function add(Admin $newAdmin){
     
-            $this->loadData();
-            array_push($this->adminList, $addingAdmin);
+            $this->retrieveData();
+            array_push($this->adminList, $newAdmin);
             $this->saveData();
         }
 
         public function deleteById($id){
-            $this->loadData();
+            $this->retrieveData();
             if(!empty($this->adminList)){
                 foreach($this->adminList as $admin){
                     if($admin->getAdminId() == $id){
@@ -34,7 +34,7 @@ class AdminDAO implements IAdminDAO{
         }
 
         public function getAll(){
-            $this->loadData();
+            $this->retrieveData();
             return $this->adminList;            
         }
 
@@ -55,7 +55,7 @@ class AdminDAO implements IAdminDAO{
             file_put_contents($this->dataFile, $dataToFile);
         }
 
-        private function loadData(){
+        private function retrieveData(){
            
             $this->adminList = array();
 
