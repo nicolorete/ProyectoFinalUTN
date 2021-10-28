@@ -1,13 +1,11 @@
 <?php
 
-    $user = $_SESSION['loggedUser'];
-    // var_dump($user);
-
+    $student = $_SESSION['loggedUser']; 
 ?>
-<?php include('top-nav.php'); ?>
+<?php /*include('top-nav.php'); */?> 
 
 <div class="columns" id="app-content">
-    <?php include('user-aside-nav.php'); ?>
+    <?php /* include('student-aside-nav.php'); */?>
 
     <div class="column is-10" id="page-content">
 
@@ -31,24 +29,21 @@
                         <tbody>
                             <tr>
                                 <td class="has-text-centered">
-                                    <?php echo $user->getFirstName() ?>
+                                    <?php echo $student->getFirstName() ?>
                                 </td>
                                 <td class="has-text-centered">
-                                    <?php echo $user->getLastName() ?>
+                                    <?php echo $student->getLastName() ?>
                                 </td>
                                 <td class="has-text-centered">
-                                    <?php echo $user->getEmail() ?>
+                                    <?php echo $student->getEmail() ?>
                                 </td>
                                 <td class="has-text-centered">
-                                    <?php echo $user->getDni() ?>
+                                    <?php echo $student->getDni() ?>
                                 </td>
                                 <td class="has-text-centered">
-                                    <?php echo $user->getId() ?>
+                                    <?php echo $student->getStudentId() ?>
                                 </td>
                             </tr>
-                           
-
-
                         </tbody>
                     </table>
                 </div>
