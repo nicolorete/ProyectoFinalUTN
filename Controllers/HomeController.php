@@ -32,41 +32,41 @@ class HomeController
 
 	}
 
-	# Funcion para agregar un usuario
-	public function Add($email, $password, $firstName, $lastName, $dni)
-	{
-		try {
-			$userFound = null;
-			# Buscar si existe el mail
-			$userFound = $this->userDAO->GetByEmail($email);
-			// var_dump($userFound);
-			if ($userFound == null) {
-				$newUser = new User();
-				$newRole = new Role();
-				$newRole->setDescription('0');
+	// # Funcion para agregar un usuario
+	// public function Add($email, $password, $firstName, $lastName, $dni)
+	// {
+	// 	try {
+	// 		$userFound = null;
+	// 		# Buscar si existe el mail
+	// 		$userFound = $this->userDAO->GetByEmail($email);
+	// 		// var_dump($userFound);
+	// 		if ($userFound == null) {
+	// 			$newUser = new User();
+	// 			$newRole = new Role();
+	// 			$newRole->setDescription('0');
 
-				$newUser->setEmail($email);
-				$newUser->setPassword($password);
-				$newUser->setRole($newRole);
+	// 			$newUser->setEmail($email);
+	// 			$newUser->setPassword($password);
+	// 			$newUser->setRole($newRole);
 
-				# Crear el User Profile
+	// 			# Crear el User Profile
 
-				$newUser->setFirstName($firstName);
-				$newUser->setLastName($lastName);
-				$newUser->setDni($dni);
+	// 			$newUser->setFirstName($firstName);
+	// 			$newUser->setLastName($lastName);
+	// 			$newUser->setDni($dni);
 
-				$this->userDAO->Add($newUser);
-				$message = 'Usuario creado!';
-			} else {
-				$message = 'Ya existe el correo registrado';
-			}
-			$this->ShowLoginView($message);
-		} catch (Exception $ex) {
-			$message = 'Oops ! ' . $ex->getMessage();
-		} catch (PDOException $e) {
-			throw $e;
-		}
-	}
+	// 			$this->userDAO->Add($newUser);
+	// 			$message = 'Usuario creado!';
+	// 		} else {
+	// 			$message = 'Ya existe el correo registrado';
+	// 		}
+	// 		$this->ShowLoginView($message);
+	// 	} catch (Exception $ex) {
+	// 		$message = 'Oops ! ' . $ex->getMessage();
+	// 	} catch (PDOException $e) {
+	// 		throw $e;
+	// 	}
+	// }
 
 	// public function searchapi($email){
     //     //CURL
