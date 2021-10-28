@@ -5,6 +5,7 @@ namespace Models;
 /**
  *  Clase Perfil de Usuario
  */
+
 abstract class UserProfile
 {
 	private $lastName;
