@@ -103,9 +103,13 @@ class HomeController
 		$userFound = null;
 		var_dump($userFound);
 		$userFound = $this->studentDAO->GetByEmailApi($email);
-		// var_dump($userFound);
-		// && ($userFound->getPassword() === $password)
+
 		if ($userFound != null) {
+			$_SESSION['loggedUser'] = $userFound;
+			$message = 'Bienvenido Usuario';
+			$this->ShowUserView($userFound);
+		}else{
+			$userFound = $this->studentDAO->GetByEmail($email);
 			$_SESSION['loggedUser'] = $userFound;
 			$message = 'Bienvenido Usuario';
 			$this->ShowUserView($userFound);
