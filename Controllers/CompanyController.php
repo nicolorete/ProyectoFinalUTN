@@ -76,4 +76,39 @@ class CompanyController
         $message = 'Empresa modificada!';
         $this->ShowListView($message);
     }
+
+    public function ShowCompany ($company){
+        ?>
+        <tr>
+          <td><?php echo $company->getNombre() ?></td>
+          <td><?php echo $company->getCuit() ?></td>
+          <td><?php echo $company->getAddress() ?></td>
+          <td><?php echo $company->getLink() ?></td>
+          
+        
+          </tr>
+        <?php
+
+    }
+
+    public function companyFilter($searchedCompany, $companyList) {
+        $i = 0;
+        if($searchedCompany != ""){
+            foreach($companyList as $company){
+                if(strpos($company->getNombre(), $searchedCompany) !== false && $company->getIsActive() == 0){
+                    $i++;
+                    $this->showCompany($company);
+                }
+            }
+        }else{
+            foreach($companyList as $company){
+                if($company->getActive() == 0){
+                    $i++;
+                    $this->showCompany($company);
+                }     
+            }   
+        }
+        echo "<br><b>There are ".$i." Result/s!</b>";
+    }
 }
+
