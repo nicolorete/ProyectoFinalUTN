@@ -1,6 +1,6 @@
 <?php
 
-    // $user = $_SESSION['usuario'];
+    $user = $_SESSION['loggedUser'];
     // var_dump($user);
 
 ?>
@@ -10,6 +10,49 @@
     <?php include('user-aside-nav.php'); ?>
 
     <div class="column is-10" id="page-content">
+
+    <div class="content-body">
+        <h4 class="title is-4">Datos del estudiante </h4>
+            <div class="card">
+                <div class="card-content">
+                    <table class="table is-hoverable is-bordered is-fullwidth" id="datatable">
+                        <thead>
+                            <tr>
+                                <th class="has-text-centered"> Nombre</th>
+                                <th class="has-text-centered"> Apellido</th>
+                                <th class="has-text-centered"> Correo</th>
+                                <th class="has-text-centered"> DNI</th>
+
+                                
+
+                                <th class="has-text-centered">ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="has-text-centered">
+                                    <?php echo $user->getFirstName() ?>
+                                </td>
+                                <td class="has-text-centered">
+                                    <?php echo $user->getLastName() ?>
+                                </td>
+                                <td class="has-text-centered">
+                                    <?php echo $user->getEmail() ?>
+                                </td>
+                                <td class="has-text-centered">
+                                    <?php echo $user->getDni() ?>
+                                </td>
+                                <td class="has-text-centered">
+                                    <?php echo $user->getId() ?>
+                                </td>
+                            </tr>
+                           
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
         <div class="content-header">
             <h4 class="title is-4">General </h4>
@@ -53,6 +96,7 @@
                                 <th class="has-text-centered"> Empresa</th>
                                 <th class="has-text-centered"> Carrera</th>
                                 <th class="has-text-centered"> Puesto</th>
+                                
                                 
 
                                 <th class="has-text-centered">Action</th>
