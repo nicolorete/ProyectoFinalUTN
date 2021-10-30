@@ -2,10 +2,9 @@
     namespace Controllers;
 
     use DAO\StudentDAO as StudentDAO;
-use Exception;
-use Models\Career;
+    
+    use Models\Career;
     use Models\Student as Student;
-use PDOException;
 
 class StudentController
     {
@@ -78,67 +77,5 @@ class StudentController
 
             $this->ShowListView();
         }
-//-------------------------------------------------------//
-        public function ShowRegisterView()
-        {
-            require_once(VIEWS_PATH . 'user-register.php');
-        }
-        public function ShowLoginView($message = "")
-	    {
-		    require_once(VIEWS_PATH . 'home.php');
-	    }        
-
-
-        public function UserAdd($email, $password, $lastName, $dni)
-	    {
-		try {
-			$userFound = null;
-			# Buscar si existe el mail
-			$userFound = $this->userDAO->GetUserByEmail($email);
-			var_dump($userFound);
-			if ($userFound == null) {
-				$newUser = new Student();
-				
-				
-
-				$newUser->setEmail($email);
-				// $newUser->setPassword($password);
-	
-
-				# Crear el User Profile
-
-				$newUser->setLastName($lastName);
-				$newUser->setDni($dni);
-
-				$this->userDAO->Add($newUser);
-				$message = 'Usuario creado!';
-			} else {
-				$message = 'Ya existe el correo registrado';
-			}
-			$this->ShowLoginView($message);
-		} catch (Exception $ex) {
-			$message = 'Oops ! ' . $ex->getMessage();
-		} catch (PDOException $e) {
-			throw $e;
-		}
-
-        
-	}
-
-
-    // public function ShowListView(){
-    //     // $studentList = $this->studentDAO->getAll();
-
-    //     $studentList = null;
-    //     $studentList = $this->studentDAO->GetAll();
-    //     if ($studentList == null) {
-    //     echo "<script>alert('Trayendo pelis de la API');</script>";
-    //     $studentList = $this->studentDAO->GetStudentListFromApi();
-    // }
-    //     require_once(VIEWS_PATH."user-list.php");
-    // }
-
     }
-
-    
 ?> 

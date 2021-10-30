@@ -22,9 +22,6 @@
                 <p></p>                
             </div>
 
-            <div class="form-control">
-					No estas registrado? <a href="<?= FRONT_ROOT ?>Student/ShowRegisterView" class="ml-2">Registrarse</a>
-			</div>
            
             <button type="submit" name="button">Login</button>
             
