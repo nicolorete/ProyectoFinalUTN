@@ -97,9 +97,15 @@ class HomeController
 		$userFound = $this->studentDAO->GetByEmail($email);
 		
 		if ($userFound != null) {
-			$_SESSION['loggedUser'] = $userFound;
-			$message = 'Bienvenido Usuario';
-			$this->ShowUserView($userFound);
+			if($userFound instanceof Admin){
+				$message = 'Bienvenido Admin';
+				$_SESSION['loggedAdmin'] = $userFound;
+				$this->ShowAdminView($message);
+			}else{
+				$_SESSION['loggedUser'] = $userFound;
+				$message = 'Bienvenido Usuario';
+				$this->ShowUserView($userFound);
+			}
 		}else{
 			$userFound = $this->studentDAO->GetByEmailApi($email);
 			if($userFound != NULL){
