@@ -1,28 +1,41 @@
 [
     {
         "studentId": 2,
-        "lastName": "Perez",
+        "careerId": 5,
         "firstName": "Juancito ",
+        "lastName": "Perez",
         "dni": "34687654",
-        "email": "user@user.com",
-        "fileNumber": "5",
+        "fileNumber": null,
         "gender": "male",
-        "birthDate": "22/5/90",
+        "birthDate": "22\/5\/90",
+        "email": "user@user.com",
         "phoneNumber": "256512",
-        "active": 1,
-        "careerId": 5
+        "active": 1
     },
     {
         "studentId": 3,
-        "lastName": "asdasf",
+        "careerId": 5,
         "firstName": "marcos ",
+        "lastName": "asdasf",
         "dni": "546546",
-        "email": "asd@user.com",
-        "fileNumber": "1",
+        "fileNumber": null,
         "gender": "girl",
-        "birthDate": "26/5/90",
+        "birthDate": "26\/5\/90",
+        "email": "asd@user.com",
         "phoneNumber": "254666512",
-        "active": 1,
-        "careerId": 5
+        "active": 1
+    },
+    {
+        "studentId": 63,
+        "careerId": 1,
+        "firstName": "Annissa",
+        "lastName": "Dobing",
+        "dni": "10-164-5517",
+        "fileNumber": "22-535-5443",
+        "gender": "Genderqueer",
+        "birthDate": "2020-12-30T00:00:00",
+        "email": "adobing1q@hostgator.com",
+        "phoneNumber": "649-157-3136",
+        "active": true
     }
 ]

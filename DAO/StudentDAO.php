@@ -43,7 +43,7 @@ class StudentDAO implements IStudentDAO
             $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
            
            foreach($arrayToDecode as $valuesArray){
-                
+                // var_dump($arrayToDecode);
                 $usuario = new Student();
                 $usuario->setEmail($valuesArray["email"]);
                 $usuario->setStudentId($valuesArray["studentId"]);
@@ -98,16 +98,16 @@ class StudentDAO implements IStudentDAO
 
        foreach($this->studentList as $value){
             $arrayValue['studentId'] = $value->getStudentId();
-            $arrayValue['careerId'] = $value->getCareer()->getCareerId();
+            $arrayValue['careerId'] = $value->getCareer();
             $arrayValue['firstName'] = $value->getFirstName();
             $arrayValue['lastName'] = $value->getLastName();
             $arrayValue['dni'] = $value->getDni();
-            $arrayValue['fileNumber'] = $value->getAcademicStatus()->getFileNumber();
+            $arrayValue['fileNumber'] = $value->getFileNumber();
             $arrayValue['gender'] = $value->getGender();
             $arrayValue['birthDate'] = $value->getBirthDate();
             $arrayValue['email'] = $value->getEmail();
             $arrayValue['phoneNumber'] = $value->getPhoneNumber();
-            $arrayValue['active'] = $value->getAcademicStatus()->getActive();
+            $arrayValue['active'] = $value->getActive();
 
             array_push($arrayToEncode, $arrayValue);
         }

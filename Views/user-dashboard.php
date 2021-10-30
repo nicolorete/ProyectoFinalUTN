@@ -2,10 +2,10 @@
 
     $student = $_SESSION['loggedUser']; 
 ?>
-<?php /*include('top-nav.php'); */?> 
+<?php include('top-nav.php'); ?> 
 
 <div class="columns" id="app-content">
-    <?php /* include('student-aside-nav.php'); */?>
+    <?php include('user-aside-nav.php');?>
 
     <div class="column is-10" id="page-content">
 

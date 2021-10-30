@@ -94,17 +94,20 @@ class HomeController
 	public function Login($email, $password)
 	{
 		$userFound = null;
-		$userFound = $this->studentDAO->GetByEmailApi($email);
+		$userFound = $this->studentDAO->GetByEmail($email);
 		
 		if ($userFound != null) {
 			$_SESSION['loggedUser'] = $userFound;
 			$message = 'Bienvenido Usuario';
 			$this->ShowUserView($userFound);
 		}else{
-			$userFound = $this->studentDAO->GetByEmail($email);
-			$_SESSION['loggedUser'] = $userFound;
-			$message = 'Bienvenido Usuario';
-			$this->ShowUserView($userFound);
+			$userFound = $this->studentDAO->GetByEmailApi($email);
+			if($userFound != NULL){
+				$this->studentDAO->add($userFound);
+				$this->ShowLoginView();
+			}else{
+				$this->ShowLoginView();
+			}
 		}
 		// } else {
 		// 	$userFound = $this->userDAO->GetByEmail($email);

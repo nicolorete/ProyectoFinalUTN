@@ -5,6 +5,7 @@ namespace Models;
 class Company
 {
     private $companyId;
+	private $job;
     private $cuit;
     private $nombre;
 	private $address;

@@ -39,7 +39,7 @@
                 <figure class="image avatar is-32x32">
                     <img class="is-rounded" src="<?= FRONT_ROOT . VIEWS_PATH ?>images/user1.png">
                 </figure>
-                &nbsp; Hola <?= $loggedUser->getEmail(); ?>
+                &nbsp; Hola <?= $student->getEmail(); ?>
 
             </div>
 

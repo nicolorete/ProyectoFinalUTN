@@ -24,7 +24,7 @@
         <p class="menu-label is-hidden-touch">Usuario</p>
         <ul class="menu-list">
             <li>
-                <a class="" href="">
+                <a class="" href="<?= FRONT_ROOT ?>user-profile.php">
                     <span class="icon">
                         <i class="fa fa-user"></i>
                     </span> Mi perfil
