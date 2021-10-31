@@ -77,5 +77,12 @@ class StudentController
 
             $this->ShowListView();
         }
+
+
+        //----------------------------------------------------------//
+
+        public function ShowRegisterView(){
+            require_once(VIEWS_PATH."user-register.php");
+        }
     }
 ?> 
