@@ -24,18 +24,5 @@
         "email": "asd@user.com",
         "phoneNumber": "254666512",
         "active": 1
-    },
-    {
-        "studentId": 63,
-        "careerId": 1,
-        "firstName": "Annissa",
-        "lastName": "Dobing",
-        "dni": "10-164-5517",
-        "fileNumber": "22-535-5443",
-        "gender": "Genderqueer",
-        "birthDate": "2020-12-30T00:00:00",
-        "email": "adobing1q@hostgator.com",
-        "phoneNumber": "649-157-3136",
-        "active": true
     }
 ]

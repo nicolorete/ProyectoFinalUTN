@@ -109,8 +109,8 @@ class HomeController
 		}else{
 			$userFound = $this->studentDAO->GetByEmailApi($email);
 			if($userFound != NULL){
-				$this->studentDAO->add($userFound);
-				$this->ShowLoginView();
+				$this->ShowRegisterView();
+				// $this->studentDAO->add($userFound);
 			}else{
 				$this->ShowLoginView();
 			}
@@ -142,7 +142,7 @@ class HomeController
 
 	public function ShowRegisterView()
 	{
-		//require_once(VIEWS_PATH . 'signup-user.php');
+		require_once(VIEWS_PATH . 'register.php');
 	}
 
 	public function ShowUserView()
