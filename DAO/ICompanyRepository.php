@@ -5,9 +5,9 @@
 
     interface ICompanyRepository
     {
-        public function addCompany(Company $company);
+        public function Add(Company $company);
         public function GetAll();
-        //public function GetCompanyByID($companyId);
+        public function GetCompanyByID($companyId);
         public function GetCompanyByName($companyName);
         public function Delete($companyId);
         public function Modify(Company $Company);
