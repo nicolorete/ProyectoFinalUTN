@@ -28,7 +28,7 @@ class HomeController
 	{
 		$this->studentDAO = new StudentDAO();
 		$this->studentDAOPDO = new StudentDAOPDO();
-		//$this->adminDAO = new AdminDAO();
+		$this->adminDAO = new AdminDAO();
 		$this->adminDAOPDO = new AdminDAOPDO();
 	}
 
@@ -100,9 +100,10 @@ class HomeController
 	public function Login($email, $password)
 	{
 		$userFound = null;
+		//$adminFound = null;
 		//$userFound = $this->studentDAO->GetByEmail($email);
 		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
-		$adminFound = $this->adminDAOPDO->GetAdminByEmail($email);
+		//$adminFound = $this->adminDAOPDO->GetAdminByEmail($email);
 		
 		if ($userFound != null) {
 			if($userFound instanceof Admin){

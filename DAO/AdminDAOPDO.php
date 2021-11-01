@@ -12,7 +12,7 @@ use PDOException;
  *  Clase Student DAO PDO 
  */
 
-class StudentDAOPDO
+class AdminDAOPDO
 {
     private $connection;
     private $tableName = "admin";
