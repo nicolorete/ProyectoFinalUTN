@@ -6,9 +6,14 @@ class Admin{
     private $email;
     private $password;
 
-    Public function __construct($email, $password){
-        $this->email= $email;
-        $this->password= $password;
+    // Public function __construct($email, $password){
+    //     $this->email= $email;
+    //     $this->password= $password;
+    // }
+
+    public function __construct()
+    {
+        
     }
 
     public function getAdminId()

@@ -3,6 +3,7 @@
 namespace Controllers;
 //db
 use DAO\StudentDAOPDO as StudentDAOPDO;
+use DAO\AdminDAOPDO as AdminDAOPDO;
 // Json
 use DAO\StudentDAO as StudentDAO;
 use DAO\AdminDAO as AdminDAO;
@@ -18,14 +19,17 @@ use PDOException;
 class HomeController
 {
 	private $studentDAO;
+	private $studentDAOPDO;
 	private $adminDAO;
+	private $adminDAOPDO;
 	
 
 	function __construct()
 	{
 		$this->studentDAO = new StudentDAO();
 		$this->studentDAOPDO = new StudentDAOPDO();
-		$this->adminDAO = new AdminDAO();
+		//$this->adminDAO = new AdminDAO();
+		$this->adminDAOPDO = new AdminDAOPDO();
 	}
 
 	public function Index()
@@ -98,6 +102,7 @@ class HomeController
 		$userFound = null;
 		//$userFound = $this->studentDAO->GetByEmail($email);
 		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
+		$adminFound = $this->adminDAOPDO->GetAdminByEmail($email);
 		
 		if ($userFound != null) {
 			if($userFound instanceof Admin){
