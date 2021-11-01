@@ -1,10 +1,15 @@
 <?php
 
-namespace Views;
+    $student = $_SESSION['loggedUser']; 
+?>
+
+<?php
+
 
 include('top-nav.php');
 
 use models\Company as Company;
+use models\Student as Student;
 use DAO\CompanyRepository as CompanyDAO;
 ?>
 
