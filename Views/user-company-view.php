@@ -4,7 +4,7 @@
         <header class="modal-card-head">
             <!-- <p class="modal-card-title">Detalle de la Empresa</p> -->
             <?php if ($companyFound != null) { ?>
-            <p class="modal-card-title">Ficha de Pelicula : <?= $companyFound->getNombre(); ?></p>
+            <p class="modal-card-title">Detalle de la Empresa : <?= $companyFound->getNombre(); ?></p>
             <!-- <button class="delete" aria-label="close" onclick="document.getElementById('exampleModal').style.display='none'"></button> -->
         </header>
 

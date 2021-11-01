@@ -55,7 +55,7 @@ class CompanyDAOPDO implements ICompanyDAO
         try {
             $companyList = array();
 
-            $query = "SELECT company.companyId, company.cuit, company.nombre, company.address, company.isActive
+            $query = "SELECT company.companyId, company.cuit, company.nombre, company.address, company.link, company.isActive
                 FROM " . $this->tableName ;
                 
 
@@ -70,6 +70,7 @@ class CompanyDAOPDO implements ICompanyDAO
                 $company->setCuit($row["cuit"]);
                 $company->setNombre($row["nombre"]);
                 $company->setAddress($row["address"]);
+                $company->setLink($row["link"]);
                 $company->setIsActive($row["isActive"]);
 
 
@@ -108,6 +109,7 @@ class CompanyDAOPDO implements ICompanyDAO
                 $company->setCuit($row["cuit"]);
                 $company->setNombre($row["nombre"]);
                 $company->setAddress($row["address"]);
+                $company->setLink($row["link"]);
                 $company->setIsActive($row["isActive"]);
             }
 
@@ -138,6 +140,7 @@ class CompanyDAOPDO implements ICompanyDAO
                 $company->setCuit($row["cuit"]);
                 $company->setNombre($row["nombre"]);
                 $company->setAddress($row["address"]);
+                $company->setLink($row["link"]);
                 $company->setIsActive($row["isActive"]);
             }
 
@@ -171,6 +174,7 @@ class CompanyDAOPDO implements ICompanyDAO
                 $company->setCuit($row["cuit"]);
                 $company->setNombre($row["nombre"]);
                 $company->setAddress($row["address"]);
+                $company->setLink($row["link"]);
                 $company->setIsActive($row["isActive"]);
 
                 return $company;
