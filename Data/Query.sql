@@ -1,39 +1,37 @@
-CREATE TABLE rol(
-    idRol INT NOT NULL,
-    descripcion VARCHAR(15), 
-    CONSTRAINT pk_idRol PRIMARY KEY (idRol),
-    CONSTRAINT unq_rol_descripcion UNIQUE (descripcion)
-);
-
-
-CREATE TABLE usuario(
-    idUsuario INT NOT NULL AUTO_INCREMENT,
-    idRol INT NOT NULL,
-    mail varchar(30), 
-    password VARCHAR(15),
-    CONSTRAINT pk_idUsuario PRIMARY KEY (idUsuario),
-    CONSTRAINT fk_idRol FOREIGN KEY (idRol) REFERENCES rol(idRol),
-    CONSTRAINT unq_usuario_mail UNIQUE (mail)
-);
-
-CREATE TABLE perfiUsuario(
-    idPerfilUsuario INT NOT NULL AUTO_INCREMENT,
-    idUsuario INT,
-    nombre VARCHAR(30), 
-    apellido VARCHAR(30),
+CREATE TABLE student(
+    studentId INT NOT NULL AUTO_INCREMENT,
+    carrerId INT,
+    firstName VARCHAR(30), 
+    lastName VARCHAR(30),
     dni INT,
-    CONSTRAINT pk_idPerfilUsuario PRIMARY KEY (idPerfilUsuario),  
-    CONSTRAINT FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
-    CONSTRAINT unq_perfilUsuario_dni UNIQUE (dni)
+    fileNumber INT,
+    gender VARCHAR(30),
+    birthDate DATE,
+    email varchar(30),
+    phoneNumber INT,
+    active BIT, 
+    password VARCHAR(15),
+    CONSTRAINT pk_studentId PRIMARY KEY (studentId),
+    CONSTRAINT unq_student_email UNIQUE (email),
+    CONSTRAINT unq_student_dni UNIQUE (dni),
+    CONSTRAINT unq_student_fileNumber UNIQUE (fileNumber)
 );
 
-INSERT INTO `rol` (`idRol`, `descripcion`) 
-VALUES ('1', 'admin'), 
-       ('0', 'usuario');
-      
-      
-INSERT INTO `usuario` (`idRol`, `mail`, `password`) 
-VALUES ('1', 'admin@admin.com', 'admin123'), 
-       ('0', 'user@user.com.ar', 'user123');
-       
-      
+CREATE TABLE admin (
+    adminId INT NOT NULL AUTO_INCREMENT,
+    email varchar(30),
+    password VARCHAR(30),
+    CONSTRAINT pk_adminId PRIMARY KEY (adminId),
+    CONSTRAINT unq_admin_email UNIQUE (email)
+);
+
+CREATE TABLE company (
+    companyId INT NOT NULL AUTO_INCREMENT,
+    cuit INT,
+    nombre VARCHAR(30),
+    address VARCHAR(30),
+    link VARCHAR(30),
+    isActive BIT,
+    CONSTRAINT pk_companyId PRIMARY KEY (companyId),
+    CONSTRAINT unq_company_cuit UNIQUE (cuit),
+);
