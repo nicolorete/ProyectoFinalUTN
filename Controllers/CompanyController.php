@@ -184,5 +184,16 @@ class CompanyController
         }
         echo "<br><b>There are ".$i." Result/s!</b>";
     }
+//------------------------------------------------------------------------------------------------------------------
+    public function ShowCompanyView($companyId)
+	{
+		
+		$companyFound = null;
+		$companyFound = $this->companyDAO->GetCompanyByID($companyId);
+		require_once(VIEWS_PATH . 'user-company-view.php');
+				
+		
+	}
+
 }
 
