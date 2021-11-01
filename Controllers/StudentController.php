@@ -2,6 +2,7 @@
     namespace Controllers;
 
     use DAO\StudentDAO as StudentDAO;
+    use DAO\StudentDAOPDO as StudentDAOPDO;
     
     use Models\Career;
     use Models\Student as Student;
@@ -12,6 +13,7 @@ class StudentController
 
         public function __construct(){
             $this->studentDAO = new StudentDAO();
+            $this->studentDAOPDO = new StudentDAOPDO();
         }
 
         public function ShowAddView(){
@@ -65,11 +67,7 @@ class StudentController
             return $student;
         }
 
-        public function ShowProfileView($studentId){
-            $student = $this->getStudentById($studentId);
-
-            require_once(VIEWS_PATH."user-profile.php");
-        }
+       
 
         //DELETES THE LIST AND FILLS WITH THE API DATA
         public function updateFromAPI(){
@@ -83,6 +81,18 @@ class StudentController
 
         public function ShowRegisterView(){
             require_once(VIEWS_PATH."user-register.php");
+        }
+
+        public function ShowProfileView(){
+            if (isset($_SESSION['loggedUser'])) {
+                $loggedUser = $_SESSION['loggedUser'];
+    
+                $userData = $this->studentDAOPDO->GetProfileByIdUser($loggedUser->getStudentId());
+                require_once(VIEWS_PATH . 'user-profile.php');
+            } else {
+                $message = 'Debe iniciar sesion';
+                
+            }
         }
     }
 ?> 

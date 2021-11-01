@@ -1,7 +1,8 @@
 <?php
 
 namespace Controllers;
-
+//db
+use DAO\StudentDAOPDO as StudentDAOPDO;
 // Json
 use DAO\StudentDAO as StudentDAO;
 use DAO\AdminDAO as AdminDAO;
@@ -23,6 +24,7 @@ class HomeController
 	function __construct()
 	{
 		$this->studentDAO = new StudentDAO();
+		$this->studentDAOPDO = new StudentDAOPDO();
 		$this->adminDAO = new AdminDAO();
 	}
 
@@ -94,7 +96,8 @@ class HomeController
 	public function Login($email, $password)
 	{
 		$userFound = null;
-		$userFound = $this->studentDAO->GetByEmail($email);
+		//$userFound = $this->studentDAO->GetByEmail($email);
+		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
 		
 		if ($userFound != null) {
 			if($userFound instanceof Admin){
