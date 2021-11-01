@@ -41,4 +41,9 @@ INSERT INTO company (cuit, nombre, address, link, isActive) VALUES (40138543,'Fr
 INSERT INTO company (cuit, nombre, address, link, isActive) VALUES (39123321,'CocaCola', 'av.Constitucion 1800', 'cocacola.com', 1); 
 
 
+
+INSERT INTO student (carrerId, firstName, lastName, dni, fileNumber, gender, birthDate, email, phoneNumber, active, password) 
+VALUES (5,'Wyatan', 'Lorant', 63-025-8112, 01-777-6891, 'Non-binary', '2021-02-23', 'wlorant1@sbwire.com', 171-448-9062, 1, 'user');
+
+
 HAY QUE MODIFICAR EL CUIT POR UN VARCHAR o un tipo de dato que acepte un tamaño de numero mas gande (int acepta hasta 8 numeros)
