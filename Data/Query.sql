@@ -35,3 +35,9 @@ CREATE TABLE company (
     CONSTRAINT pk_companyId PRIMARY KEY (companyId),
     CONSTRAINT unq_company_cuit UNIQUE (cuit),
 );
+
+
+INSERT INTO company (cuit, nombre, address, isActive) VALUES (40138543,'Fravega', 'Garay 1800', 1); 
+
+
+HAY QUE MODIFICAR EL CUIT POR UN VARCHAR o un tipo de dato que acepte un tamaño de numero mas gande (int acepta hasta 8 numeros)

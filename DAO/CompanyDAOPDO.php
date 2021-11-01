@@ -55,7 +55,7 @@ class CompanyDAOPDO implements ICompanyDAO
         try {
             $companyList = array();
 
-            $query = "SELECT company.companyId, company.cuit, company.nombre, company.address, company.isActivo
+            $query = "SELECT company.companyId, company.cuit, company.nombre, company.address, company.isActive
                 FROM " . $this->tableName ;
                 
 
