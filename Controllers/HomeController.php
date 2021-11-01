@@ -142,7 +142,7 @@ class HomeController
 
 	public function ShowRegisterView()
 	{
-		require_once(VIEWS_PATH . 'register.php');
+		require_once(VIEWS_PATH . 'user-register.php');
 	}
 
 	public function ShowUserView()

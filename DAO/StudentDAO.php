@@ -164,7 +164,7 @@ class StudentDAO implements IStudentDAO
 
         // var_dump($mail);
 
-        var_dump($toJson);
+        // var_dump($toJson);
 
         foreach ($toJson as $key => $student) {
             if ($student->email == $mail){
