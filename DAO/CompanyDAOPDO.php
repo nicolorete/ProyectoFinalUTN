@@ -26,7 +26,7 @@ class CompanyDAOPDO implements ICompanyDAO
     {
         try {
 
-            $query = "CALL Company_Add(?, ?, ?)";
+            $query = "CALL Company_Add(?, ?, ?, ?, ?)";
 
             $parameters["cuit"]    = $company->getCuit();
             $parameters["nombre"]    = $company->getNombre();
@@ -160,7 +160,7 @@ class CompanyDAOPDO implements ICompanyDAO
         try {
             
             $company = null;
-            $query = "UPDATE " . $this->tableName . "  SET activo = 0 WHERE companyId = :companyID";
+            $query = "UPDATE " . $this->tableName . "  SET isActive = 0 WHERE companyId = :companyID";
 
             $parameters["companyID"] = $companyID;
 
@@ -191,7 +191,7 @@ class CompanyDAOPDO implements ICompanyDAO
     {
         try {
 
-            $query = "UPDATE " . $this->tableName . "  SET nombre = :nombre, cuit = :cuit, address = :address, isActive = :isActive WHERE companyId = :companyId";
+            $query = "UPDATE " . $this->tableName . "  SET cuit = :cuit, nombre = :nombre, address = :address, link = :link, isActive = :isActive WHERE companyId = :companyId";
 
 
             
@@ -200,7 +200,7 @@ class CompanyDAOPDO implements ICompanyDAO
             $parameters["nombre"]    = $company->getNombre();
             $parameters["address"] = $company->getAddress();
             $parameters["link"] = $company->getLink();
-            $parameters["activo"]    = $company->getIsActive();
+            $parameters["active"]    = $company->getIsActive();
 
             $this->connection = Connection::GetInstance();
 

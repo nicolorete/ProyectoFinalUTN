@@ -11,9 +11,8 @@
         <section class="modal-card-body">
            
        <div class="field">
-            <!-- Id Cine (hidden) -->
             <div class="control">
-                <input class="input" name="companyId" type="number" placeholder="Nombre del Cine" id="id" hidden="true">
+                <input class="input" name="companyId" type="number" placeholder="Nombre" id="id" hidden="true">
             </div>
         </div>
 

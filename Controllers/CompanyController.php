@@ -76,7 +76,9 @@ class CompanyController
                             $message = 'Ya existe la empresa que intenta ingresar';
                             $this->ShowListView($message);
                         } else {
+                            var_dump("asdjkaslas");
                             $this->companyDAO->Add($company);
+                            
                             $message = "Empresa agregada satisfactoriamente!";
                             $this->ShowListView($message);
                         }
@@ -191,6 +193,15 @@ class CompanyController
 		$companyFound = null;
 		$companyFound = $this->companyDAO->GetCompanyByID($companyId);
 		require_once(VIEWS_PATH . 'user-company-view.php');
+				
+		
+	}
+    public function ShowCompanyEditView($companyId)
+	{
+		
+		$companyFound = null;
+		$companyFound = $this->companyDAO->GetCompanyByID($companyId);
+		require_once(VIEWS_PATH . 'company-edit.php');
 				
 		
 	}

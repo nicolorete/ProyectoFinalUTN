@@ -1,8 +1,8 @@
-<?php
+<?php 
+    $user = $_SESSION['loggedAdmin']; 
+    include('top-nav.php'); 
 
-namespace Views;
-
-include('top-nav.php'); ?>
+?>
 
 <div class="columns" id="app-content">
 
@@ -33,7 +33,7 @@ include('top-nav.php'); ?>
                                 <div class="field">
                                     <label class="label">Cuit </label>
                                     <div class="control">
-                                        <input class="input" name="cuit" type="text" placeholder="Cuit del Cine" required="">
+                                        <input class="input" name="cuit" type="text" placeholder="Cuit de la empresa" required="">
                                     </div>
                                 </div>
 
@@ -54,7 +54,7 @@ include('top-nav.php'); ?>
                                 <div class="field">
                                     <label class="label">Link</label>
                                     <div class="control">
-                                        <input class="input" name="link" type="text" placeholder="" required="">
+                                        <input class="input" name="link" type="text" placeholder="ej: www.google.com" required="">
                                     </div>
                                 </div>
 
