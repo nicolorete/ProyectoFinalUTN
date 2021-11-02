@@ -76,7 +76,9 @@ class CompanyController
                             $message = 'Ya existe la empresa que intenta ingresar';
                             $this->ShowListView($message);
                         } else {
+                            var_dump("asdjkaslas");
                             $this->companyDAO->Add($company);
+                            
                             $message = "Empresa agregada satisfactoriamente!";
                             $this->ShowListView($message);
                         }
