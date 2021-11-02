@@ -103,17 +103,18 @@ class HomeController
 		//$adminFound = null;
 		//$userFound = $this->studentDAO->GetByEmail($email);
 		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
-		//$adminFound = $this->adminDAOPDO->GetAdminByEmail($email);
-		
+		if($userFound == null){
+			$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
+		}
 		if ($userFound != null) {
 			if($userFound instanceof Admin){
-				$message = 'Bienvenido Admin';
+				var_dump($userFound);
 				$_SESSION['loggedAdmin'] = $userFound;
-				$this->ShowAdminView($message);
+				$this->ShowAdminView();
 			}else{
 				$_SESSION['loggedUser'] = $userFound;
 				$message = 'Bienvenido Usuario';
-				$this->ShowUserView($userFound);
+				$this->ShowUserView();
 			}
 		}else{
 			$userFound = $this->studentDAO->GetByEmailApi($email);
@@ -144,7 +145,7 @@ class HomeController
 		// }
 	}
 
-	public function ShowLoginView($message = "")
+	public function ShowLoginView()
 	{
 		require_once(VIEWS_PATH . 'home.php');
 	}

@@ -128,7 +128,7 @@ class AdminDAOPDO
                 $user->setAdminId($row["adminId"]);
                 $user->setEmail($row["email"]);
                 $user->setPassword($row["password"]);
-                
+
             }
 
             return $user;
