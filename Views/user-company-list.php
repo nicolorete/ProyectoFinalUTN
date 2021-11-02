@@ -1,6 +1,6 @@
 <?php
 
-    $student = $_SESSION['loggedUser']; 
+    $user = $_SESSION['loggedUser']; 
 ?>
 
 <?php

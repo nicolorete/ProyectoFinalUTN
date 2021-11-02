@@ -108,7 +108,6 @@ class HomeController
 		}
 		if ($userFound != null) {
 			if($userFound instanceof Admin){
-				var_dump($userFound);
 				$_SESSION['loggedAdmin'] = $userFound;
 				$this->ShowAdminView();
 			}else{
@@ -159,7 +158,7 @@ class HomeController
 	{
 		if (isset($_SESSION['loggedUser'])) {
 			$userFound = $_SESSION['loggedUser'];
-			// $_SESSION['usuario'] = $user;
+			$_SESSION['usuario'] = $user;
 			require_once(VIEWS_PATH . 'user-dashboard.php');
 		} else {
 			$message = "Debe iniciar sesión primero!";
@@ -172,8 +171,8 @@ class HomeController
 
 	public function ShowAdminView($message = '')
 	{
-		if (isset($_SESSION['loggedUser'])) {
-			$userFound = $_SESSION['loggedUser'];
+		if (isset($_SESSION['loggedAdmin'])) {
+			$userFound = $_SESSION['loggedAdmin'];
 			require_once(VIEWS_PATH . 'admin-view.php');
 		} else {
 			$message = "Debe iniciar sesión primero!";

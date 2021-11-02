@@ -1,4 +1,8 @@
-<?php include('top-nav.php'); ?>
+<?php 
+    $user = $_SESSION['loggedAdmin']; 
+    include('top-nav.php'); 
+
+?>
 
 <div class="columns" id="app-content">
     <?php include('admin-aside-nav.php') ?>

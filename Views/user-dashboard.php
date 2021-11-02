@@ -1,6 +1,6 @@
 <?php
 
-    $student = $_SESSION['loggedUser']; 
+    $user = $_SESSION['loggedUser']; 
 ?>
 <?php include('top-nav.php'); ?> 
 
@@ -29,19 +29,19 @@
                         <tbody>
                             <tr>
                                 <td class="has-text-centered">
-                                    <?php echo $student->getFirstName() ?>
+                                    <?php echo $user->getFirstName() ?>
                                 </td>
                                 <td class="has-text-centered">
-                                    <?php echo $student->getLastName() ?>
+                                    <?php echo $user->getLastName() ?>
                                 </td>
                                 <td class="has-text-centered">
-                                    <?php echo $student->getEmail() ?>
+                                    <?php echo $user->getEmail() ?>
                                 </td>
                                 <td class="has-text-centered">
-                                    <?php echo $student->getDni() ?>
+                                    <?php echo $user->getDni() ?>
                                 </td>
                                 <td class="has-text-centered">
-                                    <?php echo $student->getStudentId() ?>
+                                    <?php echo $user->getStudentId() ?>
                                 </td>
                             </tr>
                         </tbody>
