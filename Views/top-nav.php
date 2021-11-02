@@ -18,13 +18,7 @@
     <div id="navMenu" class="navbar-menu column is-hidden-touch">
         <div class="navbar-end">
 
-            <div class="navbar-item">
-                <a class="button is-white">
-                    <span class="icon">
-                        <i class="fa fa-user fa-2x" aria-hidden="true"></i>Perfil
-                    </span>
-                </a>
-            </div>
+            
 
             <div class="navbar-item">
                 <a class="button is-white" href="<?= FRONT_ROOT ?>Home/LogOut"> Cerrar Sesion &nbsp <span class="icon">
