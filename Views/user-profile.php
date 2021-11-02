@@ -1,6 +1,6 @@
 <?php
 
-    $student = $_SESSION['loggedUser']; 
+    $user = $_SESSION['loggedUser']; 
 ?>
 <?php include('top-nav.php'); ?>
 
@@ -29,29 +29,64 @@
 
                     <div class="card-content">
                         <div class="field">
-                            <label class="label">Apellido </label>
+                            <label class="label">Apellido: </label>
                             <div class="control">
-                                <input class="input" type="text" name="apellido" value="<?= $userData->getLastName(); ?>">
+                                <input class="input" type="text" name="apellido" value="<?= $user->getLastName(); ?>"> 
                             </div>
                         </div>
                         <div class="field">
                             <label class="label">Nombre </label>
                             <div class="control">
-                                <input class="input" type="text" name="apellido" value="<?= $userData->getFirstName(); ?>">
+                                <input class="input" type="text" name="apellido" value="<?= $user->getFirstName(); ?>">
                             </div>
                         </div>
 
                         <div class="field">
                             <label class="label">Email </label>
                             <div class="control">
-                                <input class="input" type="text" name="apellido" value="<?= $userData->getEmail(); ?>" disabled>
+                                <input class="input" type="text" name="apellido" value="<?= $user->getEmail(); ?>" disabled>
                             </div>
                         </div>
 
                         <div class="field">
                             <label class="label">Dni </label>
                             <div class="control">
-                                <input class="input" type="text" name="apellido" value="<?= $userData->getDni(); ?>">
+                                <input class="input" type="text" name="apellido" value="<?= $user->getDni(); ?>">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Carrera </label>
+                            <div class="control">
+                                <input class="input" type="text" name="apellido" value="<?= $user->getCareer(); ?>">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">fileNumber: </label>
+                            <div class="control">
+                                <input class="input" type="text" name="fileNumber" value="<?= $user->getFileNumber(); ?>">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Gender </label>
+                            <div class="control">
+                                <input class="input" type="text" name="gender" value="<?= $user->getGender(); ?>">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">BirthDate </label>
+                            <div class="control">
+                                <input class="input" type="text" name="birthDate" value="<?= $user->getBirthDate(); ?>">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Phone Number </label>
+                            <div class="control">
+                                <input class="input" type="text" name="phoneNumber" value="<?= $user->getPhoneNumber(); ?>">
                             </div>
                         </div>
                         <div class="field is-grouped centered" style="padding-left: 30%">

@@ -158,7 +158,7 @@ class HomeController
 	{
 		if (isset($_SESSION['loggedUser'])) {
 			$userFound = $_SESSION['loggedUser'];
-			$_SESSION['usuario'] = $user;
+			$_SESSION['usuario'] = $userFound;
 			require_once(VIEWS_PATH . 'user-dashboard.php');
 		} else {
 			$message = "Debe iniciar sesión primero!";
