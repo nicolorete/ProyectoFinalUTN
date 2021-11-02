@@ -48,5 +48,27 @@ VALUES (5,'Wyatan', 'Lorant', 63-025-8112, 01-777-6891, 'Non-binary', '2021-02-2
 insert into admin (adminId, email, password) values (1, 'admin@admin', 'admin');
 
 
-HAY QUE MODIFICAR EL CUIT POR UN VARCHAR o un tipo de dato que acepte un tamaño de numero mas gande (int acepta hasta 8 numeros)
-MODIFICAR DATE por DATETIME TABLA DE STUDENTS
+-- HAY QUE MODIFICAR EL CUIT POR UN VARCHAR o un tipo de dato que acepte un tamaño de numero mas gande (int acepta hasta 8 numeros)
+-- MODIFICAR DATE por DATETIME TABLA DE STUDENTS
+
+CREATE TABLE career(
+	careerId INT NOT NULL,
+	description VARCHAR(20),
+	active BOOLEAN,
+	CONSTRAINT pk_careerId PRIMARY KEY (careerId),
+    CONSTRAINT unq_career_description UNIQUE (description)
+);
+
+CREATE TABLE jobPosition(
+	jobPositionId INT NOT NULL,
+	description VARCHAR(30),
+	CONSTRAINT pk_jobPositionId PRIMARY KEY (jobPositionId)
+);
+
+CREATE TABLE jobpYcareer(
+	careerId INT NOT NULL, 
+	jobPositionId INT NOT NULL, 
+	CONSTRAINT pk_careerId_jobPositionId PRIMARY KEY (careerId, jobPositionId),
+	CONSTRAINT fk_careerId FOREIGN KEY (careerId) REFERENCES career(careerId),
+	CONSTRAINT fk_jobPositionId FOREIGN KEY (jobPositionId) REFERENCES jobPosition(jobPositionId)
+);

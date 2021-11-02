@@ -3,7 +3,7 @@
         <p class="menu-label is-hidden-touch"> General</p>
         <ul class="menu-list">
             <li>
-                <a class="" href="<?= FRONT_ROOT ?>Home/ShowUserView">
+                <a class="" href="<?= FRONT_ROOT ?>JobPosition/ShowListView">
                     <span class="icon">
                         <i class="fa fa-home"></i>
                     </span> Propuestas Laborales

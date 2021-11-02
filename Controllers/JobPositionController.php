@@ -28,22 +28,22 @@ class JobPositionController
         public function ShowListView()
         {
             // Trae los jobpositions Primero local, despues de la api
-            // $JobPostionList = null;
-            // $JobPostionList = $this->jobPositionDAO->RetrieveData();
-            // if ($JobPostionList == null) {
-            //     echo "<script>alert('Trayendo jobPositions de la API');</script>";
-            //     $JobPostionList = $this->jobPositionDAO->GetJsonFromAPI();
-            // }
+            $JobPostionList = null;
+            $JobPostionList = $this->jobPositionDAO->GetAll();
+            if ($JobPostionList == null) {
+                echo "<script>alert('Trayendo jobPositions de la API');</script>";
+                $JobPostionList = $this->jobPositionDAO->GetJobPositionListFromApi();
+            }
     
-            // # Trae las careers. Primero local. Despues de  la api
-            // $careerList = null;
-            // $careerList = $this->jobPositionDAO->RetrieveGenreData();
-            // if ($careerList != null) {
-            //     echo "<script>alert('Careers del archivo local');</script>";
-            // } else {
-            //     echo "<script>alert('Careers de la API');</script>";
-            //     $careerList = $this->jobPositionDAO->getJsonGenre();
-            // }
+            # Trae las careers. Primero local. Despues de  la api
+            $careerList = null;
+            $careerList = $this->jobPositionDAO->GetAllCareer();
+            if ($careerList != null) {
+                echo "<script>alert('Careers del archivo local');</script>";
+            } else {
+                echo "<script>alert('Careers de la API');</script>";
+                $careerList = $this->jobPositionDAO->GetCareerListFromAPI();
+            }
             // $this->jobPositionDAO->SaveGenreData();
     
             require_once(VIEWS_PATH . "jobPosition-list.php");
