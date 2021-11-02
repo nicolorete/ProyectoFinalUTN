@@ -228,7 +228,7 @@ class JobPositionDAOPDO
      {
         $this->jobPositionList = array();
         $url = curl_init();
-        curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/JobPosition');
+        curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/Career');
         curl_setopt($url, CURLOPT_HTTPHEADER, array('x-api-key:4f3bceed-50ba-4461-a910-518598664c08'));
         curl_setopt($url, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($url);
