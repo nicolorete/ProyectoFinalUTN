@@ -194,6 +194,15 @@ class CompanyController
 				
 		
 	}
+    public function ShowCompanyEditView($companyId)
+	{
+		
+		$companyFound = null;
+		$companyFound = $this->companyDAO->GetCompanyByID($companyId);
+		require_once(VIEWS_PATH . 'company-edit.php');
+				
+		
+	}
 
 }
 

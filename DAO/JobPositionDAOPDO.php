@@ -206,14 +206,20 @@ class JobPositionDAOPDO
 
             foreach($toJson as $key)
             {
-                $newJobPosition = new JobPosition;
-                // ($key->jobPositionId, $key->carrerId, $key->description);
+                $newJobPosition = new JobPosition
+                ($key->jobPositionId, $key->carrerId, $key->description);
                 
+
                 $newJobPosition->setJobPositionId($key->jobPositionId);
                 $newJobPosition->setDescription($key->description);
 
                 $newCareer = new Career($key->careerId, "FOO", "BAR");
                 $newJobPosition->setCareer($newCareer);
+                // $newJobPosition->setJobPositionId($key->jobPositionId);
+                // $newJobPosition->setDescription($key->description);
+
+                // $newCareer = new Career($key->careerId, "FOO", "BAR");
+                // $newJobPosition->setCareer($newCareer);
 
                 array_push($this->jobPositionList, $newJobPosition);
             }

@@ -1,10 +1,13 @@
 <?php
 
-namespace Views;
 
-include('top-nav.php');
+    $user = $_SESSION['loggedAdmin']; 
+    include('top-nav.php'); 
+
+
 
 use models\Company as Company;
+use Models\Admin as Admin;
 use DAO\CompanyRepository as CompanyDAO;
 ?>
 
@@ -57,12 +60,15 @@ use DAO\CompanyRepository as CompanyDAO;
 
                                         <div class="field is-grouped action">
                                             <p class="control">
-
-                                                <a class="button is-rounded is-text btnEdit" id="modifyButton2<?= $company->getCompanyId(); ?>" onclick="">
+                                                <form action="<?= FRONT_ROOT ?>Company/ShowCompanyEditView" method="post">
+                                                            <button class="button is-warning btnEdit" id="modifyButton2<?= $company->getCompanyId(); ?>" value="<?= $company->getCompanyId(); ?>" name="companyId" type="submit">
+                                                                Editar
+                                                </form>
+                                                 <!-- <a class="button is-rounded is-text btnEdit"  onclick="">
                                                     <span class="icon">
                                                         <i class="fa fa-edit"></i>
                                                     </span>
-                                                </a>
+                                                </a>  -->
                                             </p>
 
                                             <form action="<?= FRONT_ROOT ?>Company/Delete" method="post">
@@ -96,7 +102,7 @@ use DAO\CompanyRepository as CompanyDAO;
 
 </div>
 <!------------------ VENTANA MODAL --------------------------------->
-<div class="modal" id="exampleModal">
+<!-- <div class="modal" id="exampleModal">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
@@ -167,7 +173,7 @@ use DAO\CompanyRepository as CompanyDAO;
 
 
     </div>
-</div>
+</div> -->
 <!------------------ FIN VENTANA MODAL -------------------------->
 
 <!---------------- < SCRIPTS > -------------------------->
