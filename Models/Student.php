@@ -12,7 +12,7 @@
         private $email;
         private $phoneNumber;
         private $active;
-        
+        private $password;
         
         public function __construct(){
         }
@@ -28,6 +28,13 @@
         //     $this->birthDate = $birthDate;
         // }
 
+        public function getPassword(){
+            return $this->password;
+        }
+
+        public function setPassword($studentId){
+            $this->password = $password;
+        }
         
         public function getStudentId(){
             return $this->studentId;

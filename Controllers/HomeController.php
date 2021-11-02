@@ -104,7 +104,7 @@ class HomeController
 		//$userFound = $this->studentDAO->GetByEmail($email);
 		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
 		if($userFound == null){
-			$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
+			$userFound = $this->adminDAOPDO->yEmail($email);
 		}
 		if ($userFound != null) {
 			if($userFound instanceof Admin){
@@ -142,6 +142,17 @@ class HomeController
 		// 		$this->ShowLoginView();
 		// 	}
 		// }
+	}
+
+
+	public function StudentRegister(){
+		$email = $_POST['email'];
+		$userFound = $this->studentDAO->GetByEmailApi($email);
+		if($userFound != NULL){
+			$this->studentDAOPDO->AddBd($userFound);
+		}else{
+			echo "chau";
+		}
 	}
 
 	public function ShowLoginView()

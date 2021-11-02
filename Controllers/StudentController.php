@@ -10,6 +10,7 @@
 class StudentController
     {
         private $studentDAO;
+        private $studentDAOPDO;
 
         public function __construct(){
             $this->studentDAO = new StudentDAO();
@@ -20,7 +21,7 @@ class StudentController
             require_once(VIEWS_PATH."user-add.php");
         }
 
-        public function Add($firstName, $lastName, $dni, $fileNumber, $gender, $birthDate, $email, $phoneNumber, $active){
+        public function Add($student){
             
             $newStudent = new Student($firstName, $lastName, $dni, $fileNumber, $gender, $birthDate, $email, $phoneNumber, $active);
 
