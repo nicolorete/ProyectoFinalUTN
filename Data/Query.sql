@@ -84,3 +84,4 @@ BEGIN
     SET @id_company = LAST_INSERT_ID();
     SELECT @id_company;
 END$$
+

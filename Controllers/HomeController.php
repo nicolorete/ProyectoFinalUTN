@@ -104,7 +104,7 @@ class HomeController
 		//$userFound = $this->studentDAO->GetByEmail($email);
 		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
 		if($userFound == null){
-			$userFound = $this->adminDAOPDO->yEmail($email);
+			$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
 		}
 		if ($userFound != null) {
 			if($userFound instanceof Admin){
