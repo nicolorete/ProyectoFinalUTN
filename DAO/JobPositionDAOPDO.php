@@ -16,6 +16,7 @@ class JobPositionDAOPDO
 {
     private $connection;
     private $tableName = "jobPosition";
+    private $tableName2 = "jobpYcareer";
     private $tableName3= "career";
     private $pdo = null;
 
@@ -56,10 +57,29 @@ class JobPositionDAOPDO
              throw $ex;
          }
      }
- 
+     
+      # Agrega las career de una determinada jobposition
+    public function AddJobPositionCareer(JobPosition $jobPosition)
+    {
+        try {
+            $query =  "INSERT INTO " . $this->tableName2 . "(jobPositionId, careerId) VALUES (:jobPositionId, :careerId);";
+
+            $parameters["jobPositionId"] = $jobPosition->getJobPositionId();
+
+            foreach ($jobPosition->getCareer() as $careerId) {
+                $parameters["careerId"] = $careerId;
+                $this->connection =  Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query, $parameters);
+            }
+        } catch (PDOException $e) {
+            throw $e;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
 
  
-     # Devuelve la pelicula por titulo.
+     # Devuelve la jobposition por descripcion.
      public function GetJobPostionByDescription($description)
      {
          try {
@@ -89,7 +109,7 @@ class JobPositionDAOPDO
      
     
  
-     # Devuelve todos las peliculas de la BD en una lista
+     # Devuelve todos las jp de la BD en una lista
      public function GetAll()
      {
          try {
@@ -116,7 +136,7 @@ class JobPositionDAOPDO
          }
      }
  
-     # Devuelve un genero por descripcion. Sirve para actualizar la BD de generos.
+     # Devuelve una career por descripcion. Sirve para actualizar la BD de career.
      public function GetCareerByDescription($description)
      {
          try {
@@ -202,7 +222,7 @@ class JobPositionDAOPDO
         }
      
  
-     ########### GET DE LA API. PELICULAS Y GENEROS ##########
+     ########### GET DE LA API. JP Y CAREERs ##########
  
      public function GetCareerListFromAPI()
      {
