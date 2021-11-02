@@ -2,7 +2,11 @@
 
     $user = $_SESSION['loggedUser']; 
 ?>
-<?php include('top-nav.php'); ?> 
+<?php
+    include('top-nav.php');
+    use models\jobPosition as jobPosition;
+    use DAO\JobPositionDAOPDO as jobPositionDAOPDO;
+?> 
 
 <div class="columns" id="app-content">
     <?php include('user-aside-nav.php');?>
@@ -91,41 +95,38 @@
                                 <th class="has-text-centered"> Empresa</th>
                                 <th class="has-text-centered"> Carrera</th>
                                 <th class="has-text-centered"> Puesto</th>
-                                
-                                
-
                                 <th class="has-text-centered">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <?php foreach ($jobPositionList as $jobPosition) {
 
-                           
-                                        <td class="has-text-centered">
-
-                                            <div class="field is-grouped action">
-                                                <p class="control">
-                                                    <form action="" method="post">
-                                                        <button class="button is-warning btnEdit" value=""
-                                                                name=" " type="submit">
-                                                            Ver Empresa
-
-                                                    </form>
-                                                </p>
-
-                                                <form action="" method="post">
-                                                    <p class="control">
-                                                        <button class="button is-danger" name="BtnDel" data-id="1" value="">
-                                                            Aplicar
-                                                        </button>
-                                                    </p>
-                                                </form>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                           
-
-
+                        ?>
+                        <tr>
+                            <td><?= $jobPosition->getjobPositionId(); ?></td>
+                            <td><?= $jobPosition->getCareerId(); ?></td>
+                            <td><?= $jobPosition->getDescription(); ?></td>
+                            <td class="has-text-centered">
+                            
+                                <div class="field is-grouped action">
+                                    <p class="control">
+                                        <form action="" method="post">
+                                            <button class="button is-warning btnEdit" value=""name=" " type="submit">
+                                                Ver Empresa
+                                            </button>
+                                        </form>
+                                    </p>
+                                    <form action="" method="post">
+                                        <p class="control">
+                                            <button class="button is-danger" name="BtnDel" data-id="1" value="">
+                                                Aplicar
+                                            </button>
+                                        </p>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php } ?>
                         </tbody>
                     </table>
                 </div>

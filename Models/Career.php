@@ -3,7 +3,6 @@
 class Career{
 
     private $careerId;
-    private $title;
     private $description;
     private $active = true;
 
@@ -20,18 +19,7 @@ class Career{
 
         return $this;
     }
-    
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
+   
 
     public function getDescription()
     {
@@ -58,8 +46,7 @@ class Career{
     }
 
     public function __tostring(){
-        return "<br>Title: ".$this->title.
-               "<br>Description: ".$this->description.
+        return "<br>Description: ".$this->description.
                "<br>Active: ".$this->active;
     }
 }
