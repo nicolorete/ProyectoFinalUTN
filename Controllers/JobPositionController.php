@@ -99,7 +99,7 @@ class JobPositionController
         //             $jobPositionFound = $this->jobPositionDAO->GetJobPositionByTitle($jobPosition->getTitle());
         //             if ($jobPositionFound = null) {
         //                 $this->jobPositionDAO->Add($jobPosition);			 # Si no está, la agrego a la base de datos
-        //                 $this->jobPositionDAO->AddJobPositionCareer($jobPosition); # Agrego los generos de esa pelicula a la tabla intermedia
+        //                 $this->jobPositionDAO->AddJobPositionCareer($jobPosition); 
         //             }
         //         }
         //     }
