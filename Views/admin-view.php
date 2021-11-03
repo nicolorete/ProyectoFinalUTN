@@ -87,9 +87,9 @@
                                     </div>
                                     <div class="media-content">
                                         <div class="content">
-                                            <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>User/ShowAddView">Agregar Usuario</a><br><br></li>
+                                            <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>Admin/ShowAddView">Agregar Usuario</a><br><br></li>
 
-                                            <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>User/ShowListView">Listar Usuarios </a> </li>
+                                            <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>Admin/ShowListView">Listar Usuarios </a> </li>
                                         </div>
                                     </div>
                                 </article>

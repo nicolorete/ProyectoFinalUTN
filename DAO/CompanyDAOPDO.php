@@ -25,8 +25,6 @@ class CompanyDAOPDO implements ICompanyDAO
     public function Add(Company $company)
     {
         try {
-
-            // $query = "CALL Company_Add(?, ?, ?, ?, ?)";
             $sql = ("INSERT INTO ".$this->tableName." (cuit,nombre,address,link,isActive) VALUES (:cuit,:nombre,:address,:link,:isActive);");
 
             $parameters["cuit"]    = $company->getCuit();

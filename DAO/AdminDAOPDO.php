@@ -52,56 +52,37 @@ class AdminDAOPDO
     public function Add(Admin $admin)
     {
         try {
-            // $query = 'CALL student_Add(?, ?, ?)';
-
-            // $parameters["email"]      = $student->getEmail();
-            // // $parameters["password"] = $student->getPassword();
-            
-
-            // $this->connection = Connection::GetInstance();
-
-            // $result = $this->connection->Execute($query, $parameters, QueryType::StoredProcedure);
-
-            
-
-            $query2 = "INSERT INTO". $this->tableName . "(adminId, email, password)
-             VALUES (:adminId, :email, :password);";
-
-            $parameters2["adminId"] = $admin->getAdminId();
+           $query2 = ("INSERT INTO ". $this->tableName." (email, password) VALUES (:email, :password);");
+          
             $parameters2["email"] = $admin->getEmail();
             $parameters2["password"] = $admin->getPassword();
 
             $this->connection =  Connection::GetInstance();
-            $this->connection->ExecuteNonQuery($query2, $parameters2, QueryType::Query);
+            $this->connection->ExecuteNonQuery($query2, $parameters2);
         } catch (PDOException $e) {
             throw $e;
         } catch (Exception $ex) {
             throw $ex;
         }
     }
+   
 
     public function GetAll()
     {
         try {
             $adminList = array();
-
-            $query = "SELECT * FROM " . $this->tableName;
-
+            $query = "SELECT admin.adminId, admin.email, admin.password 
+            FROM " . $this->tableName ;
             $this->connection = Connection::GetInstance();
-
             $resultSet = $this->connection->Execute($query);
 
             foreach ($resultSet as $row) {
                 $user = new Admin();
-
                 $user->setAdminId($row["adminId"]);
                 $user->setEmail($row["email"]);
                 $user->setPassword($row["password"]);
-                
-
                 array_push($adminList, $user);
             }
-
             return $adminList;
         } catch (PDOException $e) {
             throw $e;
@@ -163,6 +144,19 @@ class AdminDAOPDO
         } catch (PDOException $e) {
             throw $e;
         } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    public function Delete($adminId)
+    {
+        try
+        {
+            $query = "DELETE FROM ".$this->tableName." WHERE adminId = :adminId;";
+            $parameters["adminId"] = $adminId;
+            $this->connection = Connection::GetInstance();
+            $this->connection->ExecuteNonQuery($query, $parameters);}
+        catch(Exception $ex)
+        {
             throw $ex;
         }
     }

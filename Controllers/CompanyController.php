@@ -18,82 +18,6 @@ class CompanyController
         $this->companyDAO = new CompanyDaoPdo();
     }
 
-    // public function Add($cuit, $nombre, $address, $link)
-    // {
-    //     require_once(VIEWS_PATH . "validate-session.php");       ----------->      JSON FUNCTION
-
-    //     $company = new Company();
-    //     $company->setCuit($cuit);
-    //     $company->setNombre($nombre);
-    //     $company->setAddress($address);
-    //     $company->setLink($link);
-
-    //     $this->companyDAO->addCompany($company);
-
-    //     $this->ShowAddView();
-    // }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // public function Add2($cuit, $nombre, $address, $link)
-    // {
-    //     try {
-    //         if ($_POST) {
-    //             isset($_POST['cuit']) ? $cuit = $_POST['cuit'] : $cuit = '';
-    //             isset($_POST['nombre']) ? $nombre = $_POST['nombre'] : $nombre = '';
-    //             isset($_POST['address']) ? $address = $_POST['address'] : $address = '';
-    //             isset($_POST['link']) ? $link = $_POST['link'] : $link = '';
-
-                
-    //             $errores = array();
-
-
-    //             $nombreOK = $this->validaRequerido($nombre);
-    //             $addresOK = $this->validaRequerido($address);
-
-    //             if (!$nombreOK) {
-    //                 $errores[] = 'El campo nombre es incorrecto.';
-    //             }
-    //             if (!$addresOK) {
-    //                 $errores[] = 'El campo address es incorrecto.';
-    //             }
-
-    //             if (!$errores) {
-    //                 # Creo la empresa y le asigno los datos
-    //                 $company = new Company();
-    //                 $company->setCuit($cuit);
-    //                 $company->setNombre($nombre);
-    //                 $company->setAddress($address);
-    //                 $company->setLink($link);
-
-    //                 $encontrado = null;
-    //                 $encontrado = $this->companyDAO->GetCompanyByName($company->getNombre());
-
-                    
-
-    //                 if (!$errores) {
-    //                     // VALIDO QUE NO HAYA UNA COMPANY AGREGADA
-    //                     if ($encontrado) {
-    //                         //MENSAJE QUE YA EXISTE la empresa
-    //                         $message = 'Ya existe la empresa que intenta ingresar';
-    //                         $this->ShowListView($message);
-    //                     } else {
-    //                         var_dump($company);
-    //                         $this->companyDAO->Add($company);
-                            
-    //                         $message = "Empresa agregada satisfactoriamente!";
-    //                         $this->ShowListView($message);
-    //                     }
-    //                 }
-    //             } else {
-    //                 // MENSAJE QUE NO SON  CORRECTOS
-    //                 $message = "COMPLETE LOS CAMPOS CON VALORES VALIDOS";
-    //                 $this->ShowAddView($message);
-    //             }
-    //         }
-    //     } catch (Exception $ex) {
-    //         $message = 'Oops ! ' . $ex->getMessage();
-    //     }
-    // }
-
     public function Add($cuit, $nombre , $address, $link , $isActive){
         $company = new Company();
         $companyFound = false;
@@ -139,42 +63,6 @@ class CompanyController
             return true;
         }
     }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function ShowAddView()
-    {
-        require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "company-add.php");
-    }
-
-    public function ShowListView()
-    {
-        require_once(VIEWS_PATH . "validate-session.php");
-        $companyList = $this->companyDAO->getAll();
-
-        require_once(VIEWS_PATH . "company-list.php");
-    }
-
-    public function ShowListViewUser()
-    {
-        require_once(VIEWS_PATH . "validate-session.php");
-        $companyList = $this->companyDAO->getAll();
-
-        require_once(VIEWS_PATH . "user-company-list.php");
-    }
-
-   
-
-    public function Delete($id)
-    {
-        require_once(VIEWS_PATH."validate-session.php");
-
-        $this->companyDAO->Delete($id);
-
-        $this->ShowListView();
-    }
-
-
     public function Modify($companyId, $cuit, $nombre, $address, $link, $active)
     {
         $companyNew = new Company();
@@ -224,6 +112,39 @@ class CompanyController
         }
         echo "<br><b>There are ".$i." Result/s!</b>";
     }
+    
+    public function Delete($id)
+    {
+        require_once(VIEWS_PATH."validate-session.php");
+
+        $this->companyDAO->Delete($id);
+
+        $this->ShowListView();
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public function ShowAddView()
+    {
+        require_once(VIEWS_PATH . "validate-session.php");
+        require_once(VIEWS_PATH . "company-add.php");
+    }
+
+    public function ShowListView()
+    {
+        require_once(VIEWS_PATH . "validate-session.php");
+        $companyList = $this->companyDAO->getAll();
+
+        require_once(VIEWS_PATH . "company-list.php");
+    }
+
+    public function ShowListViewUser()
+    {
+        require_once(VIEWS_PATH . "validate-session.php");
+        $companyList = $this->companyDAO->getAll();
+
+        require_once(VIEWS_PATH . "user-company-list.php");
+    }
+    
 //------------------------------------------------------------------------------------------------------------------
     public function ShowCompanyView($companyId)
 	{
