@@ -74,14 +74,5 @@ CREATE TABLE jobpYcareer(
 );
 
 
-DELIMITER $$
 
-CREATE PROCEDURE Company_Add(IN cuit int,IN nombre varchar(30), IN address varchar(30), IN link varchar(30), IN isActive tinyint(1))
-BEGIN  
-    INSERT INTO company
-        (company.cuit, company.nombre, company.address, company.link , company.isActive) VALUES (cuit, nombre, address, link, isActive);
-
-    SET @id_company = LAST_INSERT_ID();
-    SELECT @id_company;
-END$$
 
