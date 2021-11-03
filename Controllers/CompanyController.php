@@ -70,7 +70,7 @@ class CompanyController
                     
 
     //                 if (!$errores) {
-    //                     // VALIDO QUE NO HAYA UN CINE AGREGADO
+    //                     // VALIDO QUE NO HAYA UNA COMPANY AGREGADA
     //                     if ($encontrado) {
     //                         //MENSAJE QUE YA EXISTE la empresa
     //                         $message = 'Ya existe la empresa que intenta ingresar';

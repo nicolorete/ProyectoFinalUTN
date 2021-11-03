@@ -44,7 +44,7 @@ class JobPositionController
                 echo "<script>alert('Careers de la API');</script>";
                 $careerList = $this->jobPositionDAO->GetCareerListFromAPI();
             }
-            // $this->jobPositionDAO->SaveGenreData();
+          
     
             require_once(VIEWS_PATH . "jobPosition-list.php");
         }

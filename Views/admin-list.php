@@ -107,7 +107,7 @@ use DAO\UserDAO as UserDAO;
         <section class="modal-card-body">
             <form action="<?= FRONT_ROOT ?>User/Modify" method="POST">
                 <div class="field">
-                    <!-- Id Cine (hidden) -->
+                    
                     <div class="control">
                         <input class="input" name="id" type="number" placeholder="Id Usuario" id="id" hidden="true">
                     </div>

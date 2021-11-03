@@ -38,8 +38,7 @@ use DAO\CompanyRepository as CompanyDAO;
                                 <th>Id Empresa</th>
                                 <th>Cuit</th>
                                 <th>Nombre</th>
-                                <!--<th>Capacidad</th>
-                                        <th>Precio de la entrada</th>-->
+                                
                                 <th>Direccion</th>
                                 <th>Activo </th>
                                 <th class="has-text-centered">Action</th>

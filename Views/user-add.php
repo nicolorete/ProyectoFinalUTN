@@ -66,12 +66,11 @@ include('top-nav.php'); ?>
                                 </div>
 
 
-                                <!-- AGREGAMOS UN INPUT FIJO PARA QUE SI O SI AGREGUE AL MENOS UNA SALA CON CAMPOS REQUERIDOS PARA VALIDAR EL INGRESO DE DATOS  -->
+                                
 
                                
 
-                                <!-- campo = '<u><li id="labelName'+nextinput+'" style="font-size:20px">sala '+nextinput+':</u>	<input class="input"  type="text" size="20" id="nameSala' + nextinput + '"&nbsp; name="nameSala[]" value="SALA '+nextinput+'"  /></li><br><li id="labelCapacidad'+nextinput+'">Capacidad sala '+nextinput+':<input class="input" type="text" size="20" id="capacidadSala' + nextinput + '"&nbsp; name="capacidad[]"/></li><br><li id="labelPrecio'+nextinput+'">Precio ticket sala '+nextinput+':<input class="input" type="text" size="20" id="precioSala' + nextinput + '"&nbsp; name="precio[]" /></li><br>'; -->
-
+                               
 
 
 

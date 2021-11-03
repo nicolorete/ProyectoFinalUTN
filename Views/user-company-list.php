@@ -40,8 +40,7 @@ use DAO\CompanyRepository as CompanyDAO;
 
                                 <th class="has-text-centered">Nombre</th>
                                 <th class="has-text-centered">Action</th>
-                                <!--<th>Capacidad</th>
-                                        <th>Precio de la entrada</th>-->
+                               
 
                             </tr>
                         </thead>
