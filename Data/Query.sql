@@ -65,14 +65,6 @@ CREATE TABLE jobPosition(
 	CONSTRAINT pk_jobPositionId PRIMARY KEY (jobPositionId)
 );
 
-CREATE TABLE jobpYcareer(
-	careerId INT NOT NULL, 
-	jobPositionId INT NOT NULL, 
-	CONSTRAINT pk_careerId_jobPositionId PRIMARY KEY (careerId, jobPositionId),
-	CONSTRAINT fk_careerId FOREIGN KEY (careerId) REFERENCES career(careerId),
-	CONSTRAINT fk_jobPositionId FOREIGN KEY (jobPositionId) REFERENCES jobPosition(jobPositionId)
-);
-
 CREATE TABLE jobOffer(
 	jobOfferId INT NOT NULL, 
 	title VARCHAR(30),
