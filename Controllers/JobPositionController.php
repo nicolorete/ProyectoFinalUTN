@@ -2,9 +2,10 @@
     namespace Controllers;
 
     use DAO\JobPositionDAOPDO as JobPositionDAOPDO;
-use Exception;
-use Models\Career;
-use PDOException;
+    use DAO\CareerDAOPDO as CareerDAOPDO;
+    use Exception;
+    use Models\Career;
+    use PDOException;
 
 class JobPositionController
     {
@@ -13,75 +14,76 @@ class JobPositionController
         public function __construct(){
             
             $this->jobPositionDAO = new JobPositionDAOPDO();
+            $this->careerDAO = new CareerDAOPDO();
         }
 
         
        
 
-        // public function ShowListView(){
-        //     $JobPostionList = $this->jobPositionDAOPDO->GetJobPositionListFromApi();
+        public function ShowListView(){
+            $JobPostionList = $this->jobPositionDAOPDO->GetJobPositionListFromApi();
 
-        //     require_once(VIEWS_PATH."user-dashboard.php");
-        // }
-
-      
-        public function ShowListView()
-        {
-            // Trae los jobpositions Primero local, despues de la api
-            $JobPostionList = null;
-            $JobPostionList = $this->jobPositionDAO->GetAll();
-            if ($JobPostionList == null) {
-                echo "<script>alert('Trayendo jobPositions de la API');</script>";
-                $JobPostionList = $this->jobPositionDAO->GetJobPositionListFromApi();    //PARA PROBAR COMENTAR TODO MENOS ESTO
-            }
-    
-            # Trae las careers. Primero local. Despues de  la api
-            $careerList = null;
-            $careerList = $this->jobPositionDAO->GetAllCareer();
-            if ($careerList != null) {
-                echo "<script>alert('Careers del archivo local');</script>";
-            } else {
-                echo "<script>alert('Careers de la API');</script>";
-                $careerList = $this->jobPositionDAO->GetCareerListFromAPI();
-            }
-          
-    
-            require_once(VIEWS_PATH . "jobPosition-list.php");
+            require_once(VIEWS_PATH."jobposition-list.php");
         }
 
-        public function Update($message = '')
-	{
-		try {
-			$jobPositionList = null;
-			$jobPositionList = $this->jobPositionDAO->GetJobPositionListFromAPI();
+      
+        // public function ShowListView()
+        // {
+        //     // Trae los jobpositions Primero local, despues de la api
+        //     $JobPostionList = null;
+        //     $JobPostionList = $this->jobPositionDAO->GetAll();
+        //     if ($JobPostionList == null) {
+        //         echo "<script>alert('Trayendo jobPositions de la API');</script>";
+        //         $JobPostionList = $this->jobPositionDAO->GetJobPositionListFromApi();
+        //     }
+    
+        //     # Trae las careers. Primero local. Despues de  la api
+        //     $careerList = null;
+        //     $careerList = $this->jobPositionDAO->GetAllCareer();
+        //     if ($careerList != null) {
+        //         echo "<script>alert('Careers del archivo local');</script>";
+        //     } else {
+        //         echo "<script>alert('Careers de la API');</script>";
+        //         $careerList = $this->careerDAO->GetCareerListFromAPI();
+        //     }
+          
+    
+        //     require_once(VIEWS_PATH . "jobPosition-list.php");
+        // }
 
-			$careerList = null;
-			$careerList = $this->jobPositionDAO->GetCareerListFromAPI();
+    //     public function Update($message = '')
+	// {
+	// 	try {
+	// 		$jobPositionList = null;
+	// 		$jobPositionList = $this->jobPositionDAO->GetJobPositionListFromAPI();
 
-			# Agrego las career
-			if ($careerList != null) {
-				foreach ($careerList as $career) {
-					$this->jobPositionDAO->Addcareer($career);
-				}
-			}
+	// 		$careerList = null;
+	// 		$careerList = $this->careerDAO->GetCareerListFromAPI();
 
-			# Agrego las Jobpositions y las career x jobPosition
-			if ($jobPositionList != null) {
-				foreach ($jobPositionList as $jobPosition) {
-					$this->jobPositionDAO->Add($jobPosition);
-					$this->jobPositionDAO->AddJobPositionCareer($jobPosition);
-				}
-			}
+	// 		# Agrego las career
+	// 		if ($careerList != null) {
+	// 			foreach ($careerList as $career) {
+	// 				$this->jobPositionDAO->Addcareer($career);
+	// 			}
+	// 		}
 
-			$message = 'Jobpositions actualizadas con sus career';
+	// 		# Agrego las Jobpositions y las career x jobPosition
+	// 		if ($jobPositionList != null) {
+	// 			foreach ($jobPositionList as $jobPosition) {
+	// 				$this->jobPositionDAO->Add($jobPosition);
+	// 				$this->jobPositionDAO->AddJobPositionCareer($jobPosition);
+	// 			}
+	// 		}
 
-			require_once(VIEWS_PATH . 'admin-dashboard.php');
-		} catch (Exception $ex) {
-			$message = 'Oops ! ' . $ex->getMessage();
-		} catch (PDOException $e) {
-			throw $e;
-		}
-	}
+	// 		$message = 'Jobpositions actualizadas con sus career';
+
+	// 		require_once(VIEWS_PATH . 'admin-dashboard.php');
+	// 	} catch (Exception $ex) {
+	// 		$message = 'Oops ! ' . $ex->getMessage();
+	// 	} catch (PDOException $e) {
+	// 		throw $e;
+	// 	}
+	// }
 
 
         // public function UpdateJPAndCareers()
@@ -97,7 +99,7 @@ class JobPositionController
         //             $jobPositionFound = $this->jobPositionDAO->GetJobPositionByTitle($jobPosition->getTitle());
         //             if ($jobPositionFound = null) {
         //                 $this->jobPositionDAO->Add($jobPosition);			 # Si no está, la agrego a la base de datos
-        //                 $this->jobPositionDAO->AddJobPositionCareer($jobPosition); # Agrego los generos de esa pelicula a la tabla intermedia
+        //                 $this->jobPositionDAO->AddJobPositionCareer($jobPosition); 
         //             }
         //         }
         //     }
@@ -115,9 +117,9 @@ class JobPositionController
         //     }
 	    // }
 
-        //DELETES THE LIST AND FILLS WITH THE API DATA
+       
         // public function updateFromAPI(){
-        //     $this->studentDAO->retrieveAPI();
+        //     $this->jobPositionDAO->GetJobPositionListFromApi();
 
         //     $this->ShowListView();
         // }

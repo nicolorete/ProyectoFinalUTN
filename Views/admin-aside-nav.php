@@ -38,17 +38,24 @@
         <p class="menu-label is-hidden-touch">Usuarios</p>
         <ul class="menu-list">
             <li>
-                <a class="" href="<?= FRONT_ROOT ?>User/ShowAddView">
+                <a class="" href="<?= FRONT_ROOT ?>Admin/ShowAddView">
                     <span class="icon">
                         <i class="fa fa-edit"></i>
                     </span> Agregar Usuario
                 </a>
             </li>
             <li>
-                <a class="" href="<?= FRONT_ROOT ?>User/ShowListView">
+                <a class="" href="<?= FRONT_ROOT ?>Admin/ShowListView">
                     <span class="icon">
                         <i class="fa fa-lock"></i>
-                    </span> Ver Alumnos
+                    </span> Ver Usuarios
+                </a>
+            </li>
+            <li>
+                <a class="" href="<?= FRONT_ROOT ?>Student/ShowListView">
+                    <span class="icon">
+                        <i class="fa fa-lock"></i>
+                    </span> Alumnos Registrados
                 </a>
             </li>
         </ul>
