@@ -5,6 +5,7 @@ namespace DAO;
 use Models\JobPosition as JobPosition;
 use Models\Career as Career;
 use DAO\connection as Connection;
+use DAO\CareerDAOPDO as CareerDAO;
 use Exception;
 use PDOException;
 
@@ -24,11 +25,11 @@ class JobPositionDAOPDO
      public function Add(JobPosition $jobPosition)
      {
          try {
-             $query =  "INSERT INTO " . $this->tableName . "(jobPositionId, description) VALUES (:jobPostionId, :description);";
+             $query =  "INSERT INTO " . $this->tableName . "(jobPositionId,careerId, description) VALUES (:jobPostionId, :careerId, :description);";
  
              $parameters["jobPostionId"] = $jobPosition->getJobPositionId();
              $parameters["description"] = $jobPosition->getDescription();
-             //$parameters["career"] = $jobPosition->getcareer(); 
+             $parameters["careerId"] = $jobPosition->getCareer(); 
  
              $this->connection =  Connection::GetInstance();
  
@@ -123,7 +124,9 @@ class JobPositionDAOPDO
  
              foreach ($resultSet as $row) {
                  $jobPosition = new JobPosition();
+                 $careerDAO = new CareerDAO();
                  $jobPosition->setJobPositionId($row["jobPositionId"]);
+                 $jobPosition->setCareer($row["careerId"]);
                  $jobPosition->setDescription($row["descripcion"]);
  
                  array_push($jobPositionList, $jobPosition);
@@ -197,8 +200,11 @@ class JobPositionDAOPDO
     public function GetJobPositionListFromApi(){
             
             $this->jobPositionList = array();
+            $careerDAO = new CareerDAO();
+            $careerFromApi = $careerDAO->GetCareerListFromAPI();
+
             $url = curl_init();
-            curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/JobPosition');
+            curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/jobPosition');
             curl_setopt($url, CURLOPT_HTTPHEADER, array('x-api-key:4f3bceed-50ba-4461-a910-518598664c08'));
             curl_setopt($url, CURLOPT_RETURNTRANSFER, 1);
             $response = curl_exec($url);
@@ -206,15 +212,25 @@ class JobPositionDAOPDO
 
             foreach($toJson as $key)
             {
-                $newJobPosition = new JobPosition
-                ($key->jobPositionId, $key->carrerId, $key->description);
-                
+                $newJobPosition = new JobPosition();
+                // ($key->jobPositionId, $key->carrerId, $key->description);
+                foreach($careerFromApi as $career)
+                {
+                    if($key->careerId == $career->getCareerId()){
+                        $newCareer = new Career();
+                        $newCareer->setCareerId($career->getCareerId());
+                        $newCareer->setDescription($career->getDescription());
+                        $newCareer->setActive($career->getActive());
+
+                        $newJobPosition->setCareer($newCareer);
+                    }
+                }
 
                 $newJobPosition->setJobPositionId($key->jobPositionId);
                 $newJobPosition->setDescription($key->description);
 
-                $newCareer = new Career($key->careerId, "FOO", "BAR");
-                $newJobPosition->setCareer($newCareer);
+                // $newCareer = new Career($key->careerId, "FOO", "BAR");
+                // $newJobPosition->setCareer($newCareer);
                 // $newJobPosition->setJobPositionId($key->jobPositionId);
                 // $newJobPosition->setDescription($key->description);
 
@@ -224,36 +240,13 @@ class JobPositionDAOPDO
                 array_push($this->jobPositionList, $newJobPosition);
             }
             
-            return $this->jobPositionList;
+            // return $this->jobPositionList;
+            echo end($this->jobPositionList);
         }
      
  
      ########### GET DE LA API. JP Y CAREERs ##########
  
-     public function GetCareerListFromAPI()
-     {
-        $this->jobPositionList = array();
-        $url = curl_init();
-        curl_setopt($url, CURLOPT_URL, 'https://utn-students-api.herokuapp.com/api/Career');
-        curl_setopt($url, CURLOPT_HTTPHEADER, array('x-api-key:4f3bceed-50ba-4461-a910-518598664c08'));
-        curl_setopt($url, CURLOPT_RETURNTRANSFER, 1);
-        $response = curl_exec($url);
-        $toJson = json_decode($response);
-
- 
-         
-        
- 
-         foreach ($toJson["career"] as $valuesArray) {
-             $career = new Career();
-             $career->setCareerId($valuesArray["careerId"]);
-             $career->setDescription($valuesArray["description"]);
-             $career->setActive($valuesArray["active"]);
- 
-             array_push($this->careerList, $career);
-         }
-         return $this->careerList;
-     }
- 
+    
     
 }

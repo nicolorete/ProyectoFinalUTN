@@ -16,7 +16,7 @@
         }
 
         public function getCareer() {
-            return $this->career;
+            return $this->careerId;
         }
 
         public function setCareer($career) {
@@ -34,7 +34,7 @@
         //TO STRING METHOD
         public function __toString() {
             return  "<br>ID: ".$this->jobPositionId.
-                    "<br>Career ID: ".$this->careerId.
+                    "<br>Career ID: ".$this->career.
                     "<br>Description: ".$this->description;
         }
     }
