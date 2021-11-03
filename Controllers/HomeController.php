@@ -147,11 +147,16 @@ class HomeController
 
 	public function StudentRegister(){
 		$email = $_POST['email'];
-		$userFound = $this->studentDAO->GetByEmailApi($email);
-		if($userFound != NULL){
-			$this->studentDAOPDO->Add($userFound);
+		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
+		if($userFound == NULL){
+			$userFound = $this->studentDAO->GetByEmailApi($email);
+			if($userFound != NULL){
+				$this->studentDAOPDO->Add($userFound);
+			}else{
+				echo "chau";
+			}
 		}else{
-			echo "chau";
+			$this->ShowLoginView();
 		}
 	}
 

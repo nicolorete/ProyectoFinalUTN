@@ -65,7 +65,6 @@ class StudentDAOPDO
             $sql = ("INSERT INTO " . $this->tableName . " (studentId, carrerId, firstName, lastName, dni, fileNumber, gender, email, phoneNumber, active, password , birthDate)
              VALUES (:studentId, :carrerId, :firstName, :lastName, :dni, :fileNumber, :gender, :email, :phoneNumber, :active, :password, :birthDate);");
             
-            var_dump($sql);
             $parameters["studentId"] = $student->getStudentId();
             $parameters["carrerId"] = $student->getCareer();
             $parameters["firstName"] = $student->getFirstName();
@@ -78,20 +77,6 @@ class StudentDAOPDO
             $parameters["active"] = $student->getActive();
             $parameters["password"] = $student->getPassword();
             $parameters["birthDate"] = $student->getBirthDate();
-            
-
-            // if($parameters["active"] == true){
-            //     $parameters["active"] = 1;
-            // }else{
-            //     $parameters["active"] = 0;
-            // }
-
-            var_dump($parameters);
-            
-
-            // $query2->execute() 
-
-
 
             $this->connection =  Connection::GetInstance();
 
