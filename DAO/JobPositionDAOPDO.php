@@ -244,9 +244,36 @@ class JobPositionDAOPDO
             // return $this->jobPositionList;
             echo end($this->jobPositionList);
         }
+
+        public function GetById($jobPositionId)
+        {
+            try
+            {
+                $query = "SELECT * FROM ".$this->tableName.' WHERE (jobPositionId = :jobPositionId);';
+
+                $this->connection = Connection::GetInstance();
+                
+                $parameters["jobPositionId"] = $jobPositionId;
+
+                $result = $this->connection->Execute($query, $parameters)[0];
+
+                $careerDAO = new CareerDAO();
+
+                if($result) {
+                    $jobPosition = new JobPosition();
+                    $jobPosition->setJobPositionId($result["jobPositionId"]);
+                    $jobPosition->setCareer($result["careerId"]);
+                    $jobPosition->setDescription($result["description"]);
+                    
+                    return $jobPosition;
+                }
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+        }
      
- 
-     ########### GET DE LA API. JP Y CAREERs ##########
  
     
     
