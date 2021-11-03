@@ -20,5 +20,8 @@
         public function ShowAddView(){
             require_once(VIEWS_PATH. "joboffer-add.php");
         }
+        public function ShowListView(){
+            require_once(VIEWS_PATH. "joboffer-list.php");
+        }
 
     }
