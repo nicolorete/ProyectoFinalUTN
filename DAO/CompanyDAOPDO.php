@@ -26,20 +26,21 @@ class CompanyDAOPDO implements ICompanyDAO
     {
         try {
 
-            $query = "CALL Company_Add(?, ?, ?, ?, ?)";
+            // $query = "CALL Company_Add(?, ?, ?, ?, ?)";
+            $sql = ("INSERT INTO ".$this->tableName." (cuit,nombre,address,link,isActive) VALUES (:cuit,:nombre,:address,:link,:isActive);");
 
             $parameters["cuit"]    = $company->getCuit();
             $parameters["nombre"]    = $company->getNombre();
             $parameters["address"] = $company->getAddress();
             $parameters["link"] = $company->getLink();
-            $parameters["activo"]    = $company->getIsActive();
+            $parameters["isActive"]    = $company->getIsActive();
 
             $this->connection = Connection::GetInstance();
 
-            $result = $this->connection->Execute($query, $parameters, QueryType::StoredProcedure);
+            $this->connection->ExecuteNonQuery($sql, $parameters);
 
-            $lastID = $result[0]["@id_company"];
-
+            // $lastID = $result[0]["@companyId"];
+            // return $lastID;
          
         } catch (PDOException $e) {
             throw $e;

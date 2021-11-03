@@ -57,18 +57,16 @@
                                         <input class="input" name="link" type="text" placeholder="ej: www.google.com" required="">
                                     </div>
                                 </div>
+                                <div class="field">
+                                    <label class="label">Empresa activa?: </label>
+                                    <div class="control">
+                                        <select class="select" id="active" name="active">
+                                            <option value="1">Si</option>
+                                            <option value="0">No</option>
+                                        </select>
 
-
-                               
-
-
-
-
-
-
-                                
-
-
+                                     </div>
+                                </div>
                                 <div class="field is-grouped centered" style="padding-left: 30%">
                                     <div class="control">
                                         <button class="button is-link" type="submit">Registrar</button>

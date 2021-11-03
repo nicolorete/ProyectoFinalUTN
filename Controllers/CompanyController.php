@@ -33,7 +33,7 @@ class CompanyController
     //     $this->ShowAddView();
     // }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function Add($cuit, $nombre, $address, $link)
+    public function Add2($cuit, $nombre, $address, $link)
     {
         try {
             if ($_POST) {
@@ -76,7 +76,7 @@ class CompanyController
                             $message = 'Ya existe la empresa que intenta ingresar';
                             $this->ShowListView($message);
                         } else {
-                            var_dump("asdjkaslas");
+                            var_dump($company);
                             $this->companyDAO->Add($company);
                             
                             $message = "Empresa agregada satisfactoriamente!";
@@ -93,6 +93,44 @@ class CompanyController
             $message = 'Oops ! ' . $ex->getMessage();
         }
     }
+
+    public function Add($cuit, $nombre , $address, $link , $isActive){
+        $company = new Company();
+        $companyFound = false;
+        $companyList = $this->companyDAO->GetAll();
+        
+        if($companyList){
+            foreach($companyList as $companyNew) {
+                if($companyNew->getNombre() == $nombre || $companyNew->getCuit() == $cuit){
+                    $companyFound = true;
+                }
+            }
+            if($companyFound == false){
+                $company = $this->setCompany($cuit, $nombre, $address, $link , $isActive);
+                $this->companyDAO->Add($company);
+            } else {
+                ?>
+                    <script>alert('The company already exists!');</script>
+                <?php
+            }
+        } else {
+            $company = $this->setCompany($cuit, $nombre, $address, $link, $isActive);
+            $this->companyDAO->Add($company);
+        }
+        $this->ShowAddView();
+    }
+
+    private function setCompany($cuit, $nombre, $address, $link, $isActive) {
+        $company = new Company();
+        $company->setNombre($nombre);
+        $company->setCuit($cuit);
+        $company->setAddress($address);
+        $company->setLink($link);
+        $company->setIsActive($isActive);
+        return $company;
+    }
+
+
     public function validaRequerido($valor)
     {
         if (trim($valor) == '') {
