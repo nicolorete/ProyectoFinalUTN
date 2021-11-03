@@ -55,31 +55,48 @@ class StudentDAOPDO
             // $query = 'CALL student_Add(?, ?, ?)';
 
             // $parameters["email"]      = $student->getEmail();
-            // // $parameters["password"] = $student->getPassword();
             
-
+            
             // $this->connection = Connection::GetInstance();
-
+            
             // $result = $this->connection->Execute($query, $parameters, QueryType::StoredProcedure);
-
+            
+            
+            $sql = ("INSERT INTO " . $this->tableName . " (studentId, carrerId, firstName, lastName, dni, fileNumber, gender, email, phoneNumber, active, password , birthDate)
+             VALUES (:studentId, :carrerId, :firstName, :lastName, :dni, :fileNumber, :gender, :email, :phoneNumber, :active, :password, :birthDate);");
+            
+            var_dump($sql);
+            $parameters["studentId"] = $student->getStudentId();
+            $parameters["carrerId"] = $student->getCareer();
+            $parameters["firstName"] = $student->getFirstName();
+            $parameters["lastName"] = $student->getLastName();
+            $parameters["dni"] = $student->getDni();
+            $parameters["fileNumber"] = $student->getFileNumber();
+            $parameters["gender"] = $student->getGender();
+            $parameters["email"] = $student->getEmail();
+            $parameters["phoneNumber"] = $student->getPhoneNumber();
+            $parameters["active"] = $student->getActive();
+            $parameters["password"] = $student->getPassword();
+            $parameters["birthDate"] = $student->getBirthDate();
             
 
-            $query2 = "INSERT INTO". $this->tableName . "(studentId, carrerId, firstName, lastName, dni, fileNumber, gender, email, phoneNumber, active)
-             VALUES (:studentId, :carrerId, :firstName, :lastName, :dni, :fileNumber, :gender, :email, :phoneNumber, :active);";
+            // if($parameters["active"] == true){
+            //     $parameters["active"] = 1;
+            // }else{
+            //     $parameters["active"] = 0;
+            // }
 
-            $parameters2["idStudent"] = $student->getStudentId();
-            $parameters2["carrerId"] = $student->getCareer();
-            $parameters2["firstName"] = $student->getFirstName();
-            $parameters2["lastName"] = $student->getLastName();
-            $parameters2["dni"] = $student->getDni();
-            $parameters2["fileNumber"] = $student->getFileNumber();
-            $parameters2["gender"] = $student->getGender();
-            $parameters2["email"] = $student->getEmail();
-            $parameters2["phoneNumber"] = $student->getPhoneNumber();
-            $parameters2["active"] = $student->getActive();
+            var_dump($parameters);
+            
+
+            // $query2->execute() 
+
+
 
             $this->connection =  Connection::GetInstance();
-            $this->connection->ExecuteNonQuery($query2, $parameters2, QueryType::Query);
+
+            $this->connection->ExecuteNonQuery($sql, $parameters);
+
         } catch (PDOException $e) {
             throw $e;
         } catch (Exception $ex) {

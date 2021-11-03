@@ -149,7 +149,7 @@ class HomeController
 		$email = $_POST['email'];
 		$userFound = $this->studentDAO->GetByEmailApi($email);
 		if($userFound != NULL){
-			$this->studentDAOPDO->AddBd($userFound);
+			$this->studentDAOPDO->Add($userFound);
 		}else{
 			echo "chau";
 		}
