@@ -7,7 +7,7 @@
         <div class="cabecera">
             <h2>ALTA USUARIO</h2>
         </div>
-        <form action="<?php /*echo FRONT_ROOT."Hacer funcion de alta alumno en la base de datos"*/ ?>" method="post" id="formulario">
+        <form action="<?php echo FRONT_ROOT. "Home/StudentRegister" ?>" method="POST" id="formulario">
 
            
             
@@ -18,12 +18,12 @@
                 <label for="pass">Password</label>
                 <input name="password" id="pass" type="password">
                 <p></p>   
-                <label for="pass">Apellido</label>
-                <input name="password" id="pass" type="password">
+                <!-- <label for="apellido">Apellido</label>
+                <input name="text" id="apellido" type="password">
                 <p></p>    
                 <label for="pass">DNI</label>
-                <input name="password" id="pass" type="password">
-                <p></p>
+                <input name="number" id="pass" type="password">
+                <p></p> -->
                 <a href="<?= FRONT_ROOT ?>Home/ShowLoginView" class="ml-2"><-Volver</a>
                          
             </div>

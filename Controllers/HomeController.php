@@ -144,6 +144,17 @@ class HomeController
 		// }
 	}
 
+
+	public function StudentRegister(){
+		$email = $_POST['email'];
+		$userFound = $this->studentDAO->GetByEmailApi($email);
+		if($userFound != NULL){
+			$this->studentDAOPDO->AddBd($userFound);
+		}else{
+			echo "chau";
+		}
+	}
+
 	public function ShowLoginView()
 	{
 		require_once(VIEWS_PATH . 'home.php');

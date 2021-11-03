@@ -87,6 +87,10 @@ class StudentDAOPDO
         }
     }
 
+    public function AddBd($student){
+        var_dump($student);
+    }
+
     public function GetAll()
     {
         try {
