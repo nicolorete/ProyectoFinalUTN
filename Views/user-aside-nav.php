@@ -7,7 +7,7 @@
                 <a class="" href="<?= FRONT_ROOT ?>Home/ShowUserView">
                     <span class="icon">
                         <i class="fa fa-home"></i>
-                    </span> Propuestas Laborales
+                    </span> Dashboard
                 </a>
             </li>
             <li>
