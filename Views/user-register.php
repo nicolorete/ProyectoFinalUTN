@@ -15,8 +15,8 @@
                 <label for="email">E-mail</label>
                 <input name="email" id="email" type="email">
                 <p></p>
-                <label for="pass">Password</label>
-                <input name="password" id="pass" type="password">
+                <label for="password">Password</label>
+                <input name="password" id="password" type="password">
                 <p></p>   
                 <!-- <label for="apellido">Apellido</label>
                 <input name="text" id="apellido" type="password">

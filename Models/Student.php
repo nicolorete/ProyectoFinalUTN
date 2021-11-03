@@ -32,7 +32,7 @@
             return $this->password;
         }
 
-        public function setPassword($studentId){
+        public function setPassword($password){
             $this->password = $password;
         }
         

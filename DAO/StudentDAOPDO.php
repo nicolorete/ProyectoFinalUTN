@@ -109,7 +109,7 @@ class StudentDAOPDO
 
                 $user->setStudentId($row["studentId"]);
                 $user->setEmail($row["email"]);
-                // $user->setPassword($row["password"]);
+                $user->setPassword($row["password"]);
                 $user->setLastName($row["lastName"]);
                 $user->setFirstName($row["firstName"]);
                 $user->setDni($row["dni"]);
@@ -119,6 +119,7 @@ class StudentDAOPDO
                 $user->setPhoneNumber($row["phoneNumber"]);
                 $user->setActive($row["active"]);
 
+                var_dump($user);
                 array_push($studentList, $user);
             }
 

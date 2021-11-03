@@ -107,13 +107,17 @@ class HomeController
 			$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
 		}
 		if ($userFound != null) {
-			if($userFound instanceof Admin){
+			if($userFound instanceof Admin && $password == $userFound->getPassword()){
 				$_SESSION['loggedAdmin'] = $userFound;
 				$this->ShowAdminView();
-			}else{
+			}
+			elseif($userFound != null){		
 				$_SESSION['loggedUser'] = $userFound;
 				$message = 'Bienvenido Usuario';
-				$this->ShowUserView();
+				// $this->ShowUserView();
+				var_dump($userFound);
+			}else{
+				$this->ShowLoginView();
 			}
 		}else{
 			$userFound = $this->studentDAO->GetByEmailApi($email);
@@ -151,7 +155,10 @@ class HomeController
 		if($userFound == NULL){
 			$userFound = $this->studentDAO->GetByEmailApi($email);
 			if($userFound != NULL){
+				$userFound->setPassword($_POST["password"]); 
 				$this->studentDAOPDO->Add($userFound);
+				$this->ShowLoginView();
+
 			}else{
 				echo "chau";
 			}
