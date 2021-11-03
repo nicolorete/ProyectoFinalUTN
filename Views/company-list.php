@@ -35,12 +35,11 @@ use DAO\CompanyRepository as CompanyDAO;
                     <table class="table is-hoverable is-bordered is-fullwidth" id="datatable">
                         <thead>
                             <tr>
-                                <th>Id Empresa</th>
-                                <th>Cuit</th>
-                                <th>Nombre</th>
-                                
-                                <th>Direccion</th>
-                                <th>Activo </th>
+                                <th class="has-text-centered">Id Empresa</th>
+                                <th class="has-text-centered">Cuit</th>
+                                <th class="has-text-centered">Nombre</th>
+                                <th class="has-text-centered">Direccion</th>
+                                <th class="has-text-centered">Activo </th>
                                 <th class="has-text-centered">Action</th>
                             </tr>
                         </thead>
@@ -50,11 +49,27 @@ use DAO\CompanyRepository as CompanyDAO;
 
                                 ?>
                                 <tr>
-                                    <td><?= $company->getCompanyId(); ?></td>
-                                    <td><?= $company->getCuit(); ?></td>
-                                    <td><?= $company->getNombre(); ?></td>
-                                    <td><?= $company->getAddress(); ?></td>
-                                    <td><?= $company->getIsActive(); ?></td>
+                                    <td class="has-text-centered"><?= $company->getCompanyId(); ?></td>
+                                    <td class="has-text-centered"><?= $company->getCuit(); ?></td>
+                                    <td class="has-text-centered"><?= $company->getNombre(); ?></td>
+                                    <td class="has-text-centered"><?= $company->getAddress(); ?></td>
+                                    <td class="has-text-centered">
+                                        <form action="<?= FRONT_ROOT ?>Company/Delete" method="post">
+                                            <p class="control has-text-centered">
+                                                <button class="button is-rounded is-text action-delete" name="BtnDel" data-id="1" value="<?= $company->getCompanyId(); ?>">
+                                                    <span class="icon">
+                                                        <?php if ($company->getIsActive() == 0) {
+                                                                echo "<i class='fa fa-toggle-off'></i>";
+                                                                } else {
+                                                                echo "<i class='fa fa-toggle-on'></i>";
+                                                                }
+                                                        ?>
+
+                                                    </span>
+                                                </button>
+                                            </p>
+                                        </form>
+                                    </td>
                                     <td class="has-text-centered">
 
                                         <div class="field is-grouped action">
@@ -70,21 +85,7 @@ use DAO\CompanyRepository as CompanyDAO;
                                                 </a>  -->
                                             </p>
 
-                                            <form action="<?= FRONT_ROOT ?>Company/Delete" method="post">
-                                                <p class="control">
-                                                    <button class="button is-rounded is-text action-delete" name="BtnDel" data-id="1" value="<?= $company->getCompanyId(); ?>">
-                                                        <span class="icon">
-                                                            <?php if ($company->getIsActive() == 0) {
-                                                                    echo "<i class='fa fa-toggle-off'></i>";
-                                                                } else {
-                                                                    echo "<i class='fa fa-toggle-on'></i>";
-                                                                }
-                                                                ?>
-
-                                                        </span>
-                                                    </button>
-                                                </p>
-                                            </form>
+                                          
                                         </div>
 
                                     </td>
