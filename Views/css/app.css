@@ -3434,10 +3434,14 @@ print {
 
 .fa-toggle-off:before {
   content: "\F346";
+  color: red;
+  font-size: 24px;
 }
 
 .fa-toggle-on:before {
   content: "\F347";
+  color: green;
+  font-size: 24px;
 }
 
 .fa-trademark:before {

@@ -4,3 +4,12 @@
     align-items: center;
     justify-content: center;
 }
+
+.fa-toggle-on::before {
+    color: greenyellow;
+    font-size: 24px;
+}
+.fa-toggle-off::before {
+    color: red;
+    font-size: 24px;
+}
