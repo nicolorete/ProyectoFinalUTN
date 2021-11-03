@@ -32,7 +32,7 @@ class JobPositionController
             $JobPostionList = $this->jobPositionDAO->GetAll();
             if ($JobPostionList == null) {
                 echo "<script>alert('Trayendo jobPositions de la API');</script>";
-                $JobPostionList = $this->jobPositionDAO->GetJobPositionListFromApi();
+                $JobPostionList = $this->jobPositionDAO->GetJobPositionListFromApi();    //PARA PROBAR COMENTAR TODO MENOS ESTO
             }
     
             # Trae las careers. Primero local. Despues de  la api
