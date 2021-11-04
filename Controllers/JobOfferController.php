@@ -2,8 +2,8 @@
     namespace Controllers;
 
     use DAO\JobOfferDAOPDO as JobOfferDAO;
-    use DAO\JobPositionDAOPDO as JobPositionDAO;
-    use DAO\CompanyDAOPDO as CompanyDAO;
+    use DAO\JobPositionDAOPDO as JobPositionDAOPDO;
+    use DAO\CompanyDAOPDO as CompanyDAOPDO;
     use Models\JobOffer as JobOffer;
     
 
@@ -18,9 +18,14 @@
         }
 
         public function ShowAddView(){
+
+            $jobPositionDAO = new JobPositionDAOPDO;
+            $jobPositionList = $jobPositionDAO->GetAll();
+            $companyDAO = new CompanyDAOPDO;
+            $companyList = $companyDAO->GetAll();
             require_once(VIEWS_PATH. "joboffer-add.php");
         }
-        public function ShowListView(){
+            public function ShowListView(){
             require_once(VIEWS_PATH. "joboffer-list.php");
         }
 
