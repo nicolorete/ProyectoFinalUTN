@@ -32,6 +32,32 @@ use DAO\CompanyRepository as CompanyDAO;
             <div class="card">
 
                 <div class="card-content">
+                
+                <div class="card-filter">
+                        <div class="field">
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" id="table-search" type="text" placeholder="Ingrese nombre de la Empresa">
+                                <span class="icon is-left">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </div>                       
+                        <div class="field has-addons">
+                            <p class="control">
+                                <a class="button" href="#">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-plus"></i>
+                                    </span>
+                                    <span>Buscar</span>
+                                </a>
+                            </p>
+                        
+                        </div>
+                        
+                </div>
+
+
+
                     <table class="table is-hoverable is-bordered is-fullwidth" id="datatable">
                         <thead>
                             <tr>

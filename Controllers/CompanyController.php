@@ -34,7 +34,7 @@ class CompanyController
                 $this->companyDAO->Add($company);
             } else {
                 ?>
-                    <script>alert('The company already exists!');</script>
+                    <script>alert('Esa Empresa ya existe!');</script>
                 <?php
             }
         } else {
@@ -73,8 +73,12 @@ class CompanyController
         $companyNew->setAddress($address);
         $companyNew->setLink($link);
         $companyNew->setIsActive($isActive); 
-        $message = 'Empresa modificada!';
-        $this->ShowListView($message);
+        
+        ?>
+            <script>alert('Empresa Modificada!');</script>
+        <?php
+        
+        $this->ShowListView();
     }
 
     public function ShowCompany ($company){
@@ -91,11 +95,11 @@ class CompanyController
 
     }
 
-    public function companyFilter($searchedCompany, $companyList) {
+    public function searcherCompany($companyFound, $companyList) {
         $i = 0;
-        if($searchedCompany != ""){
+        if($companyFound != ""){
             foreach($companyList as $company){
-                if(strpos($company->getNombre(), $searchedCompany) !== false && $company->getIsActive() == 0){
+                if(strpos($company->getNombre(), $companyFound) !== false && $company->getIsActive() == 0){
                     $i++;
                     $this->showCompany($company);
                 }
@@ -154,7 +158,8 @@ class CompanyController
     public function ShowListViewUser()
     {
         require_once(VIEWS_PATH . "validate-session.php");
-        $companyList = $this->companyDAO->getAll();
+        $companyList = $this->companyDAO->GetActive();
+
 
         require_once(VIEWS_PATH . "user-company-list.php");
     }
