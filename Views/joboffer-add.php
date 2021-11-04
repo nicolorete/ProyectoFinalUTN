@@ -64,7 +64,7 @@ include('top-nav.php');
                                     </div>
                                 </div>
                                 <div class="field">
-                                    <label class="label" for="companyId">Puesto de Trabajo: </label>
+                                    <label class="label" for="companyId">Empresa: </label>
                                     <div class="control">
                                         <select class="select" name="companyId">
                                         <?php
