@@ -1,11 +1,10 @@
 <?php
-
-    if($_SESSION['loggedAdmin'] == "undefined"){
-        $user = $_SESSION['loggedAdmin']; 
-    }else{
+    if($_SESSION['logged'] == "s"){
         $user = $_SESSION['loggedUser']; 
+    }else{
+        $user = $_SESSION['loggedAdmin']; 
     }
-
+    
     include('top-nav.php');
 
     
@@ -69,8 +68,9 @@
                         </thead>
                         <tbody>
                         <?php
+                        if($jobOfferList != null){
                         foreach ($jobOfferList as $jobOffer) {
-
+                        }
                         ?>
                         <tr>
                             <td><?= $jobOffer->getTitle(); ?></td>

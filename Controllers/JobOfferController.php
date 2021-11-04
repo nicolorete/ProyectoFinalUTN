@@ -42,6 +42,7 @@
             $offer->setActive($_POST['active']);
             
             $this->jobOfferDAO->Add($offer);
+            
             $this->ShowListView();
             
         }

@@ -109,10 +109,14 @@ class HomeController
 		if ($userFound != null) {
 			if($userFound instanceof Admin && $password == $userFound->getPassword()){
 				$_SESSION['loggedAdmin'] = $userFound;
+				$_SESSION['logged'] = "a";
+
 				$this->ShowAdminView();
 			}
-			elseif($password == $userFound->getPassword()){		
+			elseif($password == $userFound->getPassword() && $userFound->getActive() == true){		
 				$_SESSION['loggedUser'] = $userFound;
+				$_SESSION['logged'] = "s";
+
 				$message = 'Bienvenido Usuario';
 				$this->ShowUserView();
 				// var_dump($userFound);

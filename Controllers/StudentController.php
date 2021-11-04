@@ -39,7 +39,7 @@ class StudentController
         }
 
         public function ShowListView(){
-            $studentList = $this->studentDAO->getAll();
+            $studentList = $this->studentDAOPDO->getAll();
 
             require_once(VIEWS_PATH."user-list.php");
         }
