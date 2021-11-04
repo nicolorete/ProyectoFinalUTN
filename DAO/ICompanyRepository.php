@@ -10,7 +10,7 @@
         public function GetCompanyByID($companyId);
         public function GetCompanyByName($companyName);
         public function Delete($companyId);
-        public function Modify(Company $Company);
+        function Modify(Company $company);
     }
 
 ?>

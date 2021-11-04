@@ -6,8 +6,8 @@
 
 
 
-use models\Admin as Admin;
-use DAO\AdminDAOPDO as AdminDAO;
+    use models\Admin as Admin;
+    use DAO\AdminDAOPDO as AdminDAO;
 ?>
 
 <div class="columns" id="app-content">
@@ -51,8 +51,9 @@ use DAO\AdminDAOPDO as AdminDAO;
                                         <div class="field is-grouped action">
                                             <p class="control">
                                                 <form action="<?= FRONT_ROOT ?>Admin/Delete" method="post">
-                                                    <button class="button is-warning btnEdit"  name="adminId" type="submit">
+                                                    <button class="button is-warning btnEdit"  name="BtnDel" data-id="1" >
                                                     Delete
+                                                    </button>
                                                 </form>
                                             </p>
                                         </div>
