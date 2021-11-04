@@ -2,7 +2,9 @@
     padding-left: 0px; padding-bottom: 0px; padding-right: 0px; padding-top: 0px;">
 
     <div class="navbar-brand column is-2 is-paddingless">
-    <img src="<?php echo FRONT_ROOT . IMG_PATH; ?>logo.png" class="logo" alt="Logo">
+        <div class="conteiner">
+        <img src="<?= FRONT_ROOT . VIEWS_PATH ?>images/logo.png" class="logo" alt="Logo">
+        </div>
         
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="touchMenu">
             <span aria-hidden="true"></span>
