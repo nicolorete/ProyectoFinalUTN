@@ -1,11 +1,19 @@
 <?php
 
-    $user = $_SESSION['loggedAdmin']; 
+    if($_SESSION['loggedAdmin'] == "undefined"){
+        $user = $_SESSION['loggedAdmin']; 
+    }else{
+        $user = $_SESSION['loggedUser']; 
+    }
+
     include('top-nav.php');
 
     
     use models\JobOffer as jobOffer;
     use DAO\JobOfferDAOPDO as jobOfferDAO;
+
+    $jobOffer = new jobOfferDAO();
+    $jobOfferList = $jobOffer->GetAll(); 
 ?> 
 
 <div class="columns" id="app-content">
@@ -56,21 +64,25 @@
                                 <th class="has-text-centered"> Fecha</th>
                                 <th class="has-text-centered"> Empresa</th>
                                 <th class="has-text-centered"> Puesto</th>
-                                <th class="has-text-centered">Action</th>
+                                <th class="has-text-centered">Descripción</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($jobOfferList as $jobOffer) {
+                        <?php
+                        foreach ($jobOfferList as $jobOffer) {
 
                         ?>
                         <tr>
-                            <td><?= $jobOffer->getjobOfferId(); ?></td>
-                            <td><?= $jobOffer->getCareerId(); ?></td>
+                            <td><?= $jobOffer->getTitle(); ?></td>
+                            <td><?= $jobOffer->getDate(); ?></td>
+                            <td><?= $jobOffer->getCompany()->getNombre(); ?></td>
+                            <td><?= $jobOffer->getJobPosition(); ?></td>
                             <td><?= $jobOffer->getDescription(); ?></td>
-                            <td class="has-text-centered">
+
+                            <!-- <td class="has-text-centered">
                             
                                 <div class="field is-grouped action">
-                                    <p class="control">
+                                     <p class="control">
                                         <form action="" method="post">
                                             <button class="button is-warning btnEdit" value=""name=" " type="submit">
                                                 Ver Oferta
@@ -83,9 +95,9 @@
                                                 Aplicar
                                             </button>
                                         </p>
-                                    </form>
+                                    </form> 
                                 </div>
-                            </td>
+                            </td> -->
                         </tr>
                         <?php } ?>
                         </tbody>

@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li>
-                <a class="" href="<?= FRONT_ROOT ?>JobPosition/ShowListView">
+                <a class="" href="<?= FRONT_ROOT ?>JobOffer/ShowListView">
                     <span class="icon">
                         <i class="fa fa-search"></i>
                     </span> Propuestas Laborales

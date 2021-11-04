@@ -41,8 +41,8 @@
             $offer->setCompany($_POST['nombre']);
             $offer->setActive($_POST['active']);
             
-            var_dump($offer);
             $this->jobOfferDAO->Add($offer);
-
+            $this->ShowListView();
+            
         }
     }

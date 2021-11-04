@@ -259,7 +259,8 @@ class JobPositionDAOPDO
                 
                 $parameters["jobPositionId"] = $jobPositionId;
 
-                $result = $this->connection->Execute($query, $parameters)[0];
+                $result = $this->connection->Execute($query, $parameters); 
+                // en la linea anterior iba un  [0] , lo saque por que tiraba error, por si rompe algo volvelo a poner
 
                 $careerDAO = new CareerDAO();
 
