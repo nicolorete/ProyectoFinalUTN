@@ -84,6 +84,43 @@ class CompanyDAOPDO implements ICompanyDAO
         }
     }
 
+    public function GetActive()         //devuelve instancias de company             
+    {
+        try {
+            $companyList = array();
+
+            $query = "SELECT company.companyId, company.cuit, company.nombre, company.address, company.link, company.isActive
+                FROM " . $this->tableName ;
+                
+
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query);
+
+
+            foreach ($resultSet as $row) {
+                $company = new Company();
+                if ($row["isActive"] == 1)
+                {
+                    $company->setCompanyId($row["companyId"]);
+                    $company->setCuit($row["cuit"]);
+                    $company->setNombre($row["nombre"]);
+                    $company->setAddress($row["address"]);
+                    $company->setLink($row["link"]);
+                    $company->setIsActive($row["isActive"]);
+                    array_push($companyList, $company);
+                }
+
+                
+            }
+
+            return $companyList;
+        } catch (PDOException $e) {
+            throw $e;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
    
 
    

@@ -154,7 +154,8 @@ class CompanyController
     public function ShowListViewUser()
     {
         require_once(VIEWS_PATH . "validate-session.php");
-        $companyList = $this->companyDAO->getAll();
+        $companyList = $this->companyDAO->GetActive();
+
 
         require_once(VIEWS_PATH . "user-company-list.php");
     }
