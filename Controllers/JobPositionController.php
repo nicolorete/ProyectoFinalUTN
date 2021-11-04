@@ -16,17 +16,12 @@ class JobPositionController
             $this->jobPositionDAO = new JobPositionDAOPDO();
             $this->careerDAO = new CareerDAOPDO();
         }
-
-        
-       
-
+                
         public function ShowListView(){
             $JobPostionList = $this->jobPositionDAOPDO->GetJobPositionListFromApi();
 
             require_once(VIEWS_PATH."jobposition-list.php");
         }
-
-      
         // public function ShowListView()
         // {
         //     // Trae los jobpositions Primero local, despues de la api

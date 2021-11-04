@@ -14,25 +14,6 @@
             $this->fileDAO = new FileDAOPDO();
         }
 
-        public function ShowUploadView()
-        {
-            require_once(VIEWS_PATH."index.php");
-        }
-
-        public function ShowListView($message = "")
-        {
-            $fileList = $this->fileDAO->GetAll();
-
-            require_once(VIEWS_PATH."file-list.php");
-        }
-
-        public function Showfile($fileId)
-        {
-            $file = $this->fileDAO->getByFileId($fileId);
-
-            require_once(VIEWS_PATH."file-show.php");
-        }
-
         public function Upload($file)
         {
             try
@@ -69,6 +50,24 @@
             }
 
             $this->ShowListView($message);
+        }
+        public function ShowUploadView()
+        {
+            require_once(VIEWS_PATH."index.php");
+        }
+
+        public function ShowListView($message = "")
+        {
+            $fileList = $this->fileDAO->GetAll();
+
+            require_once(VIEWS_PATH."file-list.php");
+        }
+
+        public function Showfile($fileId)
+        {
+            $file = $this->fileDAO->getByFileId($fileId);
+
+            require_once(VIEWS_PATH."file-show.php");
         }    
     }
 ?>

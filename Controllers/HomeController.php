@@ -36,6 +36,120 @@ class HomeController
 	{
 		$this->ShowLoginView();
 
+	}	
+
+	//Funcion para ingresar al sistema.
+	public function Login($email, $password)
+	{
+		$userFound = null;
+		//$adminFound = null;
+		//$userFound = $this->studentDAO->GetByEmail($email);
+		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
+		if($userFound == null){
+			$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
+		}
+		if ($userFound != null) {
+			if($userFound instanceof Admin && $password == $userFound->getPassword()){
+				$_SESSION['loggedAdmin'] = $userFound;
+				$_SESSION['logged'] = "a";
+
+				$this->ShowAdminView();
+			}
+			elseif($password == $userFound->getPassword() && $userFound->getActive() == true){		
+				$_SESSION['loggedUser'] = $userFound;
+				$_SESSION['logged'] = "s";
+
+				$message = 'Bienvenido Usuario';
+				$this->ShowUserView();
+				// var_dump($userFound);
+			}else{
+				$this->ShowLoginView();
+			}
+		}else{
+			$userFound = $this->studentDAO->GetByEmailApi($email);
+			if($userFound != NULL){
+				$this->ShowRegisterView();
+				// $this->studentDAO->add($userFound);
+			}else{
+				$this->ShowLoginView();
+			}
+		}
+		// } else {
+		// 	$userFound = $this->userDAO->GetByEmail($email);
+		// 	// var
+		// 	if($userFound != null){
+		// 		if ($userFound->getRole()->getDescription() == '0') {
+		// 			$_SESSION['loggedUser'] = $userFound;
+		// 			$message = 'Bienvenido Usuario';
+		// 			$this->ShowUserView($userFound);					
+		// 		} else {
+		// 			$message = 'Bienvenido Admin';
+		// 			$_SESSION['loggedUser'] = $userFound;
+		// 			$this->ShowAdminView($message);
+					
+		// 		}
+		// 	}else{
+		// 		$this->ShowLoginView();
+		// 	}
+		// }
+	}
+
+	public function StudentRegister(){
+		$email = $_POST['email'];
+		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
+		if($userFound == NULL){
+			$userFound = $this->studentDAO->GetByEmailApi($email);
+			if($userFound != NULL){
+				$userFound->setPassword($_POST["password"]); 
+				$this->studentDAOPDO->Add($userFound);
+				$this->ShowLoginView();
+
+			}else{
+				echo "chau";
+			}
+		}else{
+			$this->ShowLoginView();
+		}
+	}
+
+	public function ShowLoginView()
+	{
+		require_once(VIEWS_PATH . 'home.php');
+	}
+
+	public function ShowRegisterView()
+	{
+		require_once(VIEWS_PATH . 'user-register.php');
+	}
+
+	public function ShowUserView()
+	{
+		if (isset($_SESSION['loggedUser'])) {
+			$userFound = $_SESSION['loggedUser'];
+			$_SESSION['usuario'] = $userFound;
+			require_once(VIEWS_PATH . 'user-dashboard.php');
+		} else {
+			$message = "Debe iniciar sesión primero!";
+			$this->ShowLoginView($message);
+		}
+	}
+
+	public function ShowAdminView($message = '')
+	{
+		if (isset($_SESSION['loggedAdmin'])) {
+			$userFound = $_SESSION['loggedAdmin'];
+			require_once(VIEWS_PATH . 'admin-view.php');
+		} else {
+			$message = "Debe iniciar sesión primero!";
+			$this->ShowLoginView($message);
+		}
+	}
+
+	public function LogOut()
+	{
+		session_destroy();
+		$message = "Gracias por visitarnos";
+		$this->ShowLoginView($message);
 	}
 
 	// # Funcion para agregar un usuario
@@ -96,120 +210,7 @@ class HomeController
     //     return $user;
     // }
 
-	# Funcion para ingresar al sistema.
-	public function Login($email, $password)
-	{
-		$userFound = null;
-		//$adminFound = null;
-		//$userFound = $this->studentDAO->GetByEmail($email);
-		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
-		if($userFound == null){
-			$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
-		}
-		if ($userFound != null) {
-			if($userFound instanceof Admin && $password == $userFound->getPassword()){
-				$_SESSION['loggedAdmin'] = $userFound;
-				$_SESSION['logged'] = "a";
-
-				$this->ShowAdminView();
-			}
-			elseif($password == $userFound->getPassword() && $userFound->getActive() == true){		
-				$_SESSION['loggedUser'] = $userFound;
-				$_SESSION['logged'] = "s";
-
-				$message = 'Bienvenido Usuario';
-				$this->ShowUserView();
-				// var_dump($userFound);
-			}else{
-				$this->ShowLoginView();
-			}
-		}else{
-			$userFound = $this->studentDAO->GetByEmailApi($email);
-			if($userFound != NULL){
-				$this->ShowRegisterView();
-				// $this->studentDAO->add($userFound);
-			}else{
-				$this->ShowLoginView();
-			}
-		}
-		// } else {
-		// 	$userFound = $this->userDAO->GetByEmail($email);
-		// 	// var
-		// 	if($userFound != null){
-		// 		if ($userFound->getRole()->getDescription() == '0') {
-		// 			$_SESSION['loggedUser'] = $userFound;
-		// 			$message = 'Bienvenido Usuario';
-		// 			$this->ShowUserView($userFound);					
-		// 		} else {
-		// 			$message = 'Bienvenido Admin';
-		// 			$_SESSION['loggedUser'] = $userFound;
-		// 			$this->ShowAdminView($message);
-					
-		// 		}
-		// 	}else{
-		// 		$this->ShowLoginView();
-		// 	}
-		// }
-	}
-
-
-	public function StudentRegister(){
-		$email = $_POST['email'];
-		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
-		if($userFound == NULL){
-			$userFound = $this->studentDAO->GetByEmailApi($email);
-			if($userFound != NULL){
-				$userFound->setPassword($_POST["password"]); 
-				$this->studentDAOPDO->Add($userFound);
-				$this->ShowLoginView();
-
-			}else{
-				echo "chau";
-			}
-		}else{
-			$this->ShowLoginView();
-		}
-	}
-
-	public function ShowLoginView()
-	{
-		require_once(VIEWS_PATH . 'home.php');
-	}
-
-	public function ShowRegisterView()
-	{
-		require_once(VIEWS_PATH . 'user-register.php');
-	}
-
-	public function ShowUserView()
-	{
-		if (isset($_SESSION['loggedUser'])) {
-			$userFound = $_SESSION['loggedUser'];
-			$_SESSION['usuario'] = $userFound;
-			require_once(VIEWS_PATH . 'user-dashboard.php');
-		} else {
-			$message = "Debe iniciar sesión primero!";
-			$this->ShowLoginView($message);
-		}
-	}
-
-
-
-
-	public function ShowAdminView($message = '')
-	{
-		if (isset($_SESSION['loggedAdmin'])) {
-			$userFound = $_SESSION['loggedAdmin'];
-			require_once(VIEWS_PATH . 'admin-view.php');
-		} else {
-			$message = "Debe iniciar sesión primero!";
-			$this->ShowLoginView($message);
-		}
-	}
-
-	
-
-	// public function ShowUserProfile($message = "")
+		// public function ShowUserProfile($message = "")
 	// {
 	// 	if (isset($_SESSION['loggedUser'])) {
 	// 		$loggedUser = $_SESSION['loggedUser'];
@@ -227,11 +228,4 @@ class HomeController
 	// 		$this->ShowLoginView($message);
 	// 	}
 	// }
-
-	public function LogOut()
-	{
-		session_destroy();
-		$message = "Gracias por visitarnos";
-		$this->ShowLoginView($message);
-	}
 }

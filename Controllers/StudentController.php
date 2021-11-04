@@ -17,31 +17,18 @@ class StudentController
             $this->studentDAOPDO = new StudentDAOPDO();
         }
 
-        public function ShowAddView(){
-            require_once(VIEWS_PATH."user-add.php");
-        }
-
         public function Add($student){
             
             $newStudent = new Student($firstName, $lastName, $dni, $fileNumber, $gender, $birthDate, $email, $phoneNumber, $active);
 
             $studentList = $this->studentDAO->getAll();
             $this->setIdByLastId($studentList, $newStudent);
-
-            
-
-            $newCareer = new Career("N/A", "N/A", "N/A");
+            $newCareer = new Career("", "", "");
             $newStudent->setCareer($newCareer);
 
             $this->studentDAO->add($newStudent);
 
             header('location: '.FRONT_ROOT.'Student/ShowListView');
-        }
-
-        public function ShowListView(){
-            $studentList = $this->studentDAOPDO->getAll();
-
-            require_once(VIEWS_PATH."user-list.php");
         }
 
         private function setIdByLastId($studentList, $student){
@@ -52,8 +39,6 @@ class StudentController
                  $student->setStudentId($lastId + 1);
              }
         }
-       
-    
 
         private function getStudentById($id){
             $studentList = $this->studentDAO->getAll();
@@ -67,18 +52,12 @@ class StudentController
 
             return $student;
         }
-
-       
-
-        //DELETES THE LIST AND FILLS WITH THE API DATA
+        
         public function updateFromAPI(){
             $this->studentDAO->retrieveAPI();
 
             $this->ShowListView();
         }
-
-
-        //----------------------------------------------------------//
 
         public function ShowRegisterView(){
             require_once(VIEWS_PATH."user-register.php");
@@ -95,5 +74,16 @@ class StudentController
                 
             }
         }
+
+        public function ShowAddView(){
+            require_once(VIEWS_PATH."user-add.php");
+        }
+        
+        public function ShowListView(){
+            $studentList = $this->studentDAOPDO->getAll();
+
+            require_once(VIEWS_PATH."user-list.php");
+        }
+
     }
 ?> 

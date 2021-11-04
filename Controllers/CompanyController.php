@@ -54,7 +54,6 @@ class CompanyController
         return $company;
     }
 
-
     public function validaRequerido($valor)
     {
         if (trim($valor) == '') {
@@ -63,6 +62,7 @@ class CompanyController
             return true;
         }
     }
+
     public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive)
     {
         // $this->companyDAO->Modify($companyId, $cuit, $nombre, $address, $link, $isActive);
@@ -80,21 +80,7 @@ class CompanyController
         
         $this->ShowListView();
     }
-
-    public function ShowCompany ($company){
-        ?>
-        <tr>
-          <td><?php echo $company->getNombre() ?></td>
-          <td><?php echo $company->getCuit() ?></td>
-          <td><?php echo $company->getAddress() ?></td>
-          <td><?php echo $company->getLink() ?></td>
-
-
-          </tr>
-        <?php
-
-    }
-
+    
     public function searcherCompany($companyFound, $companyList) {
         $i = 0;
         if($companyFound != ""){
@@ -140,6 +126,19 @@ class CompanyController
         $this->ShowListView($message);
     }
 
+    public function ShowCompany ($company){
+        ?>
+        <tr>
+          <td><?php echo $company->getNombre() ?></td>
+          <td><?php echo $company->getCuit() ?></td>
+          <td><?php echo $company->getAddress() ?></td>
+          <td><?php echo $company->getLink() ?></td>
+
+
+          </tr>
+        <?php
+
+    }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function ShowAddView()
     {
@@ -163,8 +162,7 @@ class CompanyController
 
         require_once(VIEWS_PATH . "user-company-list.php");
     }
-    
-//------------------------------------------------------------------------------------------------------------------
+
     public function ShowCompanyView($companyId)
 	{
 		
@@ -174,6 +172,7 @@ class CompanyController
 				
 		
 	}
+    
     public function ShowCompanyEditView($companyId)
 	{
 		
