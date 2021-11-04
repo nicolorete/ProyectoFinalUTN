@@ -190,16 +190,13 @@ class CompanyDAOPDO implements ICompanyDAO
     {
         try {
 
-            $query = "UPDATE " . $this->tableName . "  SET cuit = :cuit, nombre = :nombre, address = :address, link = :link, isActive = :isActive WHERE companyId = :companyId";
-
-
-            
-
-            $parameters["cuit"]    = $company->getCuit();
+            $query = "UPDATE " . $this->tableName . "  SET cuit = :cuit, nombre = :nombre, address = :address, link = :link, isActive = :isActive WHERE companyId = :companyId;";
+            $parameters["companyId"] = $company->getCompanyId();
+            $parameters["cuit"] = $company->getCuit();
             $parameters["nombre"]    = $company->getNombre();
             $parameters["address"] = $company->getAddress();
             $parameters["link"] = $company->getLink();
-            $parameters["active"]    = $company->getIsActive();
+            $parameters["isActive"] = $company->getIsActive();
 
             $this->connection = Connection::GetInstance();
 
