@@ -95,11 +95,11 @@ class CompanyController
 
     }
 
-    public function companyFilter($searchedCompany, $companyList) {
+    public function searcherCompany($companyFound, $companyList) {
         $i = 0;
-        if($searchedCompany != ""){
+        if($companyFound != ""){
             foreach($companyList as $company){
-                if(strpos($company->getNombre(), $searchedCompany) !== false && $company->getIsActive() == 0){
+                if(strpos($company->getNombre(), $companyFound) !== false && $company->getIsActive() == 0){
                     $i++;
                     $this->showCompany($company);
                 }
