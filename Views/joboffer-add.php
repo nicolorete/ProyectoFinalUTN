@@ -70,7 +70,7 @@ include('top-nav.php');
                                         <?php
                                             foreach ($companyList as $company)
                                             { 
-                                                ?><option value="<?php echo $company->getCompanyId() ?>"><?php echo $company->getName() ?></option><?php
+                                                ?><option value="<?php echo $company->getCompanyId() ?>"><?php echo $company->getNombre() ?></option><?php
                                             }?>
                                         </select>
                                     </div>
