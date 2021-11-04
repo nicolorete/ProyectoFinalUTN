@@ -75,10 +75,10 @@ CREATE TABLE jobPosition(
 );
 
 CREATE TABLE jobOffer(
-	jobOfferId INT NOT NULL, 
+	jobOfferId INT NOT NULL AUTO_INCREMENT, 
 	title VARCHAR(30),
-    fecha DATE, 
-    description VARCHAR(30), 
+    date DATE, 
+    description VARCHAR(200), 
     jobPositionId INT NOT NULL,
     companyId INT NOT NULL,
     active boolean,

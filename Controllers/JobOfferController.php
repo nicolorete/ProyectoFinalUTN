@@ -33,7 +33,16 @@
 
         public function Add(){
 
-            var_dump($_POST);
+            $offer = new JobOffer;
+            $offer->setTitle($_POST['title']);
+            $offer->setDate($_POST['date']);
+            $offer->setDescription($_POST['description']);
+            $offer->setJobPosition($_POST['jobPositionId']);
+            $offer->setCompany($_POST['nombre']);
+            $offer->setActive($_POST['active']);
+            
+            var_dump($offer);
+            $this->jobOfferDAO->Add($offer);
 
         }
     }

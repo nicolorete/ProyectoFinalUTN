@@ -9,14 +9,14 @@
     class JobOfferDAOPDO 
     {
         private $connection;
-        private $tableName = "jobOffers";
+        private $tableName = "jobOffer";
 
         public function Add(JobOffer $jobOffer)
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (title, date, decription, active, jobPositionId, companyId) 
-                    VALUES (:title, :date, :description, :active, :jobPositionId, :companyId);";
+                $query = ("INSERT INTO  " . $this->tableName . " (title, date, description, active, jobPositionId, companyId) 
+                    VALUES (:title, :date, :description, :active, :jobPositionId, :companyId);");
 
                 $parameters["title"] = $jobOffer->getTitle();
                 $parameters["date"] = $jobOffer->getDate();

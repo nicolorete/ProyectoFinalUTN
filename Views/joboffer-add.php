@@ -64,9 +64,9 @@ include('top-nav.php');
                                     </div>
                                 </div>
                                 <div class="field">
-                                    <label class="label" for="companyId">Empresa: </label>
+                                    <label class="label" for="nombre">Empresa: </label>
                                     <div class="control">
-                                        <select class="select" name="companyId">
+                                        <select class="select" name="nombre">
                                         <?php
                                             foreach ($companyList as $company)
                                             { 
