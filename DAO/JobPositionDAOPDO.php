@@ -211,7 +211,7 @@ class JobPositionDAOPDO
             $response = curl_exec($url);
             $toJson = json_decode($response);
 
-            var_dump($toJson);
+            // var_dump($toJson);
 
             foreach($toJson as $key)
             {
@@ -228,24 +228,25 @@ class JobPositionDAOPDO
                         $newJobPosition->setCareer($newCareer);
                     }
                 }
-
+                
                 $newJobPosition->setJobPositionId($key->jobPositionId);
                 $newJobPosition->setDescription($key->description);
-
+                
                 // $newCareer = new Career($key->careerId, "FOO", "BAR");
                 // $newJobPosition->setCareer($newCareer);
                 // $newJobPosition->setJobPositionId($key->jobPositionId);
                 // $newJobPosition->setDescription($key->description);
-
+                
                 // $newCareer = new Career($key->careerId, "FOO", "BAR");
                 // $newJobPosition->setCareer($newCareer);
-
+                
+                // var_dump($newJobPosition);
 
                 array_push($this->jobPositionList, $newJobPosition);
             }
             
-            // return $this->jobPositionList;
-            echo end($this->jobPositionList);
+            return $this->jobPositionList;
+            // echo end($this->jobPositionList);
         }
 
         public function GetById($jobPositionId)

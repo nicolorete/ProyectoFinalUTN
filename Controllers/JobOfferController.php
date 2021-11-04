@@ -20,13 +20,20 @@
         public function ShowAddView(){
 
             $jobPositionDAO = new JobPositionDAOPDO;
-            $jobPositionList = $jobPositionDAO->GetAll();
+            $jobPositionList = $jobPositionDAO->GetJobPositionListFromApi();
             $companyDAO = new CompanyDAOPDO;
             $companyList = $companyDAO->GetAll();
             require_once(VIEWS_PATH. "joboffer-add.php");
         }
-            public function ShowListView(){
+
+        public function ShowListView(){
             require_once(VIEWS_PATH. "joboffer-list.php");
         }
 
+
+        public function Add(){
+
+            var_dump($_POST);
+
+        }
     }

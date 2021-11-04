@@ -16,11 +16,11 @@
         }
 
         public function getCareer() {
-            return $this->careerId;
+            return $this->career;
         }
 
         public function setCareer($career) {
-            array_push($this->career = $career);
+            $this->career = $career;
         }
 
         public function getDescription() {

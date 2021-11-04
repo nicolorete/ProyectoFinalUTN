@@ -90,7 +90,7 @@ class StudentDAOPDO
     }
 
     public function AddBd($student){
-        var_dump($student);
+        // var_dump($student);
     }
 
     public function GetAll()
@@ -119,7 +119,7 @@ class StudentDAOPDO
                 $user->setActive($row["active"]);
                 $user->setPassword($row["password"]);
 
-                var_dump($user);
+                // var_dump($user);
                 array_push($studentList, $user);
             }
 

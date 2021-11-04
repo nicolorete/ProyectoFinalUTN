@@ -37,6 +37,15 @@ CREATE TABLE company (
 );
 
 
+CREATE TABLE postulation (
+  jobOfferId INT NOT NULL AUTO_INCREMENT,
+  studentID INT,
+  datePostulation DATE,
+  presentation VARCHAR(200),
+  cv FILE,
+);
+
+
 INSERT INTO company (cuit, nombre, address, link, isActive) VALUES (40138543,'Fravega', 'Garay 1800', 'fravega.com', 1); 
 INSERT INTO company (cuit, nombre, address, link, isActive) VALUES (39123321,'CocaCola', 'av.Constitucion 1800', 'cocacola.com', 1); 
 
