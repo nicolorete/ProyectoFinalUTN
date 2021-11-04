@@ -34,7 +34,7 @@ class CompanyController
                 $this->companyDAO->Add($company);
             } else {
                 ?>
-                    <script>alert('The company already exists!');</script>
+                    <script>alert('Esa Empresa ya existe!');</script>
                 <?php
             }
         } else {
@@ -73,8 +73,12 @@ class CompanyController
         $companyNew->setAddress($address);
         $companyNew->setLink($link);
         $companyNew->setIsActive($isActive); 
-        $message = 'Empresa modificada!';
-        $this->ShowListView($message);
+        
+        ?>
+            <script>alert('Empresa Modificada!');</script>
+        <?php
+        
+        $this->ShowListView();
     }
 
     public function ShowCompany ($company){
