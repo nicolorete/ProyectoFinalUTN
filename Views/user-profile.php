@@ -25,84 +25,51 @@
 
         <div class="content-body">
             <div class="card">
-                <form action="" method="POST">
 
                     <div class="card-content">
                         <div class="field">
                             <label class="label">Apellido: </label>
-                            <div class="control">
-                                <input class="input" type="text" name="apellido" value="<?= $user->getLastName(); ?>"> 
-                            </div>
+                            <?= $user->getLastName(); ?>
                         </div>
                         <div class="field">
                             <label class="label">Nombre </label>
-                            <div class="control">
-                                <input class="input" type="text" name="apellido" value="<?= $user->getFirstName(); ?>">
-                            </div>
+                            <?= $user->getFirstName(); ?>
                         </div>
 
                         <div class="field">
                             <label class="label">Email </label>
-                            <div class="control">
-                                <input class="input" type="text" name="apellido" value="<?= $user->getEmail(); ?>" disabled>
-                            </div>
+                            <?= $user->getEmail(); ?>
                         </div>
 
                         <div class="field">
                             <label class="label">Dni </label>
-                            <div class="control">
-                                <input class="input" type="text" name="apellido" value="<?= $user->getDni(); ?>">
-                            </div>
+                            <?= $user->getDni(); ?>
                         </div>
 
-                        <div class="field">
+                        <!-- <div class="field">
                             <label class="label">Carrera </label>
-                            <div class="control">
-                                <input class="input" type="text" name="apellido" value="<?= $user->getCareer(); ?>">
-                            </div>
-                        </div>
+                             /* $user->getCareer(); */
+                        </div> -->
 
                         <div class="field">
                             <label class="label">fileNumber: </label>
-                            <div class="control">
-                                <input class="input" type="text" name="fileNumber" value="<?= $user->getFileNumber(); ?>">
-                            </div>
+                            <?= $user->getFileNumber(); ?>
                         </div>
 
                         <div class="field">
                             <label class="label">Gender </label>
-                            <div class="control">
-                                <input class="input" type="text" name="gender" value="<?= $user->getGender(); ?>">
-                            </div>
+                            <?= $user->getGender(); ?>
                         </div>
 
                         <div class="field">
                             <label class="label">BirthDate </label>
-                            <div class="control">
-                                <input class="input" type="text" name="birthDate" value="<?= $user->getBirthDate(); ?>">
-                            </div>
+                            <?= $user->getBirthDate();?>
                         </div>
 
                         <div class="field">
                             <label class="label">Phone Number </label>
-                            <div class="control">
-                                <input class="input" type="text" name="phoneNumber" value="<?= $user->getPhoneNumber(); ?>">
-                            </div>
+                            <?= $user->getPhoneNumber(); ?>
                         </div>
-                        <div class="field is-grouped centered" style="padding-left: 30%">
-                            <div class="control">
-                                <button class="button is-link" type="submit">Modificar</button>
-                            </div>
-                            <div class="control">
-                                <button class="button is-text" type="reset">Cancelar</button>
-                            </div>
-                        </div>
-
-
-
-                </form>
-
-
             </div>
         </div>
     </div>
