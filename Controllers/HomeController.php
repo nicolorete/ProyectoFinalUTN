@@ -111,11 +111,11 @@ class HomeController
 				$_SESSION['loggedAdmin'] = $userFound;
 				$this->ShowAdminView();
 			}
-			elseif($userFound != null){		
+			elseif($password == $userFound->getPassword()){		
 				$_SESSION['loggedUser'] = $userFound;
 				$message = 'Bienvenido Usuario';
-				// $this->ShowUserView();
-				var_dump($userFound);
+				$this->ShowUserView();
+				// var_dump($userFound);
 			}else{
 				$this->ShowLoginView();
 			}
