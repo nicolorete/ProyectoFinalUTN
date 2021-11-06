@@ -1,6 +1,8 @@
 <?php
 
     $user = $_SESSION['loggedUser']; 
+    use DAO\CareerDAOPDO as CareerDAOPDO;
+    $career = new CareerDAOPDO;
 ?>
 <?php include('top-nav.php'); ?>
 
@@ -43,13 +45,16 @@
 
                         <div class="field">
                             <label class="label">Dni </label>
-                            <?= $user->getDni(); ?>
+                            <?= $user->getDni(); 
+                            ?>
                         </div>
 
-                        <!-- <div class="field">
+                        <div class="field">
                             <label class="label">Carrera </label>
-                             /* $user->getCareer(); */
-                        </div> -->
+                            <?php echo $career->GetCareer($user->getCareer()) ?>
+
+
+                        </div>
 
                         <div class="field">
                             <label class="label">fileNumber: </label>

@@ -118,6 +118,8 @@ class StudentDAOPDO
                 $user->setPhoneNumber($row["phoneNumber"]);
                 $user->setActive($row["active"]);
                 $user->setPassword($row["password"]);
+                $user->setCareer($row["carrerId"]);
+
 
                 // var_dump($user);
                 array_push($studentList, $user);
@@ -157,6 +159,8 @@ class StudentDAOPDO
                 $user->setBirthDate($row["birthDate"]);
                 $user->setPhoneNumber($row["phoneNumber"]);
                 $user->setActive($row["active"]);
+                $user->setCareer($row["carrerId"]);
+
             }
 
             return $user;

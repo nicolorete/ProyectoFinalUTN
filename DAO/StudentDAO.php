@@ -162,10 +162,6 @@ class StudentDAO implements IStudentDAO
         $response = curl_exec($url);
         $toJson = json_decode($response);
 
-        // var_dump($mail);
-
-        // var_dump($toJson);
-
         foreach ($toJson as $key => $student) {
             if ($student->email == $mail){
                 $usuario = new Student();

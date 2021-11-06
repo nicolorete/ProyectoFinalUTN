@@ -10,6 +10,7 @@
 class JobPositionController
     {
         private $jobPositionDAO;
+        private $careerDAO;
 
         public function __construct(){
             
@@ -19,9 +20,10 @@ class JobPositionController
                 
         public function ShowListView(){
             $JobPostionList = $this->jobPositionDAOPDO->GetJobPositionListFromApi();
-
+        
             require_once(VIEWS_PATH."jobposition-list.php");
         }
+
         // public function ShowListView()
         // {
         //     // Trae los jobpositions Primero local, despues de la api

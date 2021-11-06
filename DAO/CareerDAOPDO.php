@@ -19,7 +19,8 @@
            curl_setopt($url, CURLOPT_SSL_VERIFYPEER, false); 
            $response = curl_exec($url);
            $toJson = json_decode($response);
-   
+            
+        //    var_dump($toJson);
     
             foreach ($toJson as $valuesArray) {
                 $career = new Career();
@@ -33,4 +34,16 @@
         }
     
 
+        public function GetCareer($id){
+            $careerList = $this->GetCareerListFromAPI();
+            
+            foreach ($careerList as $values) {
+                if($values->getCareerId() == $id){
+                    return $values->getDescription();
+                }
+            }
+
+        }
+
+        
     }

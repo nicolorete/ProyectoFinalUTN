@@ -105,7 +105,7 @@ class HomeController
 				$this->ShowLoginView();
 
 			}else{
-				echo "chau";
+				echo "No se puede registrar";
 			}
 		}else{
 			$this->ShowLoginView();

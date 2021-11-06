@@ -6,6 +6,8 @@
     include('top-nav.php');
     use models\jobPosition as jobPosition;
     use DAO\JobPositionDAOPDO as jobPositionDAOPDO;
+    use DAO\CareerDAOPDO as CareerDAOPDO;
+    $career = new CareerDAOPDO;
 ?> 
 
 <div class="columns" id="app-content">
@@ -22,6 +24,7 @@
                             <tr>
                                 <th class="has-text-centered"> Nombre</th>
                                 <th class="has-text-centered"> Apellido</th>
+                                <th class="has-text-centered"> Carrera</th>
                                 <th class="has-text-centered"> Correo</th>
                                 <th class="has-text-centered"> DNI</th>
 
@@ -36,7 +39,11 @@
                                     <?php echo $user->getFirstName() ?>
                                 </td>
                                 <td class="has-text-centered">
-                                    <?php echo $user->getLastName() ?>
+                                    <?php echo $user->getLastName();
+                                     ?>
+                                </td>
+                                <td class="has-text-centered">
+                                    <?php echo $career->GetCareer($user->getCareer()) ?>
                                 </td>
                                 <td class="has-text-centered">
                                     <?php echo $user->getEmail() ?>
