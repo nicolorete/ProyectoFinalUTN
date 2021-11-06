@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="media-content">
                                         <div class="content">
-                                            <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>Student/ShowProfileView">Ver Mis Datos</a><br><br></li>
+                                            <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>Student/ShowProfileView">Estado Academico</a><br><br></li>
 
                                             
                                         </div>
