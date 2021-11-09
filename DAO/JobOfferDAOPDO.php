@@ -59,7 +59,7 @@
                         $jobOffer->setTitle($row["title"]);
                         $jobOffer->setDescription($row["description"]);
                         $jobOffer->setActive($row["active"]);
-                        $jobOffer->setJobPosition($jobPositionDAO->GetById($row["jobPositionId"]));
+                        $jobOffer->setJobPosition($jobPositionDAO->GetByIdFromApi($row["jobPositionId"]));
                         $jobOffer->setCompany($companyDAO->GetCompanyByID($row["companyId"]));
                        
             

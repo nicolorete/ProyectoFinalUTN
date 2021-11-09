@@ -253,7 +253,7 @@ class JobPositionDAOPDO
         {
             try
             {
-                $query = "SELECT * FROM ".$this->tableName.' WHERE (jobPositionId = :jobPositionId);';
+                $query = "SELECT * FROM ". $this->tableName.' WHERE (jobPositionId = :jobPositionId);';
 
                 $this->connection = Connection::GetInstance();
                 
@@ -279,6 +279,23 @@ class JobPositionDAOPDO
             }
         }
      
+        public function GetByIdFromApi($id){
+            
+            $toJson = $this->GetJobPositionListFromApi();
+
+            foreach($toJson as $key)
+            {
+                if($key->getJobPositionId() == $id){
+                    $job = new JobPosition();
+                    $job->setJobPositionId($key->getJobPositionId());
+                    $job->setCareer($key->getCareer());
+                    $job->setDescription($key->getDescription());
+                }
+            }
+            
+            return $job;
+
+        }
  
     
     

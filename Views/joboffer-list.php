@@ -1,8 +1,3 @@
-<script type="text/javascript">
-    var $  = require( 'jquery' );
-    var dt = require( 'datatables.net' )();
-</script>
-
 <?php
     if($_SESSION['logged'] == "s"){
         $user = $_SESSION['loggedUser']; 
@@ -19,6 +14,7 @@
     $jobOffer = new jobOfferDAO();
     $jobOfferList = $jobOffer->GetAll(); 
 ?> 
+
 
 
 <div class="columns" id="app-content">
@@ -45,49 +41,46 @@
 
         <div class="content-body">
             <div class="card">
-                <!-- <form action="" method="POST">
-                    <div class="card-filter">
-                        <div class="field">
-                            <div class="control has-icons-left">
-                                <input class="input" id="table-search" type="text" placeholder="Buscar Por Empresa">
-                                <span class="icon is-left">
-                                    <i class="fa fa-search"></i>
-                                </span>
-
-                            </div>
-                        </div>
-                        <div class="field">
-                            <button class="button is-link has-icons-right" type="submit">Buscar</button>
-                        </div>
-                    </div>
-                </form> -->
                 <div class="card-content">
-                <table id="table_id" class="display">
-                    <thead>
+                    <table class="table is-hoverable is-bordered is-fullwidth" id="datatable">
+                        <thead>
+                            <tr>
+                                <th class="has-text-centered"> Id</th>
+                                <th class="has-text-centered"> Titulo</th>
+                                <th class="has-text-centered"> Empresa</th>
+                                <th class="has-text-centered"> Puesto</th>
+                                <th class="has-text-centered">Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($jobOfferList as $jobOffer) {
+
+                        ?>
                         <tr>
-                            <th>Column 1</th>
-                            <th>Column 2</th>
+                            <td><?= $jobOffer->getJobOfferId(); ?></td>
+                            <td><?= $jobOffer->getTitle(); ?></td>
+                            <td><?= $jobOffer->getCompany()->getNombre(); ?></td>
+                            <td><?= $jobOffer->getJobPosition()->getDescription(); ?></td>
+                            <td><?= $jobOffer->getDescription(); ?></td>
+
+                            <td class="has-text-centered">
+                            
+
+                                    <form action="" method="post">
+                                        <p class="control">
+                                            <button class="button is-danger" name="BtnDel" data-id="1" value="">
+                                                Aplicar
+                                            </button>
+                                        </p>
+                                    </form> 
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Row 1 Data 1</td>
-                            <td>Row 1 Data 2</td>
-                        </tr>
-                        <tr>
-                            <td>Row 2 Data 1</td>
-                            <td>Row 2 Data 2</td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<!-- <script type="text/javascript">
-    var $  = require( 'jquery' );
-    var dt = require( 'datatables.net' )();
-</script> -->
