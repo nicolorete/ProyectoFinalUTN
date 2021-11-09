@@ -64,6 +64,9 @@ class HomeController
 				// var_dump($userFound);
 			}else{
 				$this->ShowLoginView();
+				?>
+				<script>alert('Usuario o contraseña erronea');</script>
+				<?php
 			}
 		}else{
 			$userFound = $this->studentDAO->GetByEmailApi($email);
