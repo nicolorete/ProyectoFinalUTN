@@ -8,7 +8,9 @@
     use DAO\JobPositionDAOPDO as jobPositionDAOPDO;
     use DAO\CareerDAOPDO as CareerDAOPDO;
     $career = new CareerDAOPDO;
+    
 ?> 
+
 
 <div class="columns" id="app-content">
     <?php include('user-aside-nav.php');?>

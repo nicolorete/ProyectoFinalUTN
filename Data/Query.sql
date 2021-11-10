@@ -99,11 +99,12 @@ CREATE TABLE postulation(
 	CONSTRAINT fk_jobOfferId FOREIGN KEY (jobOfferId) REFERENCES jobOffer(jobOfferId),
 	CONSTRAINT fk_studentId FOREIGN KEY (studentId) REFERENCES student(studentId)
 );
+
 CREATE TABLE files
 (
 	fileId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name NVARCHAR(100) NOT NULL
-)
+);
 
 DELIMITER $$
 
