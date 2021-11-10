@@ -34,7 +34,7 @@
                                
 
                                 <div class="field">
-                                    <label class="label">Estudiante: <?= $user->getFirstName(); $user->getLastName();?></label>
+                                    <label class="label">Estudiante: <?= $user->getFirstName()?><?= $user->getLastName()?></label>
                                     <div class="control">
                                         <div style="font-weigth: 700;">Id</div>
                                         <input readonly class="input" name="student" type="text" value="<?= $user->getStudentId()?>" required="">
