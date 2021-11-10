@@ -104,20 +104,23 @@ class CompanyController
                
             }
         }
-        $this->companyDAO->Modify1($companyFound);
+        $this->companyDAO->Modify($companyFound);
         $this->ShowListView();
     }
-    // public function Modify($companyId)
-    // {
-    //     $companyFound = null;
-    //     $companyFound = $this->companyDAO->GetCompanyByID($companyId);
-    //     if ($companyFound != null) {
-    //         $companyFound = $this->setCompany($cuit, $nombre, $address, $link , $isActive);
-    //         $this->companyDAO->Modify1($companyFound);
-    //     }
+    public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive)
+    {
+        $companyNew = new Company();
+        $companyNew->setCompanyId($companyId);
+        $companyNew->setCuit($cuit);
+        $companyNew->setNombre($nombre);
+        $companyNew->setAddress($address);
+        $companyNew->setLink($link);
+        $companyNew->setIsActive($isActive);
+
+        $this->companyDAO->Modify($companyNew);
         
-    //     $this->ShowListView();
-    // }
+        $this->ShowListView();
+    }
 
     public function ShowCompany ($company){
         ?>
@@ -176,13 +179,13 @@ class CompanyController
 		
 	}
 
-    public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive)
-	{   
-        $companyNew = new Company;
-        $companyNew = $this->setCompany($cuit, $nombre, $address, $link, $isActive);
-        var_dump($companyNew);
-        $this->companyDAO->Modify($companyId, $cuit, $nombre, $address, $link, $isActive);
-        $this->ShowListView();
-	}
+    // public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive)
+	// {   
+    //     $companyNew = new Company;
+    //     $companyNew = $this->setCompany($cuit, $nombre, $address, $link, $isActive);
+    //     var_dump($companyNew);
+    //     $this->companyDAO->Modify($companyId, $cuit, $nombre, $address, $link, $isActive);
+    //     $this->ShowListView();
+	// }
 }
 

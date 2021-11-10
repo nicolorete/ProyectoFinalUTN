@@ -2,26 +2,50 @@
 
 class Postulation{
 
-  private $jobOfferID;
-  private $studentID;
+  private $postulationId;
+  private $jobOffer;
+  private $student;
   private $datePostulation;
   private $presentation;
   private $cv; 
+  private $isActive;
 
-  
-  public function setJobOfferId($jobOffer)
+  public function __construct()
+  {	
+  $this->isActive = 1;
+      
+  }
+
+  public function getPostulationId()
+	{
+		return $this->postulationId;
+	}
+
+
+	public function setPostulationId($postulationId)
+	{
+		$this->postulationId = $postulationId;
+
+		return $this;
+	}
+  public function getJobOffer()
+  {
+    return $this->jobOffer;
+  }
+
+  public function setJobOffer($jobOffer)
   {
     $this->jobOffer = $jobOffer;
 
     return $this;
   }
  
-  public function getStudentId()
+  public function getStudent()
   {
     return $this->student;
   }
 
-  public function setStudentId($student)
+  public function setStudent($student)
   {
     $this->student = $student;
 
@@ -63,11 +87,16 @@ class Postulation{
 
     return $this;
   }
+  
+  public function setIsActive($isActive)
+	{
+		$this->isActive = $isActive;
+	}
 
-  public function getJobOfferId()
-  {
-    return $this->jobOffer;
-  }
+	public function getIsActive()
+	{
+		return $this->isActive;
+	}
  
 }
 ?>

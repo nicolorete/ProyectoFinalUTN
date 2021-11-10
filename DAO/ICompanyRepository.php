@@ -10,8 +10,8 @@
         public function GetCompanyByID($companyId);
         public function GetCompanyByName($companyName);
         public function Delete($companyId);
-        public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive);
-        public function Modify1(Company $company);
+        // public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive);
+        public function Modify(Company $company);
     }
 
 ?>
