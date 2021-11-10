@@ -29,22 +29,29 @@
                         <div class="card-content">
                             <p class="title is-4">Aplicar a <?= $jobOfferFound->getTitle(); ?>!</p>
                             <p style="color: red;font-size:18px"> </p>
-                            <form action="<?= FRONT_ROOT ?>Postulacion/Add  <?php echo FRONT_ROOT ?>File/Upload" method="POST">
+                            <form action=" <?php echo FRONT_ROOT ?>Postulation/Add " method="POST">
 
                                
 
                                 <div class="field">
-                                    <label class="label">Estudiante</label>
+                                    <label class="label">Estudiante: <?= $user->getFirstName(); $user->getLastName();?></label>
                                     <div class="control">
-                                   
-                                        <input readonly class="input" name="student" type="text" value="<?= $user->getFirstName()?>" required="">
+                                        <div style="font-weigth: 700;">Id</div>
+                                        <input readonly class="input" name="student" type="text" value="<?= $user->getStudentId()?>" required="">
                                     </div>
                                 </div>
-
+                                
                                 <div class="field">
                                     <label class="label">Fecha</label>
                                     <div class="control">
                                         <input readonly class="input" name="date" type="text" value="<?php $fechaActual = date('d-m-Y'); echo $fechaActual;?>" required="">
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label">Id de la oferta</label>
+                                    <div class="control">
+                                        <input readonly class="input" name="joboffer" type="text" value="<?=  $jobOfferFound->getJobOfferId()?>" required="">
                                     </div>
                                 </div>
 

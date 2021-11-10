@@ -10,7 +10,7 @@ use PDOException;
 class PostulationDAOPDO {
 
         private $connection;
-        private $tableName = "postulations";
+        private $tableName = "postulation";
 
         public function __construct(){
             // $this->dataFile = dirname(__DIR__)."\Data\postulation.json";
@@ -19,16 +19,16 @@ class PostulationDAOPDO {
         public function Add(Postulation $postulation) {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (jobOfferId,studentId,datePostulation,presentation,cv,isActive) 
-                VALUES (:jobOfferId,:studentId,:datePostulation,:presentation,:cv,:isActive);";
+                $query = "INSERT INTO  ". $this->tableName ." (jobOfferId,studentId,date,presentation,fileId,active) 
+                VALUES (:jobOfferId,:studentId,:date,:presentation,:fileId,:active);";
                 
                   
-                $parameters["jobOffer"] = $postulation->getJobOffer();    
-                $parameters["student"] = $postulation->getStudent();
-                $parameters["datePostulation"] = $postulation->getDatePostulation();
+                $parameters["jobOfferId"] = $postulation->getJobOffer();    
+                $parameters["studentId"] = $postulation->getStudent();
+                $parameters["date"] = $postulation->getDatePostulation();
                 $parameters["presentation"] = $postulation->getPresentation();
-                $parameters["cv"] = $postulation->getCv();
-                $parameters["isActive"] = $postulation->getIsActive();
+                $parameters["fileId"] = $postulation->getCv();
+                $parameters["active"] = $postulation->getIsActive();
                 
                 
              

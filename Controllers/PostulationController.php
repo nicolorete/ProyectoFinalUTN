@@ -25,19 +25,24 @@ class PostulationController {
     
     public function Add(){
 
+        // echo "hola";
+        
         $postulation = new Postulation;
-        $postulation->setJobOffer($_POST['jobOfferId']);
-        $postulation->setStudent($_POST['studentId']);
-        $postulation->setDatePostulation($_POST['datePostulation']);
+        $postulation->setJobOffer($_POST['joboffer']);
+        $postulation->setStudent($_POST['student']);
+        $postulation->setDatePostulation($_POST['date']);
         $postulation->setPresentation($_POST['presentation']);
-        $postulation->setCv($_POST['cv']);
-        $postulation->setIsActive($_POST['isActive']);
+        $postulation->setCv(5);
+        $postulation->setIsActive($_POST['active']);
             
+
+        var_dump($postulation);
         $this->postulationDAO->Add($postulation);
             
         $this->ShowListView();
 
     }
+
     public function Delete($id)
     {
         $this->postulationDAO->Delete($id);
