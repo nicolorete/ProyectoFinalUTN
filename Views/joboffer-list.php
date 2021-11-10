@@ -67,7 +67,7 @@
                             <td class="has-text-centered">
                             
 
-                                    <form action="" method="post">
+                                    <form action="<?= FRONT_ROOT ?>Postulation/ShowAddView" method="post">
                                         <p class="control">
                                             <button class="button is-danger" name="BtnDel" data-id="1" value="">
                                                 Aplicar

@@ -44,10 +44,10 @@ class PostulationController {
         $this->ShowListView();
     }
 
-    public function ShowAddView($studentId, $jobOfferId){
+    public function ShowAddView($jobOfferId){
         $studentFound = null;
         $jobOfferFound = null;
-		$studentFound = $this->studentDAO->GetStudentByEmail($studentId);
+		// $studentFound = $this->studentDAO->GetStudentByEmail($studentId);
 		$jobOfferFound = $this->jobOfferDAO->GetById($jobOfferId);
         require_once(VIEWS_PATH. "postulation-add.php");
     }
