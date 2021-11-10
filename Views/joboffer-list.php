@@ -69,7 +69,7 @@
 
                                     <form action="<?= FRONT_ROOT ?>Postulation/ShowAddView" method="post">
                                         <p class="control">
-                                            <button class="button is-danger" name="BtnDel" data-id="1" value="">
+                                            <button class="button is-danger" name="BtnDel" data-id="1" value="<?= $jobOffer->getJobOfferId(); ?>">
                                                 Aplicar
                                             </button>
                                         </p>

@@ -9,8 +9,9 @@
     <?php include('user-aside-nav.php'); ?>
 
     <div class="column is-10" id="page-content">
-
+    <?php if ($jobOfferFound != null) { ?>
         <div class="content-header">
+        
             <h4 class="title is-4">Fomrulario</h4>
             <span class="separator"></span>
             <nav class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
@@ -26,35 +27,31 @@
                 <div class="column">
                     <div class="card">
                         <div class="card-content">
-                            <p class="title is-4">Mis Datos</p>
+                            <p class="title is-4">Aplicar a <?= $jobOfferFound->getTitle(); ?>!</p>
                             <p style="color: red;font-size:18px"> </p>
                             <form action="<?= FRONT_ROOT ?>Postulacion/Add  <?php echo FRONT_ROOT ?>File/Upload" method="POST">
 
-                                <div class="field">
-                                    <label class="label">Oferta de Trabajo </label>
-                                    <div class="control">
-                                        <input class="input" name="jobOffer" type="text" placeholder="" required="">
-                                    </div>
-                                </div>
+                               
 
                                 <div class="field">
                                     <label class="label">Estudiante</label>
                                     <div class="control">
-                                        <input class="input" name="student" type="text" placeholder="" required="">
+                                   
+                                        <input readonly class="input" name="student" type="text" value="<?= $user->getFirstName()?>" required="">
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <label class="label">Fecha</label>
                                     <div class="control">
-                                        <input class="input" name="date" type="date" placeholder="date" required="">
+                                        <input readonly class="input" name="date" type="text" value="<?php $fechaActual = date('d-m-Y'); echo $fechaActual;?>" required="">
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <label class="label">Presentacion</label>
                                     <div class="control">
-                                        <input class="input" name="presentation" type="text" placeholder="Breve presentacion de vos" required="">
+                                        <textarea class="input" name="presentation" type="text" placeholder="Breve presentacion de vos" required="" size="200"></textarea>
                                     </div>
                                 </div>
                                 <div class="field">
@@ -64,11 +61,12 @@
                                     </div>
                                 </div>
                                 <div class="field">
-                                    <label class="label">Empresa activa?: </label>
+                                    <label class="label">Postulacion activa! </label>
                                     <div class="control">
                                         <select class="select" id="active" name="active">
                                             <option value="1">Si</option>
-                                            <option value="0">No</option>
+                                            <option value="1">Si</option>
+                                            
                                         </select>
 
                                      </div>
@@ -86,7 +84,8 @@
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
-
+        
     </div>
 </div>
