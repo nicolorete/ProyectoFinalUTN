@@ -110,7 +110,7 @@ DELIMITER $$
 
 CREATE PROCEDURE file_add(IN Name VARCHAR(100))
 BEGIN
-    INSERT INTO postulation
+    INSERT INTO files
     	(name)
 	VALUES
 		(name);
