@@ -93,23 +93,24 @@
         {
             try
             {
-                $query = "SELECT * FROM ".$this->tableName.' WHERE (jobOfferId = :jobOfferId);';
-                $this->connection = Connection::GetInstance();
+                $jobOffer = null;
+                $query = "SELECT * FROM ".$this->tableName. " WHERE jobOfferId = :jobOfferId";
                 $parameters["jobOfferId"] = $jobOfferId;
-                $result = $this->connection->Execute($query, $parameters)[0];
                 $companyDAO = new CompanyDAO();
                 $jobPositionDAO = new JobPositionDAO();
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($query, $parameters);
 
-                if($result) {
+                foreach($result as $row) {
                     $jobOffer = new JobOffer();
-                    $jobOffer->setJobOfferId($result["jobOfferId"]);
-                    $jobOffer->setTitle($result["title"]);
-                    $jobOffer->setDate($result["date"]);
-                    $jobOffer->setDescription($result["description"]);
-                    $jobOffer->setActive($result["active"]);
+                    $jobOffer->setJobOfferId($row["jobOfferId"]);
+                    $jobOffer->setTitle($row["title"]);
+                    $jobOffer->setDate($row["date"]);
+                    $jobOffer->setDescription($row["description"]);
+                    $jobOffer->setActive($row["active"]);
 
-                    $jobOffer->setJobPosition($jobPositionDAO->GetById($result["jobPositionId"]));
-                    $jobOffer->setCompany($companyDAO->GetCompanyByID($result["companyId"]));
+                    $jobOffer->setJobPosition($jobPositionDAO->GetById($row["jobPositionId"]));
+                    $jobOffer->setCompany($companyDAO->GetCompanyByID($row["companyId"]));
                    
                     return $jobOffer;
                 }

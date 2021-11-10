@@ -46,6 +46,30 @@ class CompanyDAOPDO implements ICompanyDAO
             throw $ex;
         }
     }
+      # Modifica el company que esta en la base
+      public function Modify(Company $company)
+      {
+          try {
+              $query = "UPDATE " .$this->tableName. "  SET companyId=:companyId, cuit=:cuit, nombre=:nombre, address=:address, link=:link, isActive=isActive WHERE companyId = :companyId;";
+              
+              
+              $parameters["companyId"] = $company->getCompanyId();
+              $parameters["cuit"] = $company->getCuit();
+              $parameters["nombre"]    = $company->getNombre();
+              $parameters["address"] = $company->getAddress();
+              $parameters["link"] = $company->getLink();
+              $parameters["isActive"] = $company->getIsActive();
+              
+              $this->connection = Connection::GetInstance();
+  
+              $this->connection->ExecuteNonQuery($query, $parameters);
+              
+          } catch (PDOException $e) {
+              throw $e;
+          } catch (Exception $ex) {
+              throw $ex;
+          }
+      }
 
 
     # Devuelve todos los company en una lista
@@ -222,26 +246,27 @@ class CompanyDAOPDO implements ICompanyDAO
         }
     }
 
-    # Modifica el company que esta en la base
-    public function Modify(Company $company)
-    {
-        try {
-
-            $query = "UPDATE " . $this->tableName . "  SET cuit = :cuit, nombre = :nombre, address = :address, link = :link, isActive = :isActive WHERE companyId = :companyId;";
-            $parameters["companyId"] = $company->getCompanyId();
-            $parameters["cuit"] = $company->getCuit();
-            $parameters["nombre"]    = $company->getNombre();
-            $parameters["address"] = $company->getAddress();
-            $parameters["link"] = $company->getLink();
-            $parameters["isActive"] = $company->getIsActive();
-
-            $this->connection = Connection::GetInstance();
-
-            $this->connection->ExecuteNonQuery($query, $parameters);
-        } catch (PDOException $e) {
-            throw $e;
-        } catch (Exception $ex) {
-            throw $ex;
-        }
-    }
+  
+    // public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive)
+    // {   
+    //     try {
+            
+    //         $query = "UPDATE " .$this->tableName." SET cuit=:cuit, nombre=:nombre, address=:address, link=:link, isActive=:isActive WHERE companyId=:companyId;";
+            
+    //         $parameters["companyId"] = $companyId;
+    //         $parameters["cuit"] = $cuit;
+    //         $parameters["nombre"]    = $nombre;
+    //         $parameters["address"] = $address;
+    //         $parameters["link"] = $link;
+    //         $parameters["isActive"] = $isActive;
+    //         $this->connection = Connection::GetInstance();
+    //         $this->connection->ExecuteNonQuery($query, $parameters);
+    //         var_dump($parameters);
+    //     } catch (PDOException $e) {
+    //         throw $e;
+    //     } catch (Exception $ex) {
+    //         throw $ex;
+    //     }
+    
+    // }
 }

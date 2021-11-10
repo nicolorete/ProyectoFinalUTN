@@ -87,5 +87,31 @@ CREATE TABLE jobOffer(
 	CONSTRAINT fk_jobPositionId FOREIGN KEY (jobPositionId) REFERENCES jobPosition(jobPositionId)
 );
 
+CREATE TABLE postulation(
+    postulationId INT NOT NULL AUTO_INCREMENT,
+	jobOfferId INT , 
+	studentId INT,
+    date DATE, 
+    presentation VARCHAR(200), 
+    cv varchar(100) NOT NULL,
+    active boolean,
+	CONSTRAINT pk_postulationId PRIMARY KEY (postulationId),
+	CONSTRAINT fk_jobOfferId FOREIGN KEY (jobOfferId) REFERENCES jobOffer(jobOfferId),
+	CONSTRAINT fk_studentId FOREIGN KEY (studentId) REFERENCES student(studentId)
+);
+CREATE TABLE files
+(
+	fileId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name NVARCHAR(100) NOT NULL
+)
 
+DELIMITER $$
 
+CREATE PROCEDURE file_add(IN Name VARCHAR(100))
+BEGIN
+    INSERT INTO postulation
+    	(name)
+	VALUES
+		(name);
+
+END$$

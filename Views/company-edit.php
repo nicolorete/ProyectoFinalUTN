@@ -13,7 +13,7 @@
                 <div class="field">
                     
                     <div class="control">
-                        <input class="input" name="idCompany" type="number" placeholder="" id="id" hidden="true">
+                        <input class="input" name="companyId" type="number" placeholder="" id="companyId" hidden="true">
                     </div>
                 </div>
 
@@ -22,7 +22,7 @@
                 <div class="field">
                     <label class="label">Cuit </label>
                     <div class="control">
-                        <input class="input" name="cuit" type="text" placeholder="Cuit" id="name" value="<?= $companyFound->getCuit(); ?>">
+                        <input class="input" name="cuit" type="text" placeholder="Cuit" id="cuit" value="<?= $companyFound->getCuit(); ?>">
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                 <div class="field"> 
                     <label class="label">Nombre </label>
                     <div class="control">
-                        <input class="input" name="nombre" type="text" placeholder="" id="name" value="<?= $companyFound->getNombre()?>">
+                        <input class="input" name="nombre" type="text" placeholder="" id="nombre" value="<?= $companyFound->getNombre()?>">
                     </div>
                 </div>
 

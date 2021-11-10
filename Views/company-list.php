@@ -2,7 +2,7 @@
 
 
     $user = $_SESSION['loggedAdmin']; 
-    include('top-nav.php'); 
+    // include('top-nav.php'); 
 
 
 

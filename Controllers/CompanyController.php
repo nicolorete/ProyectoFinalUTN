@@ -46,8 +46,8 @@ class CompanyController
 
     private function setCompany($cuit, $nombre, $address, $link, $isActive) {
         $company = new Company();
-        $company->setNombre($nombre);
         $company->setCuit($cuit);
+        $company->setNombre($nombre);
         $company->setAddress($address);
         $company->setLink($link);
         $company->setIsActive($isActive);
@@ -61,25 +61,7 @@ class CompanyController
         } else {
             return true;
         }
-    }
-
-    public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive)
-    {
-        // $this->companyDAO->Modify($companyId, $cuit, $nombre, $address, $link, $isActive);
-        $companyNew = new Company();
-        $companyNew->setCompanyId($companyId);
-        $companyNew->setCuit($cuit);
-        $companyNew->setNombre($nombre);
-        $companyNew->setAddress($address);
-        $companyNew->setLink($link);
-        $companyNew->setIsActive($isActive); 
-        
-        ?>
-            <script>alert('Empresa Modificada!');</script>
-        <?php
-        
-        $this->ShowListView();
-    }
+    }    
     
     public function searcherCompany($companyFound, $companyList) {
         $i = 0;
@@ -101,14 +83,14 @@ class CompanyController
         echo "<br><b>There are ".$i." Result/s!</b>";
     }
     
-    public function Delete1($id)
-    {
-        require_once(VIEWS_PATH."validate-session.php");
+    // public function Delete1($id)
+    // {
+    //     require_once(VIEWS_PATH."validate-session.php");
 
-        $this->companyDAO->Delete($id);
+    //     $this->companyDAO->Delete($id);
 
-        $this->ShowListView();
-    }
+    //     $this->ShowListView();
+    // }
     public function Delete($id)
     {
         $companyFound = null;
@@ -116,14 +98,28 @@ class CompanyController
         if ($companyFound != null) {
             if ($companyFound->getIsActive() == 1) {
                 $companyFound->setIsActive(0);
-                $message = 'Cine dado de BAJA. No eliminado!';
+                
             } else {
                 $companyFound->setIsActive(1);
-                $message = 'Cine dado de ALTA!';
+               
             }
         }
         $this->companyDAO->Modify($companyFound);
-        $this->ShowListView($message);
+        $this->ShowListView();
+    }
+    public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive)
+    {
+        $companyNew = new Company();
+        $companyNew->setCompanyId($companyId);
+        $companyNew->setCuit($cuit);
+        $companyNew->setNombre($nombre);
+        $companyNew->setAddress($address);
+        $companyNew->setLink($link);
+        $companyNew->setIsActive($isActive);
+
+        $this->companyDAO->Modify($companyNew);
+        
+        $this->ShowListView();
     }
 
     public function ShowCompany ($company){
@@ -183,5 +179,13 @@ class CompanyController
 		
 	}
 
+    // public function Modify($companyId, $cuit, $nombre, $address, $link, $isActive)
+	// {   
+    //     $companyNew = new Company;
+    //     $companyNew = $this->setCompany($cuit, $nombre, $address, $link, $isActive);
+    //     var_dump($companyNew);
+    //     $this->companyDAO->Modify($companyId, $cuit, $nombre, $address, $link, $isActive);
+    //     $this->ShowListView();
+	// }
 }
 
