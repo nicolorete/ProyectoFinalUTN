@@ -41,14 +41,14 @@
                 <a class="" href="<?= FRONT_ROOT ?>Admin/ShowAddView">
                     <span class="icon">
                         <i class="fa fa-edit"></i>
-                    </span> Agregar Usuario
+                    </span> Agregar Administrador
                 </a>
             </li>
             <li>
                 <a class="" href="<?= FRONT_ROOT ?>Admin/ShowListView">
                     <span class="icon">
                         <i class="fa fa-lock"></i>
-                    </span> Ver Usuarios
+                    </span> Ver Administradores
                 </a>
             </li>
             <li>
