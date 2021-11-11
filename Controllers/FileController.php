@@ -28,13 +28,13 @@
 
                 $imageSize = getimagesize($tempFileName);
 
-                if($imageSize == false)
+                if($imageSize !== false)
                 {
                     if (move_uploaded_file($tempFileName, $filePath))
                     {
                         $image = new File();
                         $image->setName($fileName);
-                        $this->fileDAO->Add($file);
+                        $this->fileDAO->Add($image);
 
                         $message = "archivo subido correctamente";
                     }

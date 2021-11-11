@@ -14,13 +14,14 @@ use Models\File as File;
         {
             try
             {
-                $query = "CALL files_add(?);";
-                
+                $query = ("INSERT INTO ".$this->tableName." (name) VALUES (:name);");
                 $parameters["name"] = $file->getName();
+                // "CALL files_add(?);";
+                
 
                 $this->connection = Connection::GetInstance();
 
-                $this->connection->ExecuteNonQuery($query, $parameters, QueryType::StoredProcedure);
+                $this->connection->ExecuteNonQuery($query, $parameters);
             }
             catch(Exception $ex)
             {
