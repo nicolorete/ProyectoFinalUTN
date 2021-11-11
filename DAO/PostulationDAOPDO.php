@@ -79,6 +79,15 @@ class PostulationDAOPDO {
         }
 
 
+        public function searchStudent($id){
+            $lista = $this->GetAll();
+            
+            foreach($lista as $postulaciones){
+                if($postulaciones->getStudent() == $id && $postulaciones->getIsActive() == 1){
+                    return 1;
+                }
+            }
+        }
         # No la eliminamos, Solo la damos de baja
         public function Delete($postulationID)
         {
