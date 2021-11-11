@@ -64,7 +64,7 @@ class PostulationController {
             }
         }
         $this->postulationDAO->Modify($postulationFound);
-        $this->ShowListView();
+        $this->ShowListViewAdmin();
     }
 
     public function ShowAddView($jobOfferId){
