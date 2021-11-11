@@ -63,7 +63,14 @@
 
                         <div class="field">
                             <label class="label">Estado: </label>
-                            <?= $postulation->getIsActive(); ?>
+                            <?php $postulation->getIsActive();
+                                if($postulation->getIsActive() == 1){
+                                    ?><label for="">Activa</label>
+                              <?php  }
+                              else {
+                                ?><label for="">Rechazada</label>
+                                <?php
+                              } ?>
                         </div>
 
             </div>

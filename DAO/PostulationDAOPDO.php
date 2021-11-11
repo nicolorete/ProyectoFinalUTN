@@ -61,7 +61,7 @@ class PostulationDAOPDO {
                     $studentDAO = new StudentDAO(); 
                     $postulation->setPostulationId($row["postulationId"]);                   
                     $postulation->setJobOffer($jobOfferDAO->GetById($row["jobOfferId"]));
-                    $postulation->setStudent($studentDAO->GetById($row["studentId"]));
+                    $postulation->setStudent($studentDAO->GetProfileByIdUser($row["studentId"]));
                     $postulation->setDatepostulation($row["date"]);
                     $postulation->setPresentation($row["presentation"]);
                     $postulation->setCv($row["fileId"]);
