@@ -7,7 +7,10 @@ use models\JobOffer as jobOffer;
 use models\Student as student;
 use DAO\PostulationDAOPDO as postulationDAO;
 use models\File as File;
+use DAO\StudentDAOPDO as StudentDAOPDO;
 
+
+$alumno = new StudentDAOPDO;
 
 ?>
 <?php include('top-nav.php'); ?>
