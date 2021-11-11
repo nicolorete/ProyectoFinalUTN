@@ -16,7 +16,7 @@
                                     ?>
                                         <tr>
                                             <td><?php echo $file->getName() ?></td> 
-                                            <td><a href="<?php echo FRONT_ROOT ?>File/ShowFile/<?php echo $file->getFileId() ?>">Ver</a></td>
+                                            <td><a href="<?php echo FRONT_ROOT ?>File/ShowFile/<?php echo $file->getFileId() ?>">Descargar</a></td>
                                         </tr>
                                     <?php
                                 }

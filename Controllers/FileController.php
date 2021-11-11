@@ -28,7 +28,7 @@
 
                 $imageSize = getimagesize($tempFileName);
 
-                if($imageSize !== false)
+                if($imageSize == false)
                 {
                     if (move_uploaded_file($tempFileName, $filePath))
                     {
@@ -42,7 +42,7 @@
                         $message = "Ocurrió un error al intentar subir el archivo";
                 }
                 else   
-                    $message = "El archivo corresponde a una imágen";
+                    $message = "El archivo No corresponde a un archivo .doc o .pdf";
             }
             catch(Exception $ex)
             {
