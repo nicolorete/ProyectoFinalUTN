@@ -5,9 +5,9 @@
 
                <?php
                
-            //    header("Content-type: application/pdf");
-            //    header('Content-Disposition: attachment; filename="'.FRONT_ROOT.UPLOADS_PATH.$file->getName().'"');
-            //    readfile($file);
+               header("Content-type: application/pdf");
+               header('Content-Disposition: attachment; filename="'.FRONT_ROOT.UPLOADS_PATH.$file->getName().'"');
+               readfile($file);
                     if(isset($file))
                     {
                         ?>  

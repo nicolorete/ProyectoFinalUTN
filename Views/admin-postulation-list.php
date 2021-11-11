@@ -62,14 +62,23 @@ use models\File as File;
                         <div class="field">
                             <label class="label">Archivo </label>
                             <?php
-                            foreach($fileList as $file){
-                                if($postulation->getStudent() == $file->getFileId()) {
-                                ?><label><?= $file->getName();
-                                }
-                                ?> </label><?php                          
+                            foreach ($fileList as $file) {
+                                if ($postulation->getStudent() == $file->getFileId()) {
+
+                                ?>
+                                    <tr>
+                                    <?= $file->getName();?>
+                                        <td><a href="<?php echo FRONT_ROOT ?>Postulation/ShowFile/<?php echo $file->getFileId() ?>">Descargar</a></td>
+                                    </tr>
+                                    
+                                    <?php }
+                                ?> 
+
+                                <?php
                             }
-                            
-                              ?>
+
+                                ?>
+
                         </div>
 
                         <div class="field ">
@@ -81,18 +90,18 @@ use models\File as File;
                                         <span class="icon">
                                             <?php if ($postulation->getIsActive() == 0) {
                                                 echo "<i class='fa fa-toggle-off'></i>";
-                                                ?> <label class="label ">Rechazada</label><?php
-                                            } else {
-                                                echo "<i class='fa fa-toggle-on'></i>";
-                                                ?> <label class="label">Activa</label> <?php
-                                            }
-                                            ?>
+                                            ?> <label class="label ">Rechazada</label><?php
+                                                                                        } else {
+                                                                                            echo "<i class='fa fa-toggle-on'></i>";
+                                                                                            ?> <label class="label">Activa</label> <?php
+                                                                                        }
+                                                                                        ?>
 
                                         </span>
                                     </button>
                                 </p>
                             </form>
-                    
+
                         </div>
                     </div>
                 </div>
