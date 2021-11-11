@@ -66,7 +66,7 @@
 
                             <td class="has-text-centered">
                             
-
+                                <?php if($_SESSION['logged'] == "s"){?>
                                     <form action="<?= FRONT_ROOT ?>Postulation/ShowAddView" method="post">
                                         <p class="control">
                                             <button class="button is-danger" name="BtnDel" data-id="1" value="<?= $jobOffer->getJobOfferId(); ?>">
@@ -74,6 +74,7 @@
                                             </button>
                                         </p>
                                     </form> 
+                                <?php }?>
                             </td>
                         </tr>
                         <?php } ?>
