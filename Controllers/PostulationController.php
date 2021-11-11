@@ -103,7 +103,7 @@ class PostulationController
 
     public function ShowListView()
     {
-
+        $fileList = $this->fileDAO->GetAll();
         $postulationList = $this->postulationDAO->GetAll();
         require_once(VIEWS_PATH . "postulation-record.php");
     }
