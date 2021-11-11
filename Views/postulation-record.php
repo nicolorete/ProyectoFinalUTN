@@ -105,10 +105,15 @@
                             <?= $postulation->getPresentation(); 
                             ?>
                         </div>
-
                         <div class="field">
                             <label class="label">Archivo </label>
-                            <?php echo $postulation->GetCv() ?>
+                            <?php
+                            foreach($fileList as $file){
+                                if($user->getStudentId() == $file->getFileId()) {
+                                    ?><label><?= $file->getName();?> </label><?php
+                                }
+                            }
+                              ?>
                         </div>
 
                         <div class="field">

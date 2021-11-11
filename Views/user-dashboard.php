@@ -110,7 +110,7 @@
                                                 <div class="field">
                                                     <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>JobOffer/ShowListView">Listar Propuestas</a><br><br></li>
 
-                                                    <li><a class="button is-dark is-4">Mis Postulaciones </a> </li>
+                                                    <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>Postulation/ShowListView">Mis Postulaciones </a> </li>
                                                 </div>
                                             </div>
                                         </div>

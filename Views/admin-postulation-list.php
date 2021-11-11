@@ -4,7 +4,9 @@ $user = $_SESSION['loggedAdmin'];
 
 use models\Postulation as postulation;
 use models\JobOffer as jobOffer;
+use models\Student as student;
 use DAO\PostulationDAOPDO as postulationDAO;
+use models\File as File;
 
 
 ?>
@@ -59,7 +61,15 @@ use DAO\PostulationDAOPDO as postulationDAO;
 
                         <div class="field">
                             <label class="label">Archivo </label>
-                            <?php echo $postulation->GetCv() ?>
+                            <?php
+                            foreach($fileList as $file){
+                                if($postulation->getStudent() == $file->getFileId()) 
+                                ?><label><?= $file->getName();?> </label><?php
+                                var_dump($postulation->getStudent());
+                                
+                            }
+                            
+                              ?>
                         </div>
 
                         <div class="field ">

@@ -103,7 +103,7 @@
                                 <article class="media">
                                     <div class="media-left">
                                         <figure class="image is-64x64">
-                                            <img src="https://www.pinclipart.com/picdir/big/67-675105_search-log-in-to-your-teach-california-account.png" alt="Image">
+                                            <img src="https://www.pinclipart.com/picdir/big/558-5584488_literature-icon-free-download-book-icon-png-white.png" alt="Image">
                                         </figure>
                                     </div>
                                     <div class="media-content">

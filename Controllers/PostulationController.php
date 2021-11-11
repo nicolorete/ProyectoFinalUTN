@@ -110,7 +110,8 @@ class PostulationController
 
     public function ShowListViewAdmin()
     {
-
+        $fileList = $this->fileDAO->GetAll();
+        $studentList = $this->studentDAO->GetAll();
         $postulationList = $this->postulationDAO->GetAll();
         require_once(VIEWS_PATH . "admin-postulation-list.php");
     }
