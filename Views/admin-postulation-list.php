@@ -65,13 +65,13 @@ use DAO\PostulationDAOPDO as postulationDAO;
                         <div class="field ">
 
                             <label class="label">Estado: </label>
-                            <form action="<?= FRONT_ROOT ?>Postulation/Delete" method="post">
-                                <p class="control has-text-centered">
+                            <form class="container" action="<?= FRONT_ROOT ?>Postulation/Delete" method="post">
+                                <p class="control container">
                                     <button class="button is-rounded is-text action-delete" name="BtnDel" data-id="1" value="<?= $postulation->getPostulationId(); ?>">
                                         <span class="icon">
                                             <?php if ($postulation->getIsActive() == 0) {
                                                 echo "<i class='fa fa-toggle-off'></i>";
-                                                ?> <label class="label">Rechazada</label><?php
+                                                ?> <label class="label ">Rechazada</label><?php
                                             } else {
                                                 echo "<i class='fa fa-toggle-on'></i>";
                                                 ?> <label class="label">Activa</label> <?php

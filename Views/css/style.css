@@ -18,3 +18,7 @@
 .image{
     max-width: 66%;
 }
+
+.decoration-none {
+    text-decoration: none;
+}
