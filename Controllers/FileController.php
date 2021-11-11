@@ -28,7 +28,7 @@
 
                 $imageSize = getimagesize($tempFileName);
 
-                if($imageSize == false)
+                if($imageSize !== false)
                 {
                     if (move_uploaded_file($tempFileName, $filePath))
                     {
