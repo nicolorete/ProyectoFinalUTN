@@ -63,10 +63,10 @@ use models\File as File;
                             <label class="label">Archivo </label>
                             <?php
                             foreach($fileList as $file){
-                                if($postulation->getStudent() == $file->getFileId()) 
-                                ?><label><?= $file->getName();?> </label><?php
-                                var_dump($postulation->getStudent());
-                                
+                                if($postulation->getStudent() == $file->getFileId()) {
+                                ?><label><?= $file->getName();
+                                }
+                                ?> </label><?php                          
                             }
                             
                               ?>
