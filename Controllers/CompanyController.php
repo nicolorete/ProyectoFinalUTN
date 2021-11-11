@@ -98,10 +98,8 @@ class CompanyController
         if ($companyFound != null) {
             if ($companyFound->getIsActive() == 1) {
                 $companyFound->setIsActive(0);
-                
             } else {
                 $companyFound->setIsActive(1);
-               
             }
         }
         $this->companyDAO->Modify($companyFound);

@@ -2,7 +2,7 @@
 
 
     $user = $_SESSION['loggedAdmin']; 
-    // include('top-nav.php'); 
+    include('top-nav.php'); 
 
 
 
@@ -65,6 +65,7 @@ use DAO\CompanyRepository as CompanyDAO;
                                 <th class="has-text-centered">Cuit</th>
                                 <th class="has-text-centered">Nombre</th>
                                 <th class="has-text-centered">Direccion</th>
+                                <th class="has-text-centered">Link</th>
                                 <th class="has-text-centered">Activo </th>
                                 <th class="has-text-centered">Action</th>
                             </tr>
@@ -79,6 +80,8 @@ use DAO\CompanyRepository as CompanyDAO;
                                     <td class="has-text-centered"><?= $company->getCuit(); ?></td>
                                     <td class="has-text-centered"><?= $company->getNombre(); ?></td>
                                     <td class="has-text-centered"><?= $company->getAddress(); ?></td>
+                                    <td class="has-text-centered"><?= $company->getLink(); ?></td>
+
                                     <td class="has-text-centered">
                                         <form action="<?= FRONT_ROOT ?>Company/Delete" method="post">
                                             <p class="control has-text-centered">
