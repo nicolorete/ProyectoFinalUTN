@@ -61,7 +61,7 @@ class PostulationDAOPDO {
                     $studentDAO = new StudentDAO(); 
                     $postulation->setPostulationId($row["postulationId"]);                   
                     $postulation->setJobOffer($jobOfferDAO->GetById($row["jobOfferId"]));
-                    $postulation->setStudent($studentDAO->GetById($row["studentId"]));
+                    $postulation->setStudent($studentDAO->GetProfileByIdUser($row["studentId"]));
                     $postulation->setDatepostulation($row["date"]);
                     $postulation->setPresentation($row["presentation"]);
                     $postulation->setCv($row["fileId"]);
@@ -110,6 +110,60 @@ class PostulationDAOPDO {
                 throw $ex;
             }
         }
+        public function Modify(Postulation $postulation)
+        {
+            try {
+                $query = "UPDATE " .$this->tableName. "  SET postulationId=:postulationId, cuit=:cuit, nombre=:nombre, address=:address, link=:link, isActive=isActive WHERE postulationId = :postulationId;";
+                
+                
+                $parameters["postulationId"] = $postulation->getPostulationId();
+                $parameters["jobOfferId"] = $postulation->getJobOffer();    
+                $parameters["studentId"] = $postulation->getStudent();
+                $parameters["date"] = $postulation->getDatePostulation();
+                $parameters["presentation"] = $postulation->getPresentation();
+                $parameters["fileId"] = $postulation->getCv();
+                $parameters["active"] = $postulation->getIsActive();
+                
+                $this->connection = Connection::GetInstance();
+    
+                $this->connection->ExecuteNonQuery($query, $parameters);
+                
+            } catch (PDOException $e) {
+                throw $e;
+            } catch (Exception $ex) {
+                throw $ex;
+            }
+        }
+        public function GetPostulationByID($postulationId)
+    {
+        try {
+            $postulation = null;
+
+            $query = "SELECT * FROM " . $this->tableName . " WHERE postulationId = :postulationId";
+
+            $parameters["postulationId"] = $postulationId;
+
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query, $parameters);
+
+            foreach ($resultSet as $row) {
+                $postulation = new Postulation();                    
+                    $postulation->setPostulationId($row["postulationId"]);
+                    $postulation->setJobOffer($row["jobOffer"]);
+                    $postulation->setStudent($row["student"]);
+                    $postulation->setDatepostulation($row["datepostulation"]);
+                    $postulation->setPresentation($row["presentation"]);
+                    $postulation->setCv($row["cv"]);
+                    $postulation->setIsActive($row["isActive"]);
+            }
+
+            return $postulation;
+        } catch (PDOException $e) {
+            throw $e;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
 
       
     }

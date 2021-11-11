@@ -45,9 +45,25 @@ class PostulationController {
 
     }
 
+    // public function Delete($id)
+    // {
+    //     $this->postulationDAO->Delete($id);
+    //     $this->ShowListView();
+    // }
     public function Delete($id)
     {
-        $this->postulationDAO->Delete($id);
+        $postulationFound = null;
+        $postulationFound = $this->postulationDAO->GetPostulationById($id);
+        if ($postulationFound != null) {
+            if ($postulationFound->getIsActive() == 1) {
+                $postulationFound->setIsActive(0);
+                
+            } else {
+                $postulationFound->setIsActive(1);
+               
+            }
+        }
+        $this->postulationDAO->Modify($postulationFound);
         $this->ShowListView();
     }
 
@@ -58,10 +74,16 @@ class PostulationController {
 		$jobOfferFound = $this->jobOfferDAO->GetById($jobOfferId);
         require_once(VIEWS_PATH. "postulation-add.php");
     }
-
+    
     public function ShowListView(){
         
         $postulationList = $this->postulationDAO->GetAll(); 
         require_once(VIEWS_PATH. "postulation-record.php");
+    }
+
+    public function ShowListViewAdmin(){
+        
+        $postulationList = $this->postulationDAO->GetAll(); 
+        require_once(VIEWS_PATH. "admin-postulation-list.php");
     }
 }
