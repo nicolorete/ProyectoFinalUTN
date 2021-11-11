@@ -97,10 +97,10 @@ class PostulationDAOPDO {
                     $postulation->setPostulationId($row["postulationId"]);
                     $postulation->setJobOffer($row["jobOffer"]);
                     $postulation->setStudent($row["student"]);
-                    $postulation->setDatepostulation($row["datepostulation"]);
+                    $postulation->setDatepostulation($row["date"]);
                     $postulation->setPresentation($row["presentation"]);
-                    $postulation->setCv($row["cv"]);
-                    $postulation->setIsActive($row["isActive"]);
+                    $postulation->setCv($row["fileId"]);
+                    $postulation->setIsActive($row["active"]);
     
                     // return $postulation;
                 }
@@ -113,7 +113,8 @@ class PostulationDAOPDO {
         public function Modify(Postulation $postulation)
         {
             try {
-                $query = "UPDATE " .$this->tableName. "  SET postulationId=:postulationId, cuit=:cuit, nombre=:nombre, address=:address, link=:link, isActive=isActive WHERE postulationId = :postulationId;";
+                $query = "UPDATE " .$this->tableName. "  SET postulationId=:postulationId, jobOfferId=:jobOfferId, studentId=:studentId, date=:date,
+                                                         presentation=:presentation, fileId=:fileId, active=:active WHERE postulationId = :postulationId;";
                 
                 
                 $parameters["postulationId"] = $postulation->getPostulationId();
@@ -149,12 +150,12 @@ class PostulationDAOPDO {
             foreach ($resultSet as $row) {
                 $postulation = new Postulation();                    
                     $postulation->setPostulationId($row["postulationId"]);
-                    $postulation->setJobOffer($row["jobOffer"]);
-                    $postulation->setStudent($row["student"]);
-                    $postulation->setDatepostulation($row["datepostulation"]);
+                    $postulation->setJobOffer($row["jobOfferId"]);
+                    $postulation->setStudent($row["studentId"]);
+                    $postulation->setDatepostulation($row["date"]);
                     $postulation->setPresentation($row["presentation"]);
-                    $postulation->setCv($row["cv"]);
-                    $postulation->setIsActive($row["isActive"]);
+                    $postulation->setCv($row["fileId"]);
+                    $postulation->setIsActive($row["active"]);
             }
 
             return $postulation;
