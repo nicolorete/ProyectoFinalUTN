@@ -46,8 +46,24 @@ class PostulationController
         $postulation->setIsActive($_POST['active']);
 
 
+<<<<<<< HEAD
         var_dump($postulation);
         $this->postulationDAO->Add($postulation);
+=======
+        $lista = $this->postulationDAO->searchStudent($_POST['student']);
+        
+        if($lista != 1){
+            $this->postulationDAO->Add($postulation);
+        }else{
+            ?>
+                <script>alert('Ya tienes una postulacion activa');</script>
+            <?php
+        }
+        
+        // $user = $this->studentDAO->GetProfileByIdUser($_POST['student']);
+        // var_dump($user);
+        $this->ShowListView();
+>>>>>>> 09ff361ecb6999f1493b94f530130159f1fba52a
 
         $this->ShowListView();
     }
