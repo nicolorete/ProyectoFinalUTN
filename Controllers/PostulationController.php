@@ -10,6 +10,9 @@ use DAO\FileDAOPDO as FileDAOPDO;
 use Exception;
 use Models\Postulation as Postulation;
 use Models\File as File;
+use Models\JobOffer;
+
+
 
 class PostulationController
 {
@@ -19,6 +22,7 @@ class PostulationController
     private $studentDAO;
     private $postulationDAO;
     private $fileDAO;
+    
 
 
     public function __construct()
@@ -27,7 +31,8 @@ class PostulationController
         $this->postulationDAO = new PostulationDAOPDO();
         $this->companyDAO = new CompanyDAOPDO();
         $this->studentDAO = new StudentDAOPDO();
-        $this->FileDAO = new FileDAOPDO();
+        $this->fileDAO = new FileDAOPDO();
+        
     }
 
     public function Add()
@@ -42,30 +47,28 @@ class PostulationController
         $postulation->setStudent($_POST['student']);
         $postulation->setDatePostulation($_POST['date']);
         $postulation->setPresentation($_POST['presentation']);
-        $postulation->setFile($_POST['file']);
+        // $postulation->setFile($_POST['file']);
+        $postulation->setFile(2);
         $postulation->setIsActive($_POST['active']);
 
 
-<<<<<<< HEAD
-        var_dump($postulation);
-        $this->postulationDAO->Add($postulation);
-=======
         $lista = $this->postulationDAO->searchStudent($_POST['student']);
-        
-        if($lista != 1){
+
+        if ($lista != 1) {
             $this->postulationDAO->Add($postulation);
-        }else{
-            ?>
-                <script>alert('Ya tienes una postulacion activa');</script>
-            <?php
+        } else {
+?>
+            <script>
+                alert('Ya tienes una postulacion activa');
+            </script>
+        <?php
         }
-        
+
         // $user = $this->studentDAO->GetProfileByIdUser($_POST['student']);
         // var_dump($user);
-        $this->ShowListView();
->>>>>>> 09ff361ecb6999f1493b94f530130159f1fba52a
+        // $this->ShowListView();
 
-        $this->ShowListView();
+        $this->ShowUploadView();
     }
 
     // public function Delete($id)
@@ -87,31 +90,7 @@ class PostulationController
         $this->postulationDAO->Modify($postulationFound);
         $this->ShowListViewAdmin();
     }
-    public function Upload($file)
-    {
-        try {
-            $fileName = $file["name"];
-            $tempFileName = $file["tmp_name"];
-            $type = $file["type"];
 
-            $filePath = UPLOADS_PATH . basename($fileName);
-            $fileType = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
-            // $imageSize = getimagesize($tempFileName);
-
-            if (move_uploaded_file($tempFileName, $filePath)) {
-                $file = new File();
-                $file->setName($fileName);
-                $this->fileDAO->Add($file);
-
-                $message = "archivo subido correctamente";
-            } else
-                $message = "Ocurrió un error al intentar subir el archivo";
-        } catch (Exception $ex) {
-            $message = $ex->getMessage();
-        }
-
-        // $this->ShowListView($message);
-    }
 
     public function ShowAddView($jobOfferId)
     {
@@ -134,5 +113,62 @@ class PostulationController
 
         $postulationList = $this->postulationDAO->GetAll();
         require_once(VIEWS_PATH . "admin-postulation-list.php");
+    }
+
+
+
+    ///////////////////////////////////////////////////Manejo del File/////////////////////////////////////////////////////////
+
+    public function Upload($file)
+    {
+        try {
+            $user= $_SESSION['loggedUser'];
+            $fileName = $file["name"];
+            $tempFileName = $file["tmp_name"];
+            $type = $file["type"];
+
+            $filePath = UPLOADS_PATH . basename($fileName);
+            $fileType = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+            // $imageSize = getimagesize($tempFileName);
+
+
+            if (move_uploaded_file($tempFileName, $filePath)) {
+                $file = new File();
+                $file->setName($fileName);
+                $file->setFileId($user->getStudentId());
+                $this->fileDAO->Add($file);
+
+                $message = "archivo subido correctamente";
+            } else
+                $message = "Ocurrió un error al intentar subir el archivo";
+        } catch (Exception $ex) {
+            $message = $ex->getMessage();
+        }
+
+        ?>
+        <script>
+            alert('Curriculum agregado correctamente');
+        </script>
+        <?php
+        $this->ShowListView();
+
+    }
+    public function ShowUploadView()
+    {
+        require_once(VIEWS_PATH . "upload-file.php");
+    }
+
+    public function ShowPostulationView($fileId)
+    {
+        $this->fileDAO->GetByFileId($fileId);
+
+        require_once(VIEWS_PATH . "postulation-continue.php");
+    }
+
+    public function Showfile($fileId)
+    {
+        $file = $this->fileDAO->getByFileId($fileId);
+
+        require_once(VIEWS_PATH . "file-show.php");
     }
 }

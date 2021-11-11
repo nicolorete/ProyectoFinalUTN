@@ -12,6 +12,7 @@
         private $email;
         private $phoneNumber;
         private $active;
+        
         private $password;
         
         public function __construct(){
@@ -122,21 +123,8 @@
         public function setActive($active){
             $this->active = $active;
         }
+    
 
-      
-
-        //toString
-        public function __tostring(){
-            return "<br>ID: ".$this->studentId.
-                   "<br>DNI: ".$this->dni.
-                   "<br>Full name: ".$this->firstName." ".$this->lastName.
-                   "<br>Born in ".$this->birthDate.
-				   "<br>File Number: #".$this->fileNumber.
-                   "<br>Gender: ".$this->gender.
-                   "<br>Phone: ".$this->phoneNumber.
-                   "<br>Email: ".$this->email.
-                   "<br>Career: ".$this->career;
-                   
-        }
+    
     };
 ?>

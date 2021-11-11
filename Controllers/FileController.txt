@@ -22,45 +22,44 @@
                 $tempFileName = $file["tmp_name"];
                 $type = $file["type"];
                 
-                $filePath = UPLOADS_PATH.basename($fileName);            
-
+                $filePath = UPLOADS_PATH.basename($fileName);   
                 $fileType = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+                // $imageSize = getimagesize($tempFileName);
 
-                $imageSize = getimagesize($tempFileName);
-
-                if($imageSize !== false)
-                {
+                
                     if (move_uploaded_file($tempFileName, $filePath))
                     {
-                        $image = new File();
-                        $image->setName($fileName);
-                        $this->fileDAO->Add($image);
+                        $file = new File();
+                        $file->setName($fileName);
+                        $this->fileDAO->Add($file);
 
                         $message = "archivo subido correctamente";
                     }
                     else
                         $message = "Ocurrió un error al intentar subir el archivo";
-                }
-                else   
-                    $message = "El archivo No corresponde a un archivo .doc o .pdf";
+                
             }
             catch(Exception $ex)
             {
                 $message = $ex->getMessage();
             }
+            
+            ?>
+            <script>alert('Curriculum agregado correctamente');</script>
+            <?php
+            $this->ShowUploadView();
 
-            $this->ShowListView($message);
         }
         public function ShowUploadView()
-        {
-            require_once(VIEWS_PATH."index.php");
+        {   
+            require_once(VIEWS_PATH."upload-file.php");
         }
 
-        public function ShowListView($message = "")
+        public function ShowPostulationView($fileId)
         {
-            $fileList = $this->fileDAO->GetAll();
+            $this->fileDAO->GetByFileId($fileId);
 
-            require_once(VIEWS_PATH."file-list.php");
+            require_once(VIEWS_PATH."postulation-continue.php");
         }
 
         public function Showfile($fileId)

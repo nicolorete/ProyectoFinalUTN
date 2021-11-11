@@ -14,7 +14,8 @@ use Models\File as File;
         {
             try
             {
-                $query = ("INSERT INTO ".$this->tableName." (name) VALUES (:name);");
+                $query = ("INSERT INTO ".$this->tableName." (fileId,name) VALUES (:fileId, :name);");
+                $parameters["fileId"] = $file->getFileId();
                 $parameters["name"] = $file->getName();
                 // "CALL files_add(?);";
                 

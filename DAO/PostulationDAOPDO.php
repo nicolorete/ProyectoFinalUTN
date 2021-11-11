@@ -13,6 +13,7 @@ class PostulationDAOPDO {
 
         private $connection;
         private $tableName = "postulation";
+        private $tableName1 = "files";
 
         public function __construct(){
             
@@ -29,7 +30,7 @@ class PostulationDAOPDO {
                 $parameters["studentId"] = $postulation->getStudent();
                 $parameters["date"] = $postulation->getDatePostulation();
                 $parameters["presentation"] = $postulation->getPresentation();
-                $parameters["fileId"] = $postulation->getCv();
+                $parameters["fileId"] = $postulation->getFile();
                 $parameters["active"] = $postulation->getIsActive();
                 
                 
@@ -64,7 +65,7 @@ class PostulationDAOPDO {
                     $postulation->setStudent($row["studentId"]);
                     $postulation->setDatepostulation($row["date"]);
                     $postulation->setPresentation($row["presentation"]);
-                    $postulation->setCv($row["fileId"]);
+                    $postulation->setFile($row["fileId"]);
                     $postulation->setIsActive($row["active"]);
         
                     array_push($postulationList, $postulation);
@@ -108,7 +109,7 @@ class PostulationDAOPDO {
                     $postulation->setStudent($row["student"]);
                     $postulation->setDatepostulation($row["date"]);
                     $postulation->setPresentation($row["presentation"]);
-                    $postulation->setCv($row["fileId"]);
+                    $postulation->setFile($row["fileId"]);
                     $postulation->setIsActive($row["active"]);
     
                     // return $postulation;
@@ -131,7 +132,7 @@ class PostulationDAOPDO {
                 $parameters["studentId"] = $postulation->getStudent();
                 $parameters["date"] = $postulation->getDatePostulation();
                 $parameters["presentation"] = $postulation->getPresentation();
-                $parameters["fileId"] = $postulation->getCv();
+                $parameters["fileId"] = $postulation->getFile();
                 $parameters["active"] = $postulation->getIsActive();
                 
                 $this->connection = Connection::GetInstance();
@@ -163,7 +164,7 @@ class PostulationDAOPDO {
                     $postulation->setStudent($row["studentId"]);
                     $postulation->setDatepostulation($row["date"]);
                     $postulation->setPresentation($row["presentation"]);
-                    $postulation->setCv($row["fileId"]);
+                    $postulation->setFile($row["fileId"]);
                     $postulation->setIsActive($row["active"]);
             }
 
@@ -174,6 +175,27 @@ class PostulationDAOPDO {
             throw $ex;
         }
     }
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    // public function AddFile($fileName)
+    //     {
+    //         try
+    //         {
+    //             $query = ("INSERT INTO ".$this->tableName1." (name) VALUES (:name);");
+    //             $parameters["name"] = $fileName();
+    //             // "CALL files_add(?);";
+                
+
+    //             $this->connection = Connection::GetInstance();
+
+    //             $this->connection->ExecuteNonQuery($query, $parameters);
+    //         }
+    //         catch(Exception $ex)
+    //         {
+    //             throw $ex;
+    //         }
+    //     }
 
       
     }
