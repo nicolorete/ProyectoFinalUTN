@@ -46,7 +46,7 @@ class CompanyDAOPDO implements ICompanyDAO
             throw $ex;
         }
     }
-    
+
     # Modifica el company que esta en la base
     public function Modify(Company $company)
     {

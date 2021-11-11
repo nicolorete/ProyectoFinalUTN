@@ -61,13 +61,13 @@
                 </div>
 
                 <?php } ?>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" type="submit">Modificar</button>
+                    </form>
+                    <button class="button is-success" onclick="window.history.go(-1); return false;">Cancelar</button>
+                </footer>
         </section>
 
-        <footer class="modal-card-foot">
-            <button class="button is-success" type="submit">Modificar</button>
-            </form>
-            <button class="button is-success" onclick="window.history.go(-1); return false;">Cancelar</button>
-        </footer>
 
 
     </div>

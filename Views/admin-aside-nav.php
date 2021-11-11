@@ -26,11 +26,11 @@
                 </a>
             </li>
             <li>
-                <a class="" href="">
+                <a class="" href="<?= FRONT_ROOT ?>Postulation/ShowListViewAdmin">
                     <span class="icon">
                         <i class="fa fa-desktop"></i>
                     </span> 
-                    <!-- Actualizar Base de datos -->
+                    Listar Postulaciones
                 </a>
             </li>
         </ul>

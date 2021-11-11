@@ -14,7 +14,6 @@ class CompanyController
 
     public function __construct()
     {
-        // $this->companyDAO = new CompanyDAO();
         $this->companyDAO = new CompanyDaoPdo();
     }
 
@@ -83,14 +82,6 @@ class CompanyController
         echo "<br><b>There are ".$i." Result/s!</b>";
     }
     
-    // public function Delete1($id)
-    // {
-    //     require_once(VIEWS_PATH."validate-session.php");
-
-    //     $this->companyDAO->Delete($id);
-
-    //     $this->ShowListView();
-    // }
     public function Delete($id)
     {
         $companyFound = null;
@@ -115,6 +106,7 @@ class CompanyController
         $companyNew->setLink($link);
         $companyNew->setIsActive($isActive);
 
+        
         $this->companyDAO->Modify($companyNew);
         
         $this->ShowListView();
