@@ -7,7 +7,7 @@ class Postulation{
   private $student;
   private $datePostulation;
   private $presentation;
-  private $cv; 
+  private $file; 
   private $isActive;
 
   public function __construct()
@@ -76,14 +76,14 @@ class Postulation{
     return $this;
   }
 
-  public function getCV()
+  public function getFile()
   {
-    return $this->cv;
+    return $this->file;
   }
 
-  public function setCV($cv)
+  public function setFile($file)
   {
-    $this->cv = $cv;
+    $this->file = $file;
 
     return $this;
   }

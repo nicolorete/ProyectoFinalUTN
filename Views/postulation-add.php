@@ -27,12 +27,29 @@ include('top-nav.php');
                     <div class="column">
                         <div class="card">
                             <div class="card-content">
-                                <p class="title is-4">Aplicar a <?= $jobOfferFound->getTitle(); ?>!</p>
-                                <p style="color: red;font-size:18px"> </p>
+                                <p class="title is-3">Aplicar a <?= $jobOfferFound->getTitle(); ?>!</p>
+                                <br>
+
+                                <div class="field">
+                                        <p class="title is-4">Primero Carga tu Curriculum:</p>
+                                        <form action=" <?php echo FRONT_ROOT ?>Postulation/Upload" enctype="multipart/form-data" method="POST">
+                                            <div class="field">
+                                                <label class="label">Selecciona un archivo .doc o .pdf</label>
+                                                <div class="control">
+                                                    <input class="form-control-file" name="cv" type="file" placeholder="" required="">
+                                                </div>
+                                            </div>
+                                            <div class="field is-grouped centered" style="padding-left: 30%">
+                                                <div class="control">
+                                                    <button class="button is-link" type="submit">Subir</button>
+                                                </div>
+                                                <div class="control">
+                                                    <button class="button is-text" type="reset">Limpiar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                </div><br>
                                 <form action=" <?php echo FRONT_ROOT ?>Postulation/Add " method="POST">
-
-
-
                                     <div class="field">
                                         <label class="label">Estudiante: <?= $user->getFirstName() ?><?= $user->getLastName() ?></label>
                                         <div class="control">
@@ -62,19 +79,7 @@ include('top-nav.php');
                                             <textarea class="input" name="presentation" type="text" placeholder="Breve presentacion de vos" required="" size="200"></textarea>
                                         </div>
                                     </div>
-                                    <!-- <div class="field">
-                                        <p class="title is-4">Carga tu Curriculum</p>                                        
-                                        <form action=" <?php echo FRONT_ROOT ?>File/Upload" enctype="multipart/form-data" method="POST">
-                                            <div class="field">
-                                                <label class="label">Selecciona un archivo .doc o .pdf</label>
-                                                <div class="control">
-                                                    <input class="form-control-file" name="cv" type="file" placeholder="" required="">
-                                                </div>
-                                            </div>
-
-                                           
-                                        </form>
-                                    </div><br> -->
+                                   
                                     <div class="field">
                                         <label class="label">Postulacion activa! </label>
                                         <div class="control">
