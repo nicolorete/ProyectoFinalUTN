@@ -41,11 +41,8 @@
             try
             {
                 $jobOfferList = array();
-
                 $query = "SELECT * FROM ". $this->tableName;
-
                 $this->connection = Connection::GetInstance();
-
                 $resultSet = $this->connection->Execute($query);
 
                 if($resultSet) {

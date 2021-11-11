@@ -28,6 +28,8 @@ class PostulationController {
         // echo "hola";
         
         $postulation = new Postulation;
+
+    
         $postulation->setJobOffer($_POST['joboffer']);
         $postulation->setStudent($_POST['student']);
         $postulation->setDatePostulation($_POST['date']);
@@ -58,6 +60,8 @@ class PostulationController {
     }
 
     public function ShowListView(){
+        
+        $postulationList = $this->postulationDAO->GetAll(); 
         require_once(VIEWS_PATH. "postulation-record.php");
     }
 }

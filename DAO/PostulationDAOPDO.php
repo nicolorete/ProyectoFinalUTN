@@ -5,6 +5,8 @@
     use Models\Postulation as Postulation;
     use \Exception as Exception;
     use DAO\Connection as Connection;
+    use DAO\JobOfferDAOPDO as JobOfferDAO;
+    use DAO\StudentDAOPDO as StudentDAO;
 use PDOException;
 
 class PostulationDAOPDO {
@@ -13,7 +15,7 @@ class PostulationDAOPDO {
         private $tableName = "postulation";
 
         public function __construct(){
-            // $this->dataFile = dirname(__DIR__)."\Data\postulation.json";
+            
         }
 
         public function Add(Postulation $postulation) {
@@ -51,20 +53,24 @@ class PostulationDAOPDO {
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);
                 
+                if($resultSet) {
                 foreach ($resultSet as $row)
                 {                
-                    $postulation = new Postulation(); 
+                    $postulation = new Postulation();
+                    $jobOfferDAO = new JobOfferDAO(); 
+                    $studentDAO = new StudentDAO(); 
                     $postulation->setPostulationId($row["postulationId"]);                   
-                    $postulation->setJobOffer($row["jobOffer"]);
-                    $postulation->setStudent($row["student"]);
-                    $postulation->setDatepostulation($row["datepostulation"]);
+                    $postulation->setJobOffer($jobOfferDAO->GetById($row["jobOfferId"]));
+                    $postulation->setStudent($studentDAO->GetById($row["studentId"]));
+                    $postulation->setDatepostulation($row["date"]);
                     $postulation->setPresentation($row["presentation"]);
-                    $postulation->setCv($row["cv"]);
-                    $postulation->setIsActive($row["isActive"]);
+                    $postulation->setCv($row["fileId"]);
+                    $postulation->setIsActive($row["active"]);
         
                     array_push($postulationList, $postulation);
                 }
                 return $postulationList;
+            }
             }
             catch(Exception $ex)
             {

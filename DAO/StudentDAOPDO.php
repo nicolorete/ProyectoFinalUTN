@@ -206,6 +206,42 @@ class StudentDAOPDO
             throw $ex;
         }
     }
+    
+    public function GetById($studentId)
+    {
+        try
+        {
+            $student = null;
+            $query = "SELECT * FROM ".$this->tableName. " WHERE studentId = :studentId";
+            $parameters["studentId"] = $studentId;
+            
+            $this->connection = Connection::GetInstance();
+            $result = $this->connection->Execute($query, $parameters);
+
+            foreach($result as $row) {
+                $user = new Student();
+
+                $user->setStudentId($row["studentId"]);
+                $user->setEmail($row["email"]);
+                // $user->setPassword($row["password"]);
+                $user->setLastName($row["lastName"]);
+                $user->setFirstName($row["firstName"]);
+                $user->setDni($row["dni"]);
+                $user->setFileNumber($row["fileNumber"]);
+                $user->setGender($row["gender"]);
+                $user->setBirthDate($row["birthDate"]);
+                $user->setPhoneNumber($row["phoneNumber"]);
+                $user->setActive($row["active"]);
+               
+                return $student;
+            }
+        }
+        catch(Exception $ex)
+        {
+            throw $ex;
+        }
+    }
+
 
     
     public function GetStudentListFromApi(){

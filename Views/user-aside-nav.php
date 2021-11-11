@@ -39,7 +39,7 @@
                 </a>
             </li>
             <li>
-                <a class="" href="">
+                <a class="" href="<?= FRONT_ROOT ?>Postulation/ShowListView">
                     <span class="icon">
                         <i class="fa fa-shopping-cart"></i>
                     </span> Mis Postulaciones 
