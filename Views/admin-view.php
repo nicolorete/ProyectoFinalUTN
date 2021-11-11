@@ -96,6 +96,27 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-2">Postulaciones</p>
+                            <div class="box">
+                                <article class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-64x64">
+                                            <img src="https://www.pinclipart.com/picdir/big/67-675105_search-log-in-to-your-teach-california-account.png" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <div class="content">
+                                           
+
+                                            <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>Postulation/ShowListViewAdmin">Listar Postulaciones </a> </li>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
