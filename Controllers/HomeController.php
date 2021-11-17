@@ -4,6 +4,7 @@ namespace Controllers;
 //db
 use DAO\StudentDAOPDO as StudentDAOPDO;
 use DAO\AdminDAOPDO as AdminDAOPDO;
+use DAO\CompanyDAOPDO as CompanyDAOPDO;
 // Json
 use DAO\StudentDAO as StudentDAO;
 use DAO\AdminDAO as AdminDAO;
@@ -22,6 +23,7 @@ class HomeController
 	private $studentDAOPDO;
 	private $adminDAO;
 	private $adminDAOPDO;
+	private $companyDAOPDO;
 	
 
 	function __construct()
@@ -30,6 +32,7 @@ class HomeController
 		$this->studentDAOPDO = new StudentDAOPDO();
 		$this->adminDAO = new AdminDAO();
 		$this->adminDAOPDO = new AdminDAOPDO();
+		$this->companyDAOPDO = new CompanyDAOPDO();
 	}
 
 	public function Index()
@@ -147,6 +150,17 @@ class HomeController
 			$this->ShowLoginView($message);
 		}
 	}
+	
+	public function ShowCompanyView($message = '')
+	{
+		if (isset($_SESSION['loggedCompany'])) {
+			$userFound = $_SESSION['loggedCompany'];
+			require_once(VIEWS_PATH . 'company-view.php');
+		} else {
+			$message = "Debe iniciar sesión primero!";
+			$this->ShowLoginView($message);
+		}
+	}
 
 	public function LogOut()
 	{
@@ -155,80 +169,46 @@ class HomeController
 		$this->ShowLoginView($message);
 	}
 
-	// # Funcion para agregar un usuario
-	// public function Add($email, $password, $firstName, $lastName, $dni)
+	//Funcion para ingresar al sistema.
+	// public function Login($email, $password)
 	// {
-	// 	try {
-	// 		$userFound = null;
-	// 		# Buscar si existe el mail
-	// 		$userFound = $this->userDAO->GetByEmail($email);
-	// 		// var_dump($userFound);
-	// 		if ($userFound == null) {
-	// 			$newUser = new User();
-	// 			$newRole = new Role();
-	// 			$newRole->setDescription('0');
-
-	// 			$newUser->setEmail($email);
-	// 			$newUser->setPassword($password);
-	// 			$newUser->setRole($newRole);
-
-	// 			# Crear el User Profile
-
-	// 			$newUser->setFirstName($firstName);
-	// 			$newUser->setLastName($lastName);
-	// 			$newUser->setDni($dni);
-
-	// 			$this->userDAO->Add($newUser);
-	// 			$message = 'Usuario creado!';
-	// 		} else {
-	// 			$message = 'Ya existe el correo registrado';
+	// 	$userFound = null;	
+	// 	$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
+	// 	if($userFound == null){
+	// 		$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
+	// 		if($userFound == null){
+	// 			$userFound = $this->companyDAOPDO->GetCompanyByName($email);
 	// 		}
-	// 		$this->ShowLoginView($message);
-	// 	} catch (Exception $ex) {
-	// 		$message = 'Oops ! ' . $ex->getMessage();
-	// 	} catch (PDOException $e) {
-	// 		throw $e;
 	// 	}
-	// }
-
-	// public function searchapi($email){
-    //     //CURL
-    //     $url = curl_init();
-    //     //Sets URL
-    //     curl_setopt($url, CURLOPT_URL, 'https://utn-Admins-api.herokuapp.com/api/Student');
-    //     //Sets Header key
-    //     curl_setopt($url, CURLOPT_HTTPHEADER, array('x-api-key:4f3bceed-50ba-4461-a910-518598664c08'));
-    //     curl_setopt($url, CURLOPT_RETURNTRANSFER, 1);
-    //     curl_setopt($url, CURLOPT_SSL_VERIFYPEER, false); 
-
-    //     $response = curl_exec($url);
-    //     $toJson = json_decode($response);
-
-    //     var_dump($toJson);
-
-    //     $user = new User();
-
-	// 	// $user->GetByEmailApi($email, $toJson);
-
-    //     return $user;
-    // }
-
-		// public function ShowUserProfile($message = "")
-	// {
-	// 	if (isset($_SESSION['loggedUser'])) {
-	// 		$loggedUser = $_SESSION['loggedUser'];
-
-	// 		$userData = $this->userDAO->GetProfileByIdUser($loggedUser->getID());
-
-	// 		if ($userData != null) {
-	// 			require_once(VIEWS_PATH . 'user-profile.php');
-	// 		} else {
-	// 			$message = 'No contiene datos el usuario. Complete los campos';
-	// 			require_once(VIEWS_PATH . 'user-profile.php');
+	// 	if ($userFound != null) {
+	// 		if($userFound instanceof Admin && $password == $userFound->getPassword()){
+	// 			$_SESSION['loggedAdmin'] = $userFound;
+	// 			$_SESSION['logged'] = "a";
+	// 			$this->ShowAdminView();
 	// 		}
-	// 	} else {
-	// 		$message = 'Debe iniciar sesion';
-	// 		$this->ShowLoginView($message);
+	// 		elseif($userFound instanceof Student && $password == $userFound->getPassword() && $userFound->getActive() == true){		
+	// 			$_SESSION['loggedUser'] = $userFound;
+	// 			$_SESSION['logged'] = "s";
+	// 			$message = 'Bienvenido Usuario';
+	// 			$this->ShowUserView();			
+	// 		}
+	// 		elseif($password == $userFound->getCuit() && $userFound->getIsActive() == true){		
+	// 			$_SESSION['loggedCompany'] = $userFound;
+	// 			$_SESSION['logged'] = "c";
+	// 			$message = 'Bienvenido Usuario';
+	// 			$this->ShowUserView();
+	// 		}
+	// 		else{
+	// 			$this->ShowLoginView(); 			
+	// 		}
+	// 	}else{
+	// 		$userFound = $this->studentDAO->GetByEmailApi($email);
+	// 		if($userFound != NULL){
+	// 			$this->ShowRegisterView();
+	// 		}else{
+	// 			$this->ShowLoginView();
+	// 		}
 	// 	}
+	
 	// }
 }

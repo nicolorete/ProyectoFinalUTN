@@ -29,7 +29,7 @@
                     $this->adminDAO->Add($admin);
                 } else {
                     ?>
-                        <script>alert('Ya existe un Administrador con ese email');</script>
+                        <script>alert(' existe un Administrador con ese email');</script>
                     <?php
                 }
             } else {
