@@ -37,7 +37,7 @@
 
                                             <div class="content">
                                                 <div class="field">
-                                                    <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>JobOffer/ShowAddView">Cargar Propuesta</a><br><br></li>
+                                                    <li><a class="button is-dark is-4" href="<?= FRONT_ROOT ?>JobOffer/ShowAddViewCompany">Cargar Propuesta</a><br><br></li>
 
                                                     <li><a class="button is-dark is-4"href="<?= FRONT_ROOT ?>JobOffer/ShowListView">Listar Propuestas </a> </li>
                                                 </div>

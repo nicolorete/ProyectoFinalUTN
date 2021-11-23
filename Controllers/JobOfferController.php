@@ -26,6 +26,15 @@
             require_once(VIEWS_PATH. "joboffer-add.php");
         }
 
+        public function ShowAddViewCompany(){
+
+            $jobPositionDAO = new JobPositionDAOPDO;
+            $jobPositionList = $jobPositionDAO->GetJobPositionListFromApi();
+            $companyDAO = new CompanyDAOPDO;
+            $companyList = $companyDAO->GetAll();
+            require_once(VIEWS_PATH. "company-joboffer-add.php");
+        }
+
         public function ShowListView(){
             require_once(VIEWS_PATH. "joboffer-list.php");
         }
