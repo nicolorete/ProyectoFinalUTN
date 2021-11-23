@@ -38,6 +38,9 @@
         public function ShowListView(){
             require_once(VIEWS_PATH. "joboffer-list.php");
         }
+        public function ShowListViewCompany(){
+            require_once(VIEWS_PATH. "company-joboffer-list.php");
+        }
 
 
         public function Add(){

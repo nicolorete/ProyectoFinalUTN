@@ -12,7 +12,7 @@
         <p class="menu-label is-hidden-touch">Consultas</p>
         <ul class="menu-list">
             <li>
-                <a class="" href="<?= FRONT_ROOT ?>JobOffer/ShowAddView">
+                <a class="" href="<?= FRONT_ROOT ?>JobOffer/ShowAddViewCompany">
                     <span class="icon">
                         <i class="fa fa-edit"></i>
                     </span> Cargar Propuestas

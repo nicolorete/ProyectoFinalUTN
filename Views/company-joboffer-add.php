@@ -65,13 +65,17 @@ include('top-nav.php');
                                 </div>
                                 <div class="field">
                                     <label class="label" for="nombre">Empresa: </label>
+                                    
                                     <div class="control">
                                         <select class="select" name="nombre">
                                         <?php
+                                        
                                             foreach ($companyList as $company)
                                             { 
+                                                if($user->getCompany() == $company->getCompanyId()){
                                                 ?><option value="<?php echo $company->getCompanyId() ?>"><?php echo $company->getNombre() ?></option><?php
-                                            }?>
+                                            }
+                                        }?>
                                         </select>
                                     </div>
                                 </div>
