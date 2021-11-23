@@ -5,6 +5,7 @@ namespace Controllers;
 use DAO\StudentDAOPDO as StudentDAOPDO;
 use DAO\AdminDAOPDO as AdminDAOPDO;
 use DAO\CompanyDAOPDO as CompanyDAOPDO;
+use DAO\UserCompanyDAOPDO as UserCompanyDAOPDO;
 // Json
 use DAO\StudentDAO as StudentDAO;
 use DAO\AdminDAO as AdminDAO;
@@ -12,6 +13,7 @@ use Exception;
 // Modelos
 use Models\Student as Student;
 use Models\Admin as Admin;
+use Models\UserCompany as UserCompany;
 use PDOException;
 
 /**
@@ -24,6 +26,7 @@ class HomeController
 	private $adminDAO;
 	private $adminDAOPDO;
 	private $companyDAOPDO;
+	private $userCompanyDAOPDO;
 	
 
 	function __construct()
@@ -33,6 +36,7 @@ class HomeController
 		$this->adminDAO = new AdminDAO();
 		$this->adminDAOPDO = new AdminDAOPDO();
 		$this->companyDAOPDO = new CompanyDAOPDO();
+		$this->userCompanyDAOPDO = new userCompanyDAOPDO();
 	}
 
 	public function Index()
@@ -41,64 +45,62 @@ class HomeController
 
 	}	
 
-	//Funcion para ingresar al sistema.
-	public function Login($email, $password)
-	{
-		$userFound = null;
-		//$adminFound = null;
-		//$userFound = $this->studentDAO->GetByEmail($email);
-		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
-		if($userFound == null){
-			$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
-		}
-		if ($userFound != null) {
-			if($userFound instanceof Admin && $password == $userFound->getPassword()){
-				$_SESSION['loggedAdmin'] = $userFound;
-				$_SESSION['logged'] = "a";
+	// Funcion para ingresar al sistema.
+	// public function Login($email, $password)
+	// {
+	// 	$userFound = null;
+	// 	//$adminFound = null;
+	// 	//$userFound = $this->studentDAO->GetByEmail($email);
+	// 	$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
+	// 	if($userFound == null){
+	// 		$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
+	// 	}
+	// 	if ($userFound != null) {
+	// 		if($userFound instanceof Admin && $password == $userFound->getPassword()){
+	// 			$_SESSION['loggedAdmin'] = $userFound;
+	// 			$_SESSION['logged'] = "a";
 
-				$this->ShowAdminView();
-			}
-			elseif($password == $userFound->getPassword() && $userFound->getActive() == true){		
-				$_SESSION['loggedUser'] = $userFound;
-				$_SESSION['logged'] = "s";
+	// 			$this->ShowAdminView();
+	// 		}
+	// 		elseif($password == $userFound->getPassword() && $userFound->getActive() == true){		
+	// 			$_SESSION['loggedUser'] = $userFound;
+	// 			$_SESSION['logged'] = "s";
 
-				$message = 'Bienvenido Usuario';
-				$this->ShowUserView();
-				// var_dump($userFound);
-			}else{
-				$this->ShowLoginView();
-				?>
-				<script>alert('Usuario o contraseña erronea');</script>
-				<?php
-			}
-		}else{
-			$userFound = $this->studentDAO->GetByEmailApi($email);
-			if($userFound != NULL){
-				$this->ShowRegisterView();
-				// $this->studentDAO->add($userFound);
-			}else{
-				$this->ShowLoginView();
-			}
-		}
-		// } else {
-		// 	$userFound = $this->userDAO->GetByEmail($email);
-		// 	// var
-		// 	if($userFound != null){
-		// 		if ($userFound->getRole()->getDescription() == '0') {
-		// 			$_SESSION['loggedUser'] = $userFound;
-		// 			$message = 'Bienvenido Usuario';
-		// 			$this->ShowUserView($userFound);					
-		// 		} else {
-		// 			$message = 'Bienvenido Admin';
-		// 			$_SESSION['loggedUser'] = $userFound;
-		// 			$this->ShowAdminView($message);
+	// 			$message = 'Bienvenido Usuario';
+	// 			$this->ShowUserView();
+	// 			// var_dump($userFound);
+	// 		}else{
+	// 			$this->ShowLoginView();
+				
+	// 		}
+	// 	}else{
+	// 		$userFound = $this->studentDAO->GetByEmailApi($email);
+	// 		if($userFound != NULL){
+	// 			$this->ShowRegisterView();
+	// 			// $this->studentDAO->add($userFound);
+	// 		}else{
+	// 			$this->ShowLoginView();
+	// 		}
+	// 	}
+	// 	// } else {
+	// 	// 	$userFound = $this->userDAO->GetByEmail($email);
+	// 	// 	// var
+	// 	// 	if($userFound != null){
+	// 	// 		if ($userFound->getRole()->getDescription() == '0') {
+	// 	// 			$_SESSION['loggedUser'] = $userFound;
+	// 	// 			$message = 'Bienvenido Usuario';
+	// 	// 			$this->ShowUserView($userFound);					
+	// 	// 		} else {
+	// 	// 			$message = 'Bienvenido Admin';
+	// 	// 			$_SESSION['loggedUser'] = $userFound;
+	// 	// 			$this->ShowAdminView($message);
 					
-		// 		}
-		// 	}else{
-		// 		$this->ShowLoginView();
-		// 	}
-		// }
-	}
+	// 	// 		}
+	// 	// 	}else{
+	// 	// 		$this->ShowLoginView();
+	// 	// 	}
+	// 	// }
+	// }
 
 	public function StudentRegister(){
 		$email = $_POST['email'];
@@ -169,46 +171,46 @@ class HomeController
 		$this->ShowLoginView($message);
 	}
 
-	//Funcion para ingresar al sistema.
-	// public function Login($email, $password)
-	// {
-	// 	$userFound = null;	
-	// 	$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
-	// 	if($userFound == null){
-	// 		$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
-	// 		if($userFound == null){
-	// 			$userFound = $this->companyDAOPDO->GetCompanyByName($email);
-	// 		}
-	// 	}
-	// 	if ($userFound != null) {
-	// 		if($userFound instanceof Admin && $password == $userFound->getPassword()){
-	// 			$_SESSION['loggedAdmin'] = $userFound;
-	// 			$_SESSION['logged'] = "a";
-	// 			$this->ShowAdminView();
-	// 		}
-	// 		elseif($userFound instanceof Student && $password == $userFound->getPassword() && $userFound->getActive() == true){		
-	// 			$_SESSION['loggedUser'] = $userFound;
-	// 			$_SESSION['logged'] = "s";
-	// 			$message = 'Bienvenido Usuario';
-	// 			$this->ShowUserView();			
-	// 		}
-	// 		elseif($password == $userFound->getCuit() && $userFound->getIsActive() == true){		
-	// 			$_SESSION['loggedCompany'] = $userFound;
-	// 			$_SESSION['logged'] = "c";
-	// 			$message = 'Bienvenido Usuario';
-	// 			$this->ShowUserView();
-	// 		}
-	// 		else{
-	// 			$this->ShowLoginView(); 			
-	// 		}
-	// 	}else{
-	// 		$userFound = $this->studentDAO->GetByEmailApi($email);
-	// 		if($userFound != NULL){
-	// 			$this->ShowRegisterView();
-	// 		}else{
-	// 			$this->ShowLoginView();
-	// 		}
-	// 	}
+	// Funcion para ingresar al sistema.
+	public function Login($email, $password)
+	{
+		$userFound = null;	
+		$userFound = $this->studentDAOPDO->GetStudentByEmail($email);
+		if($userFound == null){
+			$userFound = $this->adminDAOPDO->GetAdminByEmail($email);
+			if($userFound == null){
+				$userFound = $this->userCompanyDAOPDO->GetUserCompanyByEmail($email);
+			}
+		}
+		if ($userFound != null) {
+			if($userFound instanceof Admin && $password == $userFound->getPassword()){
+				$_SESSION['loggedAdmin'] = $userFound;
+				$_SESSION['logged'] = "a";
+				$this->ShowAdminView();
+			}
+			elseif($userFound instanceof Student && $password == $userFound->getPassword() && $userFound->getActive() == true){		
+				$_SESSION['loggedUser'] = $userFound;
+				$_SESSION['logged'] = "s";
+				$message = 'Bienvenido Usuario';
+				$this->ShowUserView();			
+			}
+			elseif($password == $userFound->getPassword()){		
+				$_SESSION['loggedCompany'] = $userFound;
+				$_SESSION['logged'] = "c";
+				$message = 'Bienvenido Usuario';
+				$this->ShowCompanyView();
+			}
+			else{
+				$this->ShowLoginView(); 			
+			}
+		}else{
+			$userFound = $this->studentDAO->GetByEmailApi($email);
+			if($userFound != NULL){
+				$this->ShowRegisterView();
+			}else{
+				$this->ShowLoginView();
+			}
+		}
 	
-	// }
+	}
 }
