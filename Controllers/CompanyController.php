@@ -159,6 +159,7 @@ class CompanyController
         
         $this->companyDAO->Modify($companyNew);
         
+        
         $this->ShowListView();
     }
 

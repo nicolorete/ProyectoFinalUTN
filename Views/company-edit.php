@@ -13,7 +13,7 @@
                 <div class="field">
                     
                     <div class="control">
-                        <input class="input" name="companyId" type="number" placeholder="" id="companyId" hidden="true">
+                        <input class="input" name="companyId" type="number" value="<?= $companyFound->getCompanyId(); ?>" id="companyId" hidden="true">
                     </div>
                 </div>
 
@@ -63,9 +63,9 @@
                 <?php } ?>
                 <footer class="modal-card-foot">
                     <button class="button is-success" type="submit">Modificar</button>
-                    </form>
                     <button class="button is-success" onclick="window.history.go(-1); return false;">Cancelar</button>
                 </footer>
+            </form>
         </section>
 
 
