@@ -50,6 +50,7 @@
                                 <th class="has-text-centered"> Empresa</th>
                                 <th class="has-text-centered"> Puesto</th>
                                 <th class="has-text-centered">Descripción</th>
+                                <th class="has-text-centered">Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,6 +65,11 @@
                             <td><?= $jobOffer->getCompany()->getNombre(); ?></td>
                             <td><?= $jobOffer->getJobPosition()->getDescription(); ?></td>
                             <td><?= $jobOffer->getDescription(); ?></td>
+                            <td><?php 
+                                if($jobOffer->getActive() == 1){
+                                    ?>Activa<?php 
+                                }else{ ?>Finalizada<?php }
+                            ?></td>
 
                             <td class="has-text-centered">
                             

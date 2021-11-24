@@ -51,7 +51,7 @@
                                         <div class="field is-grouped action">
                                             <p class="control">
                                                 <form action="<?= FRONT_ROOT ?>Admin/Delete" method="post">
-                                                    <button class="button is-warning btnEdit"  name="BtnDel" data-id="1" >
+                                                    <button class="button is-warning btnEdit" value="<?= $admin->getAdminId(); ?>"  name="adminId" data-id="1" >
                                                     Delete
                                                     </button>
                                                 </form>

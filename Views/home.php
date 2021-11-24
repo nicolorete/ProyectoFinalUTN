@@ -26,9 +26,9 @@
 					No estas registrado? <a href="<?= FRONT_ROOT ?>Student/ShowRegisterView" class="ml-2">Registrarse</a>
 			</div>
 
-            <div class="form-control">
+            <!-- <div class="form-control">
 					Eres una emrpesa? <a href="<?= FRONT_ROOT ?>Company/ShowCompanyLogin" class="ml-2">Inciar sesion como empresa</a>
-			</div>
+			</div> -->
            
             <button type="submit" name="button">Login</button>
             
