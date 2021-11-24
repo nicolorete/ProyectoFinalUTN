@@ -7,7 +7,7 @@
         <div class="cabecera">
             <h2>INICIAR SESIÓN</h2>
         </div>
-        <form action="<?php echo FRONT_ROOT."Home/Login" ?>" method="post" id="formulario">
+        <form action="<?php echo FRONT_ROOT."Company/Login" ?>" method="post" id="formulario">
 
            
             <div class="form-control">
@@ -24,10 +24,6 @@
 
             <div class="form-control">
 					No estas registrado? <a href="<?= FRONT_ROOT ?>Student/ShowRegisterView" class="ml-2">Registrarse</a>
-			</div>
-
-            <div class="form-control">
-					Eres una emrpesa? <a href="<?= FRONT_ROOT ?>Company/ShowCompanyLogin" class="ml-2">Inciar sesion como empresa</a>
 			</div>
            
             <button type="submit" name="button">Login</button>
@@ -101,4 +97,3 @@
 
 })
 </script>
-

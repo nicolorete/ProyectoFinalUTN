@@ -6,8 +6,8 @@
 
 
 
-use models\Admin as Admin;
-use DAO\AdminDAOPDO as AdminDAO;
+    use models\Admin as Admin;
+    use DAO\AdminDAOPDO as AdminDAO;
 ?>
 
 <div class="columns" id="app-content">
@@ -22,7 +22,6 @@ use DAO\AdminDAOPDO as AdminDAO;
                 <ul>
                     <li><a href="#">Estudiantes Registrados</a></li>
                     <li class="is-active"><a href="#" aria-current="page">Listado de Estudiantes</a></li>
-                    
                 </ul>
             </nav>
         </div>

@@ -7,14 +7,18 @@ use Exception;
 // json
 // use DAO\CompanyRepository as CompanyDAO;
 use Models\Company as Company;
+use Models\UserCompany as UserCompany;
+use DAO\UserCompanyDAOPDO as UserCompanyDAOPDO;
 
 class CompanyController
 {
     private $companyDAO;
+    private $UserCompanyDAOPDO;
 
     public function __construct()
     {
         $this->companyDAO = new CompanyDaoPdo();
+        $this->UserCompanyDAOPDO = new UserCompanyDAOPDO();
     }
 
     public function Add($cuit, $nombre , $address, $link , $isActive){
@@ -43,6 +47,18 @@ class CompanyController
         $this->ShowAddView();
     }
 
+    public function ShowCompanyLogin(){
+		require_once(VIEWS_PATH . 'iniciarCompany.php');
+        
+    }
+
+    public function Login($email, $password){
+        $userCompany = $this->UserCompanyDAOPDO->GetUserCompanyByEmail($email);
+        $company = $this->companyDAO->GetCompanyByCuit($userCompany->getCompany());
+        $userCompany->setCompany($company);
+        var_dump($userCompany);
+    }
+
     private function setCompany($cuit, $nombre, $address, $link, $isActive) {
         $company = new Company();
         $company->setCuit($cuit);
@@ -62,6 +78,19 @@ class CompanyController
         }
     }    
     
+    public function registerUserCompany($email, $password, $cuit, $nombre, $address, $link, $isActive){
+        // var_dump($email);
+        $company = new UserCompany();
+        $company->setEmail($email);
+        $company->setPassword($password);
+        $company->setCompany($cuit);
+        $compania = $this->setCompany($cuit, $nombre, $address, $link , $isActive);
+
+        $this->companyDAO->Add($compania);
+        $this->UserCompanyDAOPDO->Add($company);
+        $this->ShowCompanyLogin();
+    }
+
     public function searcherCompany($companyFound, $companyList) {
         $i = 0;
         if($companyFound != ""){

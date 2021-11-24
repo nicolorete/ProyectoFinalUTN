@@ -183,6 +183,37 @@ class CompanyDAOPDO implements ICompanyDAO
         }
     }
 
+    public function GetCompanyByCuit($cuit)
+    {
+        try {
+            $company = null;
+
+            $query = "SELECT * FROM " . $this->tableName . " WHERE cuit = :cuit";
+
+            $parameters["cuit"] = $cuit;
+
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query, $parameters);
+
+            foreach ($resultSet as $row) {
+                $company = new Company();
+
+                $company->setCompanyId($row["companyId"]);
+                $company->setCuit($row["cuit"]);
+                $company->setNombre($row["nombre"]);
+                $company->setAddress($row["address"]);
+                $company->setLink($row["link"]);
+                $company->setIsActive($row["isActive"]);
+            }
+
+            return $company;
+        } catch (PDOException $e) {
+            throw $e;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
     public function GetCompanyByName($companyName)
     {
         try {

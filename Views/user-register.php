@@ -25,6 +25,8 @@
                 <input name="number" id="pass" type="password">
                 <p></p> -->
                 <a href="<?= FRONT_ROOT ?>Home/ShowLoginView" class="ml-2"><-Volver</a>
+                <a href="<?= FRONT_ROOT ?>Home/ShowCompanyRegister" class="ml-2">Registrar empresa-></a>
+
                          
             </div>
             <button type="submit" name="button">Registrarse</button>      

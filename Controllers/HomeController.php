@@ -125,6 +125,11 @@ class HomeController
 		require_once(VIEWS_PATH . 'home.php');
 	}
 
+	public function ShowCompanyRegister()
+	{
+		require_once(VIEWS_PATH . 'company-register.php');
+	}
+
 	public function ShowRegisterView()
 	{
 		require_once(VIEWS_PATH . 'user-register.php');
