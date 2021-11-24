@@ -65,7 +65,7 @@ VALUES (5,'Wyatan', 'Lorant', 63-025-8112, 01-777-6891, 'Non-binary', '2021-02-2
 
 insert into admin (adminId, email, password) values (1, 'admin@admin', 'admin');
 
-insert into userCompany (userCompanyId, email, password, companyId) values (1, 'company@admin.com', 'admin', 1);
+insert into userCompany (userCompanyId, email, password, companyId) values (1, 'company@admin.com', 'admin', '40138543');
 
 
 -- HAY QUE MODIFICAR EL CUIT POR UN VARCHAR o un tipo de dato que acepte un tamaño de numero mas gande (int acepta hasta 8 numeros)

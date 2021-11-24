@@ -56,7 +56,7 @@
                         <?php
                         foreach ($jobOfferList as $jobOffer) {
                             
-                            if($user->getCompany() == $jobOffer->getCompany()->getCompanyId() ){
+                            if($user->getCompany() == $jobOffer->getCompany()->getCuit() ){
                         ?>
                         <tr>
                             

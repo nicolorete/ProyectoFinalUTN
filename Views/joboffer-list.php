@@ -45,11 +45,13 @@
                     <table class="table is-hoverable is-bordered is-fullwidth" id="datatable">
                         <thead>
                             <tr>
-                                <th class="has-text-centered"> Id</th>
+                                
                                 <th class="has-text-centered"> Titulo</th>
                                 <th class="has-text-centered"> Empresa</th>
                                 <th class="has-text-centered"> Puesto</th>
                                 <th class="has-text-centered">Descripción</th>
+                                <th class="has-text-centered">Estado</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -58,11 +60,17 @@
 
                         ?>
                         <tr>
-                            <td><?= $jobOffer->getJobOfferId(); ?></td>
+                            
                             <td><?= $jobOffer->getTitle(); ?></td>
                             <td><?= $jobOffer->getCompany()->getNombre(); ?></td>
                             <td><?= $jobOffer->getJobPosition()->getDescription(); ?></td>
                             <td><?= $jobOffer->getDescription(); ?></td>
+                            <td><?php 
+                                if($jobOffer->getActive() == 1){
+                                    ?>Activa<?php 
+                                }else{ ?>Finalizada<?php }
+                            ?></td>
+                            
 
                             <td class="has-text-centered">
                             
@@ -74,7 +82,15 @@
                                             </button>
                                         </p>
                                     </form> 
-                                <?php }?>
+                                <?php }elseif($jobOffer->getActive() == 1) {?>
+                                    <form action="<?= FRONT_ROOT ?>Mailer/SendMail" method="post">
+                                        <p class="control">
+                                            <button class="button is-danger" name="BtnDel" data-id="1" value="<?= $jobOffer->getJobOfferId(); ?>">
+                                                Finalizar
+                                            </button>
+                                        </p>
+                                    </form> 
+                                    <?php } ?>
                             </td>
                         </tr>
                         <?php } ?>

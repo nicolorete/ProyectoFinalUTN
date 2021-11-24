@@ -106,7 +106,7 @@
                     $jobOffer->setDescription($row["description"]);
                     $jobOffer->setActive($row["active"]);
 
-                    $jobOffer->setJobPosition($jobPositionDAO->GetById($row["jobPositionId"]));
+                    $jobOffer->setJobPosition($jobPositionDAO->GetByIdFromApi($row["jobPositionId"]));
                     $jobOffer->setCompany($companyDAO->GetCompanyByID($row["companyId"]));
                    
                     return $jobOffer;
@@ -118,7 +118,7 @@
             }
         }
 
-        public function ModifyById($jobOfferId, $title, $date, $description, $active, $jobPositionId, $companyId)
+        public function Modify(JobOffer $jobOffer)
         {
             {
                 try
@@ -126,13 +126,13 @@
                     $query = "UPDATE ".$this->tableName." SET title=:title, date=:date, description=:description, active=:active, jobPositionId=:jobPositionId, companyId=:companyId
                     WHERE jobOfferId=:jobOfferId;";
 
-                    $parameters["jobOfferId"] = $jobOfferId;
-                    $parameters["title"] = $title;
-                    $parameters["date"] = $date;
-                    $parameters["description"] = $description;
-                    $parameters["active"] = $active;
-                    $parameters["jobPositionId"] = $jobPositionId;
-                    $parameters["companyId"] = $companyId;
+                    $parameters["jobOfferId"] = $jobOffer->getJobOfferId();
+                    $parameters["title"] = $jobOffer->getTitle();
+                    $parameters["date"] = $jobOffer->getDate();
+                    $parameters["description"] = $jobOffer->getDescription();
+                    $parameters["active"] = $jobOffer->getActive();
+                    $parameters["jobPositionId"] = $jobOffer->getJobPosition()->getJobPositionId();
+                    $parameters["companyId"] = $jobOffer->getCompany()->getCompanyId();
     
                     $this->connection = Connection::GetInstance();
     
