@@ -82,14 +82,33 @@ class CompanyController
     
     public function registerUserCompany($email, $password, $cuit, $nombre, $address, $link, $isActive){
         // var_dump($email);
-        $company = new UserCompany();
-        $company->setEmail($email);
-        $company->setPassword($password);
-        $company->setCompany($cuit);
-        $compania = $this->setCompany($cuit, $nombre, $address, $link , $isActive);
-
-        $this->companyDAO->Add($compania);
-        $this->UserCompanyDAOPDO->Add($company);
+        $usercompany = new UserCompany();
+        $usercompany->setEmail($email);
+        $usercompany->setPassword($password);
+        $usercompany->setCompany($cuit);
+        $companyFound = false;
+        $companyList = $this->companyDAO->GetAll();
+        
+        if($companyList){
+            foreach($companyList as $companyNew) {
+                if($companyNew->getNombre() == $nombre || $companyNew->getCuit() == $cuit){
+                    $companyFound = true;
+                }
+            }
+            if($companyFound == false){
+                $company = $this->setCompany($cuit, $nombre, $address, $link , $isActive);
+                $this->companyDAO->Add($company);
+                $this->UserCompanyDAOPDO->Add($usercompany);
+            } else {
+                ?>
+                    <script>alert('Esa Empresa ya existe!');</script>
+                <?php
+            }
+        } else {
+            $company = $this->setCompany($cuit, $nombre, $address, $link, $isActive);
+            $this->companyDAO->Add($company);
+            $this->UserCompanyDAOPDO->Add($usercompany);
+        }
         $this->ShowCompanyLogin();
     }
 
