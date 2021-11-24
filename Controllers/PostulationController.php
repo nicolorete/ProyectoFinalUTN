@@ -120,7 +120,7 @@ class PostulationController
             foreach($studentList as $student){
                 if($studentFound == $student->getStudentId()){
                     $studentFound = $student;
-                    var_dump($studentFound);
+                    // var_dump($studentFound);
             }
         }
         }
