@@ -56,7 +56,9 @@ class CompanyController
         $userCompany = $this->UserCompanyDAOPDO->GetUserCompanyByEmail($email);
         $company = $this->companyDAO->GetCompanyByCuit($userCompany->getCompany());
         $userCompany->setCompany($company);
-        var_dump($userCompany);
+        $_SESSION['loggedCompany'] = $userCompany;
+		require_once(VIEWS_PATH . 'company-view.php');
+
     }
 
     private function setCompany($cuit, $nombre, $address, $link, $isActive) {
