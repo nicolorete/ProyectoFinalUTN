@@ -1,6 +1,7 @@
 <?php
 
     $user = $_SESSION['loggedUser']; 
+    require_once("validate-session.php");
     
     use models\Postulation as postulation;
     use models\JobOffer as jobOffer;

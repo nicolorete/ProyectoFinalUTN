@@ -19,13 +19,13 @@ class userController
 
     public function ShowAddView()
     {
-        require_once(VIEWS_PATH . "validate-session.php");
+        // require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH . "user-add.php");
     }
 
     public function ShowListView()
     {
-        require_once(VIEWS_PATH . "validate-session.php");
+        // require_once(VIEWS_PATH . "validate-session.php");
         $userList = $this->userDAO->GetAll();
 
         require_once(VIEWS_PATH . "user-list.php");
@@ -33,7 +33,7 @@ class userController
 
     public function Add($email, $password, $firstName, $lastName, $dni)
 	{
-        require_once(VIEWS_PATH . "validate-session.php");
+        // require_once(VIEWS_PATH . "validate-session.php");
 
 				$newUser = new User();
 				$newRole = new Role();

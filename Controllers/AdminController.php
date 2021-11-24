@@ -47,7 +47,7 @@
         }
 
         public function Delete($id) {
-            require_once(VIEWS_PATH."validate-session.php");
+            require_once(VIEWS_PATH."validate-session-admin.php");
             $this->adminDAO->Delete($id);
             $this->ShowListView();
         }
@@ -55,14 +55,14 @@
         //////////////////////////////////////////////////////////////////////////////////////////
         public function ShowListView()
         {
-            require_once(VIEWS_PATH . "validate-session.php");
+            require_once(VIEWS_PATH . "validate-session-admin.php");
             $userList = $this->adminDAO->GetAll();
     
             require_once(VIEWS_PATH . "admin-list.php");
         }
         public function ShowAddView()
         {
-            require_once(VIEWS_PATH . "validate-session.php");
+            require_once(VIEWS_PATH . "validate-session-admin.php");
             require_once(VIEWS_PATH . "admin-add.php");
         }
       

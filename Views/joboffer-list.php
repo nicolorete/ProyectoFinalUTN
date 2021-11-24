@@ -18,7 +18,10 @@
 
 
 <div class="columns" id="app-content">
-    <?php include('user-aside-nav.php');?>
+
+    <?php if($_SESSION['logged'] == "s"){
+        include('user-aside-nav.php');
+        }else {include('admin-aside-nav.php');} ?>
 
     <div class="column is-10" id="page-content">
 

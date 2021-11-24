@@ -1,6 +1,7 @@
 <?php
 $user = $_SESSION['loggedUser'];
 include('top-nav.php');
+require_once("validate-session.php");
 
 ?>
 
@@ -87,34 +88,6 @@ include('top-nav.php');
                 </div>
             <?php } ?>
             </div>
-            <div class="content-body">
-                <div class="columns">
-                    <div class="column">
-                        <div class="card">
-                            <div class="card-content">
-                                <p class="title is-4">Carga tu Curriculum</p>
-                                <p style="color: red;font-size:18px"> </p>
-                                <form action=" <?php echo FRONT_ROOT ?>File/Upload" enctype="multipart/form-data" method="POST">
-                                    <div class="field">
-                                        <label class="label">Carga tu Curriculum</label>
-                                        <div class="control">
-                                            <input class="form-control-file" name="cv" type="file" placeholder="" required="">
-                                        </div>
-                                    </div>
-
-                                    <div class="field is-grouped centered" style="padding-left: 30%">
-                                        <div class="control">
-                                            <button class="button is-link" type="submit">Registrar</button>
-                                        </div>
-                                        <div class="control">
-                                            <button class="button is-text" type="reset">Limpiar</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+         
     </div>
 </div>

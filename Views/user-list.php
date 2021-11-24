@@ -2,6 +2,7 @@
 
 
     $user = $_SESSION['loggedAdmin']; 
+    require_once("validate-session-admin.php");
     include('top-nav.php'); 
 
 

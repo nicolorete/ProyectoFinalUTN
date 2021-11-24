@@ -1,6 +1,7 @@
 <?php
 
     $user = $_SESSION['loggedUser']; 
+    require_once("validate-session.php");
 ?>
 <?php
     include('top-nav.php');

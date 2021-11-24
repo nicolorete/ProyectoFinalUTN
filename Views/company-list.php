@@ -2,7 +2,9 @@
 
 
     $user = $_SESSION['loggedAdmin']; 
-    include('top-nav.php'); 
+    include('top-nav.php');
+    require_once("validate-session-admin.php");
+    
 
 
 

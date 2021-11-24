@@ -113,6 +113,17 @@ class PostulationController
         $fileList = $this->fileDAO->GetAll();
         $studentList = $this->studentDAO->GetAll();
         $postulationList = $this->postulationDAO->GetAll();
+        $studentFound = null;
+        
+        foreach($postulationList as $postulation){
+            $studentFound = $postulation->getStudent();
+            foreach($studentList as $student){
+                if($studentFound == $student->getStudentId()){
+                    $studentFound = $student;
+                    var_dump($studentFound);
+            }
+        }
+        }
         require_once(VIEWS_PATH . "admin-postulation-list.php");
     }
 

@@ -179,13 +179,13 @@ class CompanyController
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function ShowAddView()
     {
-        require_once(VIEWS_PATH . "validate-session.php");
+        require_once(VIEWS_PATH . "validate-session-admin.php");
         require_once(VIEWS_PATH . "company-add.php");
     }
 
     public function ShowListView()
     {
-        require_once(VIEWS_PATH . "validate-session.php");
+        
         $companyList = $this->companyDAO->getAll();
 
         require_once(VIEWS_PATH . "company-list.php");
@@ -193,7 +193,7 @@ class CompanyController
 
     public function ShowListViewUser()
     {
-        require_once(VIEWS_PATH . "validate-session.php");
+        
         $companyList = $this->companyDAO->GetActive();
 
 

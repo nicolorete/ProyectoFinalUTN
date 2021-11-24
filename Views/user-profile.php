@@ -1,6 +1,7 @@
 <?php
 
     $user = $_SESSION['loggedUser']; 
+    require_once("validate-session.php");
     use DAO\CareerDAOPDO as CareerDAOPDO;
     $career = new CareerDAOPDO;
 ?>

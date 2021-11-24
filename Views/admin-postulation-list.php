@@ -1,6 +1,7 @@
 <?php
 
 $user = $_SESSION['loggedAdmin'];
+require_once("validate-session-admin.php");
 
 use models\Postulation as postulation;
 use models\JobOffer as jobOffer;
@@ -34,7 +35,7 @@ $alumno = new StudentDAOPDO;
         </div>
         <?php
         foreach ($postulationList as $postulation) {
-
+           
         ?>
             <div class="card">
 
@@ -48,7 +49,9 @@ $alumno = new StudentDAOPDO;
                         </div>
                         <div class="field">
                             <label class="label">Estudiante </label>
-                            <?php echo $postulation->getStudent(); ?>
+                            
+                            <?php echo $studentFound->getFirstName(); ?>
+                            
                         </div>
 
                         <div class="field">
