@@ -1,12 +1,12 @@
 <?php 
-    // $user = $_SESSION['loggedAdmin']; 
-    // include('top-nav.php'); 
-    // <?php include('admin-aside-nav.php'); ?>
+    $user = $_SESSION['loggedAdmin']; 
+    include('top-nav.php'); 
 
 ?>
 
 <div class="columns" id="app-content">
 
+    <?php include('admin-aside-nav.php'); ?>
 
     <div class="column is-10" id="page-content">
 
