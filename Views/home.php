@@ -12,7 +12,7 @@
            
             <div class="form-control">
                 <label for="email">E-mail</label>
-                <input name="email" id="email" type="email">
+                <input name="email" id="email" type="user">
                 <p></p>                
             </div>
 
@@ -37,7 +37,7 @@
         window.addEventListener('load', ()=> {
     const form = document.querySelector('#formulario')
     const usuario = document.getElementById('usuario')
-    const email = document.getElementById('email')
+    //const email = document.getElementById('email')
     const pass = document.getElementById('pass')
     const passConfirma = document.getElementById('passConfirma')
 
@@ -58,13 +58,13 @@
      
 
         //validando campo email
-        if(!emailValor){
-            validaFalla(email, 'Campo vacío')            
-        }else if(!validaEmail(emailValor)) {
-            validaFalla(email, 'El e-mail no es válido')
-        }else {
-            validaOk(email)
-        }
+        // if(!emailValor){
+        //     validaFalla(email, 'Campo vacío')            
+        // }else if(!validaEmail(emailValor)) {
+        //     validaFalla(email, 'El e-mail no es válido')
+        // }else {
+        //     validaOk(email)
+        // }
          //validando campo password
          const er = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,18}$/          
          if(!passValor) {

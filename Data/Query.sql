@@ -36,6 +36,15 @@ CREATE TABLE company (
     CONSTRAINT unq_company_cuit UNIQUE (cuit),
 );
 
+CREATE TABLE userCompany(
+    userCompanyId INT NOT NULL AUTO_INCREMENT,
+	email varchar(60) , 
+	password varchar(60),
+    companyId int,
+	CONSTRAINT pk_userCompanyId PRIMARY KEY (userCompanyId),
+	CONSTRAINT unq_company_email UNIQUE (email),
+	CONSTRAINT fk_companyId FOREIGN KEY (companyId) REFERENCES company(companyId)
+);
 
 CREATE TABLE postulation (
   jobOfferId INT NOT NULL AUTO_INCREMENT,
@@ -55,6 +64,8 @@ INSERT INTO student (carrerId, firstName, lastName, dni, fileNumber, gender, bir
 VALUES (5,'Wyatan', 'Lorant', 63-025-8112, 01-777-6891, 'Non-binary', '2021-02-23', 'wlorant1@sbwire.com', 171-448-9062, 1, 'user');
 
 insert into admin (adminId, email, password) values (1, 'admin@admin', 'admin');
+
+insert into userCompany (userCompanyId, email, password, companyId) values (1, 'company@admin.com', 'admin', 1);
 
 
 -- HAY QUE MODIFICAR EL CUIT POR UN VARCHAR o un tipo de dato que acepte un tamaño de numero mas gande (int acepta hasta 8 numeros)
